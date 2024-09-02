@@ -1,10 +1,15 @@
 # Wireframes
 
-## Screen Name 1
+## Home Screen 
 
-Describe this screen and how it will be used.
+The home screen of the SAWF app displays live scores of
+ongoing matches, provides highlights and brief sport news to
+users. Through the home screen users also have access to watch
+matches, explore news in details and also check scores.
+The home page will so be designed to fit users favorite team,
+sport and players.
 
-![Wireframe 1](./wireframe1.png)
+![Wireframe 1]("C:\Users\simeo\OneDrive\Desktop\Homescreen.png")
 
 ## Screen Name 2
 
