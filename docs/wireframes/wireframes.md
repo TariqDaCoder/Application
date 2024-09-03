@@ -11,3 +11,9 @@ Describe this screen and how it will be used.
 Describe this screen and how it will be used.
 
 ![Wireframe 2](./wireframe2.jpg)
+
+## Social Features Screen 
+
+Support friend management, including adding and interacting with friends within the platform.
+
+![Wireframe 2](./SocialFeatureWireframe.png)
