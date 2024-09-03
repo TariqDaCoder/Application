@@ -4,5 +4,7 @@
 - [Tariq Hassan] Create repository for the project
 - [Simeon Sodunke, Tariq Hassan, Kavin Xayamongkhon, Samuel Yohannes, Melkamu Gonfa, Noah Manning] Develop a list of possible features for the application.
 - [Simeon Sodunke, Tariq Hassan, Kavin Xayamongkhon, Samuel Yohannes, Melkamu Gonfa, Noah Manning] Update README.md.
-- [Kavin X] Edited WireFrame frame for Streaming Resourse Page
+- [Kavin X] Edited WireFrame frame for Streaming Resource Page
 - [Simeon Sodunke] Create home screen wireframes
+- [Noah Manning] Created News wireframe
+- [Noah Manning] Updated the wireframes.md and explained the use of the news tab
