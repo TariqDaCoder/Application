@@ -8,4 +8,4 @@
 5. **User Authentication System**: Allow users to sign in via Google, Facebook, Apple, or create an account using their email.
 6. **Social Features**: Support friend management, including adding and interacting with friends within the platform.
 7. **Ticket Purchasing**: Offer users the ability to browse and buy tickets for upcoming sports events directly from the app.
-8
+8. 

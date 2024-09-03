@@ -9,7 +9,7 @@ matches, explore news in details and also check scores.
 The home page will so be designed to fit users favorite team,
 sport and players.
 
-![Wireframe 1]("C:\Users\simeo\OneDrive\Desktop\Homescreen.png")
+![Wireframe 1](./Homescreen.png)
 
 ## Screen Name 2
 
