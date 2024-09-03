@@ -8,3 +8,4 @@
 - [Simeon Sodunke] Create home screen wireframes
 - [Noah Manning] Created News wireframe
 - [Noah Manning] Updated the wireframes.md and explained the use of the news tab
+- [Samuel Yohannes] Created Social Features WireFrame and explained usage
