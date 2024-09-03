@@ -2,7 +2,7 @@
 
 ## Description
 
-Replace with your description.
+Sports entertainment news application
 
 ## Group Members
 
