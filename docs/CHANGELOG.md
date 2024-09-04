@@ -1,4 +1,4 @@
-# Milestone 1
+ # Milestone 1
 - [Tariq Hassan] Create features.md file
 - [Tariq Hassan] Create a wireframe for login screen
 - [Tariq Hassan] Create repository for the project
