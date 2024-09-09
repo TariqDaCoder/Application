@@ -9,3 +9,5 @@
 - [Noah Manning] Created News wireframe
 - [Noah Manning] Updated the wireframes.md and explained the use of the news tab
 - [Samuel Yohannes] Created Social Features WireFrame and explained usage
+- [Simeon Sodunke] Filled out the Player performance tracking section on requirement.md
+- [Simeon Sodunke] Filled out the Sport news feed on requirement.md
