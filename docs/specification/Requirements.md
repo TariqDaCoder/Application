@@ -106,18 +106,26 @@ If a particular API is not functioning, the system detects it and let the user k
 5. ESPN's hidden API
 
 ## Use case goal
-
+Allow users to securely access the application by verifying their identity through a login process, ensuring authorized access to personalized features and data within the system.
 ## Primary Actor
-
+End-user
 ## Preconditions
-
+None
 ## Basic flow
-
-## Alternative flows
-
-### Alternative flow 1
-
-### Alternative flow 2
+1. The user opens the application and navigates to the login page.
+2. The user inputs their username/email and password.
+3. The system checks if the entered credentials are valid.
+4. If credentials match a registered user, then the system creates a session and grants access.
+## invalid credentials
+1. If credentials are invalid, an error message is displayed (e.g., "Invalid username or password").
+2. The application database logs the authentication event for security and audit purposes.
+### Forgotten Password
+1. The user selects the "Forgot Password" link on the login page.
+2. The app prompts the user to enter their registered email or username.
+3. The system sends a password reset email (or SMS) with a secure reset link to the user’s registered email or phone.
+4. The user opens the email and clicks on the provided link, which directs them to a secure password reset page
+5. The user provides and confirms a new password
+6. Upon successful entry, the system updates the password and confirms the reset.
 
 # Social Features
 
