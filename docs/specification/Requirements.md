@@ -116,7 +116,7 @@ None
 2. The user inputs their username/email and password.
 3. The system checks if the entered credentials are valid.
 4. If credentials match a registered user, then the system creates a session and grants access.
-## invalid credentials
+## Invalid Credentials
 1. If credentials are invalid, an error message is displayed (e.g., "Invalid username or password").
 2. The application database logs the authentication event for security and audit purposes.
 ### Forgotten Password
