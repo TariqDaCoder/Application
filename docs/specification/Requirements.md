@@ -10,7 +10,7 @@ User date will be encrypted.
 
 ## Reliability
 
-The app the have error handling capabilities.
+The app they have error handling capabilities.
 
 # Player Performance Tracking
 
@@ -27,10 +27,10 @@ The end-user will be the primary actor. Could be a fan or a coach.
 ## Preconditions
 1. ESPN API must be connected to the application
 2. The user must have access to the application
-3. the game being tracked must ne ongoing or a finished game
+3. the game being tracked must be ongoing or a finished game
    
 ## Basic flow
-1. The user will selects a game they want to track in the application.
+1. The user will select a game they want to track in the application.
 2. The application sends a request to ESPN’s hidden API for player performance data.
 3. The API retrieves and sends back the data of the player like goals and assists.
 4. The application displays the data requested by user.
@@ -47,8 +47,8 @@ If ESPN API is not available, the application will display a message that says "
 
 ## Actors
 1. End-user
-4. Youtube API
-5. ESPN's hidden API
+2. YouTube API
+3. ESPN's hidden API
 
 ## Use case goal
 
@@ -70,7 +70,7 @@ If ESPN API is not available, the application will display a message that says "
 1. End-user
 2. Google API
 3. Facebook API
-4. Youtube API
+4. YouTube API
 5. ESPN's hidden API
 
 ## Use case goal
@@ -102,7 +102,7 @@ If a particular API is not functioning, the system detects it and let the user k
 1. End-user
 2. Google API
 3. Facebook API
-4. Youtube API
+4. YouTube API
 5. ESPN's hidden API
 
 ## Use case goal
@@ -132,7 +132,7 @@ None
 ## Actors
 1. End-user
 2. Facebook API
-3. Youtube API
+3. YouTube API
 
 
 ## Use case goal
@@ -154,7 +154,7 @@ None
 ## Actors
 1. End-user
 2. Google API
-3. Youtube API
+3. YouTube API
 4. Ticketmaster API
 
 
