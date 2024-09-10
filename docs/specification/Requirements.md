@@ -138,6 +138,43 @@ None
 2. Facebook API
 3. YouTube API
 
+## Use case goal
+Support friend management, including adding and interacting with friends within the platform.
+## Primary Actor
+End-User
+## Preconditions
+1. Creating an Account
+2. Security and Privacy(Encrypt data, enable blocking/reporting, and manage profile visibility.)
+
+## Basic flow
+1. Open Social Features Page: User accesses the "Friends" tab from the main navigation.
+2. Friend List Display: User sees a list of current friends with profile pictures, online status, and quick action buttons (message, challenge).
+3. Search/Add Friends: User searches for new friends via a search bar and sends a friend request.
+4. Manage Friend Requests: Pending friend requests are listed with options to accept or reject.
+5. Interact with Friends: User can tap a friend to view their profile, send a message, or challenge them to a game.
+6. Activity Feed: Display recent activities from friends (matches, achievements).
+7. Notifications: User receives alerts for friend requests, challenges, and messages.
+
+## Alternative flows
+
+### Alternative flow 1
+Quick Add and Interaction
+1. Open Notifications: User taps notifications to see friend requests or interactions.
+2. Manage Requests: User accepts/rejects friend requests directly from the notification center.
+3. Interact: Taps on a friend’s notification to jump into a chat or challenge them to a game.
+### Alternative flow 2
+Profile Centered Interaction
+1. Open User Profile: User accesses their profile page and selects "Friends."
+2. Friend Suggestions: Based on mutual sports interests, suggestions are shown with “Add Friend” buttons.
+3. Interact: Tap on a friend's profile for messaging, challenges, or viewing recent activities.
+
+
+
+## Actors
+1. End-user
+2. Facebook API
+3. YouTube API
+
 
 ## Use case goal
 
