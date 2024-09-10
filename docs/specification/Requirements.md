@@ -2,16 +2,20 @@
 
 ## Open source
 
-End-user will be able to see the source code and build the app locally using the documentation provided.
-
+The app's source code will be available for public access, allowing end-users to review, modify, and contribute.
+Comprehensive documentation will be provided, detailing the steps required to set up, build, and run the app locally, ensuring ease of customization and deployment.
 ## Security
 
-User date will be encrypted.
-
+All sensitive user data will be encrypted using AES (Advanced Encryption Standard) for data at rest, ensuring fast and secure encryption.
+For data in transit, TLS (Transport Layer Security) will be used to prevent eavesdropping and tampering.
+RSA or Elliptic Curve Cryptography (ECC) will be employed for secure key exchange.
+Passwords will be hashed using algorithms like bcrypt or Argon2, ensuring that passwords are not stored in plain text.
 ## Reliability
 
-The app they have error handling capabilities.
-
+The app will include basic error handling to ensure it continues running smoothly even if minor issues occur.
+In case of temporary failures, the app will automatically retry operations.
+Regular monitoring will track performance and alert developers to any problems.
+The app will be tested thoroughly to handle common issues and ensure stable performance, even under increased usage.
 # Player Performance Tracking
 
 ## Actors
