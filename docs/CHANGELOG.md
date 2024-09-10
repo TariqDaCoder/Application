@@ -11,3 +11,4 @@
 - [Samuel Yohannes] Created Social Features WireFrame and explained usage
 - [Simeon Sodunke] Filled out the Player performance tracking section on requirement.md
 - [Simeon Sodunke] Filled out the Sport news feed on requirement.md
+  -[Samuel Yohannes] Filled out Social Features section on requirement.md
