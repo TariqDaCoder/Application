@@ -55,18 +55,39 @@ If ESPN API is not available, the application will display a message that says "
 3. ESPN's hidden API
 
 ## Use case goal
+User is able to view what games are live and to direct the user to what platform the game is broadcasting on.
 
 ## Primary Actor
+End-User
 
 ## Preconditions
-
+1. User has an internet connection
+2. User has a device capable to be redirected to the steaming website via internet browser or application
+3. User is logged in to a valid account to see customized content
+   
 ## Basic flow
+1. User is able to navigate to the "Live Games" feed
+2. User is presented with "Highlighted Live Games" and other games that are currently streaming along with scores.
+3. User is able to navigate through broadcasted games, sports and search for more games
+4. User is can select a game to see where they are able to watch the game
+5. User is directed to the platform of their choosing
 
 ## Alternative flows
 
 ### Alternative flow 1
+User does not have an internet access
+1. User is shown a message for not having a connection
 
 ### Alternative flow 2
+Customized Live Games Feed
+1. User is able to login to an account
+2. User is able to view their followed team's games under the "Highlighted Live Games" section
+
+### Alternative flow 3
+Searching for Other Games
+1. User is able to select a "search" icon to bring up a search bar with suggestions
+2. User is able to select games based on their search
+3. If the user's search is unable to find a game they notified and prompted with suggestions 
 
 # Sports News Feed
 
