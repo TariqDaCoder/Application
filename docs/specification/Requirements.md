@@ -202,14 +202,25 @@ Profile Centered Interaction
 
 ## Use case goal
 
+- End-user able to enter application, view all the sports games that
+are upcoming and be able to click button that will bring them to Ticketmaster to
+order tickets for the game they select
+
 ## Primary Actor
+
+- End-user / Application User
 
 ## Preconditions
 
+1. Internet Access
+2. View of upcoming games ( this will be from Sports Feed/Game Viewing or Team Page)
+3. Ticketmaster Button
+4. Ticketmaster API
+
 ## Basic flow
 
-## Alternative flows
+![](./TicketPurchasingPrimaryFlow.png)
 
-### Alternative flow 1
+## LIVE Games (Tickets are unable to be purchased)
 
-### Alternative flow 2
+![](./TicketPurchasingAlternativeFlow.png)
