@@ -33,3 +33,8 @@ This login page allows users to sign in using their email and password or via Fa
 It includes options to remember login details, recover a forgotten password, and create a new account.
 
 ![Wireframe 4](./SocialFeaturesWireframe.png)
+## Ticket purchase page
+
+this page provides the users with upcoming games along with an option to purchase a ticket via TicketMaster. 
+It provides users ability to choose their favorite team and filter upcoming games of their favorite team.
+![Wireframe 5](./Ticket purchase wireframe.png)
