@@ -11,4 +11,4 @@ Sports entertainment news application, designed to deliver real-time sports-rela
 - Kavin Xayamongkhon <pv3442ia@go.minnstate.edu>, kavyxa
 - Samuel Yohannes <mi8854we@go.minnstate.edu>, Samyohannes129
 - Melkamu Gonfa <xc7695hm@go.minnstate.edu> melkamuget 
-- Noah Manning <qz3616eq@go.minnstate.edu>
+- Noah Manning <qz3616eq@go.minnstate.edu> nmanning24
