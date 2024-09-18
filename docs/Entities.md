@@ -39,6 +39,8 @@
      - `position`: The player's position on the team (e.g., Forward, Goalkeeper).
      - `playerHeight`: The player's height.
      - `playerWeight`: The player's weight.
+     - `age`: The player's age.
+     - `yearsActive`: How many years the player has been actively playing.
 
 ## 5. **PlayerGameStats**
    - **Description**: Captures a player's performance statistics in a game.
