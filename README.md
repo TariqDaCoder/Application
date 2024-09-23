@@ -9,6 +9,6 @@ Sports entertainment news application, designed to deliver real-time sports-rela
 - Tariq Hassan <so3000mk@go.minnstate.edu>
 - Simeon Sodunke <yw1149ys@go.minnstate.edu>, Simeon-Sodunke
 - Kavin Xayamongkhon <pv3442ia@go.minnstate.edu>, kavyxa
-- Samuel Yohannes <mi8854we@go.minnstate.edu>
+- Samuel Yohannes <mi8854we@go.minnstate.edu>, Samyohannes129
 - Melkamu Gonfa <xc7695hm@go.minnstate.edu> melkamuget 
-- Noah Manning <qz3616eq@go.minnstate.edu>
+- Noah Manning <qz3616eq@go.minnstate.edu> nmanning24
