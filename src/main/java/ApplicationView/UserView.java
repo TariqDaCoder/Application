@@ -62,7 +62,7 @@ public class UserView {
         User friend = User.getUserById(friendUserId);
         if (friend != null) {
             user.addFriend(friend);
-            System.out.println("Friend " + friend.getFirstName() + " " + friend.getLastName() + " added successfully.");
+            System.out.println("Friend " + friend.getFirstName() + " " + friend.getLastName() + " added successfully");
         } else {
             System.out.println("No user found with ID " + friendUserId + ".");
         }
