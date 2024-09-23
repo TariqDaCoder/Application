@@ -16,3 +16,6 @@
 - [Noah Manning] Put GitHub username in README
 - [Noah Manning, Simeon Sodunke, Samuel Yohannes, Kavin Xayamongkhon, Melkamu Gonfa, Tariq Hassan] Uploaded UML Diagram 
 
+ # Milestone 2
+- [Kavin X] Create Java file folder for MVC model
+- [Kavin X] Update ApplicationModel/User Class
