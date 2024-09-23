@@ -21,3 +21,5 @@
  # Milestone 3
 - [Kavin X] Create Java file folder for MVC model, added ApplicationModel, ApplicationView, ApplicationController packages
 - [Kavin X] Update ApplicationModel/User Class, added methods and lists
+- [Kavin X] Update ApplicationView/User Class, added methods and lists
+- [Kavin X] Update ApplicationController/User Class, added methods and lists
