@@ -56,7 +56,8 @@ public class User {
     }
 
     public static User getUserById(int userID){
-        for (User user : userList) {
+        for (int i = 0; i < userList.size(); i++) {
+            User user = userList.get(i);
             if (user.getUserId() == userID) {
                 return user;
             }
