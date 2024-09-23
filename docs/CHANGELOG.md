@@ -4,7 +4,7 @@
 - [Tariq Hassan] Create repository for the project
 - [Simeon Sodunke, Tariq Hassan, Kavin Xayamongkhon, Samuel Yohannes, Melkamu Gonfa, Noah Manning] Develop a list of possible features for the application.
 - [Simeon Sodunke, Tariq Hassan, Kavin Xayamongkhon, Samuel Yohannes, Melkamu Gonfa, Noah Manning] Update README.md.
-- [Kavin X] Edited WireFrame frame for Streaming Resource Page
+- [Kavin X] Created WireFrame frame for Streaming Resource Page
 - [Simeon Sodunke] Create home screen wireframes
 - [Noah Manning] Created News wireframe
 - [Noah Manning] Updated the wireframes.md and explained the use of the news tab
@@ -13,6 +13,7 @@
 - [Simeon Sodunke] Filled out the Sport news feed on requirement.md
 - [Samuel Yohannes] Filled out Social Features section on requirement.md
 - [Noah Manning] Filled out Ticket Purchasing on requirement.md
+- [Kavin X] Filled out Match Streaming Resources on requirement.md
 - [Noah Manning] Put GitHub username in README
 
  # Milestone 2
