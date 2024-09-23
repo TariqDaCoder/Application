@@ -14,8 +14,10 @@
 - [Samuel Yohannes] Filled out Social Features section on requirement.md
 - [Noah Manning] Filled out Ticket Purchasing on requirement.md
 - [Noah Manning] Put GitHub username in README
-- [Noah Manning, Simeon Sodunke, Samuel Yohannes, Kavin Xayamongkhon, Melkamu Gonfa, Tariq Hassan] Uploaded UML Diagram 
 
  # Milestone 2
+- [Noah Manning, Simeon Sodunke, Samuel Yohannes, Kavin Xayamongkhon, Melkamu Gonfa, Tariq Hassan] Uploaded UML Diagram 
+
+ # Milestone 3
 - [Kavin X] Create Java file folder for MVC model
 - [Kavin X] Update ApplicationModel/User Class
