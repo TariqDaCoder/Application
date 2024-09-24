@@ -1,6 +1,6 @@
-package ApplicationView;
+package edu.metrostate.ApplicationView;
 
-import ApplicationModel.User;
+import edu.metrostate.ApplicationModel.User;
 
 import java.util.List;
 import java.util.Scanner;

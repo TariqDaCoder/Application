@@ -1,4 +1,4 @@
-package ApplicationModel;
+package edu.metrostate.ApplicationModel;
 
 import java.util.ArrayList;
 import java.util.List;
