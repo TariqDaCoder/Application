@@ -83,7 +83,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password; // Ensure to hash this before storing
+        this.password = password; 
     }
 
     public void setProfilePicture(String profilePicture) {
