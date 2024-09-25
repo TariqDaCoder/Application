@@ -42,7 +42,7 @@ It provides users ability to choose their favorite team and filter upcoming game
 
 ## Live Games Page
 The live games page shows what games are live with scores. It displays popular games, highlights, 
-upcomming games and allows you to search for games that are not currently display on the main page.
+upcomming games and allows you to search for games that are not currently display on the edu.metrostate.main page.
 The page can be altered to a users account for sports and teams they follow.
 
 ![Wireframe 6](https://github.com/user-attachments/assets/634e4822-590e-48b4-afb5-c54e45793fac)
