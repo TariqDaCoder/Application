@@ -3,13 +3,13 @@ package edu.metrostate.ApplicationModel;
 public class Game {
     private int gameID;
     private String league;
-    private Team teamA;
-    private Team teamB;
+    private SportsTeam teamA;
+    private SportsTeam teamB;
     private String gameResult;
     private String gameStatus;
-    private Team homeTeam;
+    private SportsTeam homeTeam;
 
-    public Game(int gameID, String league, Team teamA, Team teamB, Team homeTeam, String gameStatus,String gameResult){
+    public Game(int gameID, String league, SportsTeam teamA, SportsTeam teamB, SportsTeam homeTeam, String gameStatus,String gameResult){
         this.gameID = gameID;
         this.league = league;
         this.teamA = teamA;
@@ -24,13 +24,13 @@ public class Game {
     public String getLeague(){
         return league;
     }
-    public Team teamA(){
+    public SportsTeam teamA(){
         return teamA;
     }
-    public Team teamB(){
+    public SportsTeam teamB(){
         return teamB;
     }
-    public Team getHomeTeam(){
+    public SportsTeam getHomeTeam(){
         return homeTeam;
     }
     public String getGameStatus(){
@@ -45,10 +45,10 @@ public class Game {
     public void setLeague(String league){
         this.league = league;
     }
-    public void setTeamA(Team teamA){
+    public void setTeamA(SportsTeam teamA){
         this.teamA = teamA;
     }
-    public void setTeamB(Team teamB){
+    public void setTeamB(SportsTeam teamB){
         this.teamB = teamB;
     }
     public void setGameResult(String gameResult){
@@ -57,7 +57,7 @@ public class Game {
     public void setGameStatus(String gameStatus){
         this.gameStatus = gameStatus;
     }
-    public void setHomeTeam(Team homeTeam){
+    public void setHomeTeam(SportsTeam homeTeam){
         this.homeTeam = homeTeam;
     }
 
