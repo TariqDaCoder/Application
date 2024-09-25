@@ -1,4 +1,4 @@
-package ApplicationModel;
+package edu.metrostate.ApplicationModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +83,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password; 
+        this.password = password; // Ensure to hash this before storing
     }
 
     public void setProfilePicture(String profilePicture) {
