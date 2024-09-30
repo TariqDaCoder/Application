@@ -9,7 +9,7 @@ public class Game {
     private String gameStatus;
     private SportsTeam homeTeam;
 
-    public Game(int gameID, String league, SportsTeam teamA, SportsTeam teamB, SportsTeam homeTeam, String gameStatus,String gameResult){
+    public Game(int gameID, String league, SportsTeam teamA, SportsTeam teamB, SportsTeam homeTeam, String gameStatus, String gameResult){
         this.gameID = gameID;
         this.league = league;
         this.teamA = teamA;
