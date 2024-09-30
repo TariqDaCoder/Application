@@ -1,4 +1,6 @@
-package edu.metrostate.liveGame;
+package edu.metrostate.ApplicationView;
+
+import edu.metrostate.ApplicationController.LiveGameController;
 
 public class LiveGameView {
     public void displayGameInfo(String gameTime, String teamA, String teamB, int score) {

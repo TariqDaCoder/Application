@@ -1,4 +1,7 @@
-package edu.metrostate.liveGame;
+package edu.metrostate.ApplicationController;
+
+import edu.metrostate.ApplicationModel.LiveGame;
+import edu.metrostate.ApplicationView.LiveGameView;
 
 public class LiveGameController {
     private LiveGame model;
