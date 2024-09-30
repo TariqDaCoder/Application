@@ -1,7 +1,7 @@
-package ApplicationController;
+package edu.metrostate.ApplicationController;
 
-import ApplicationModel.User;
-import ApplicationView.UserView;
+import edu.metrostate.ApplicationModel.User;
+import edu.metrostate.ApplicationView.UserView;
 
 public class UserController {
 
