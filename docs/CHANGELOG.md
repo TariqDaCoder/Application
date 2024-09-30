@@ -24,3 +24,4 @@
 - [Kavin X] Update edu.metrostate.edu.metrostate.ApplicationModel/User Class, added methods and lists
 - [Kavin X] Update edu.metrostate.ApplicationView/User Class, added methods and lists
 - [Kavin X] Update edu.metrostate.ApplicationController/User Class, added methods and lists
+- [Kavin X] Update edu.metrostate.ApplicationController/SportsTeam Class, added methods and lists
