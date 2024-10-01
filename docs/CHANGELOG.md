@@ -28,3 +28,4 @@
 - [Simeon Sodunke] Initially updated LiveGame model, view and controller but the merged it with Game class
 - [Simeon Sodunke] Updated Player model, view and controller
 -[Samuel Yohannes] Added Games Scores Class
+-[Melkamu Gonfa]  added and updated model, view and controller for the Game class
