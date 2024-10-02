@@ -16,4 +16,6 @@ public class SportController {
     public void displaySportInfo() {
         sportView.displaySportInfo();
     }
+
+    public void displaySportTeams() { sportView.displaySportTeams(); }
 }
