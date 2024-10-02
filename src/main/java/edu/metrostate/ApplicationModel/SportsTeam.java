@@ -23,35 +23,14 @@ public class SportsTeam {
         return teamID;
     }
 
-    public void setTeamID(int teamID) {
-        this.teamID = teamID;
-    }
-
-    // getter and setter for teamName
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
-
     // getter and setter for teamLogo
     public String getTeamLogo() {
         return teamLogo;
     }
 
-    public void setTeamLogo(String teamLogo) {
-        this.teamLogo = teamLogo;
-    }
-
     // getter and setter for teamRecord
     public String getTeamRecord() {
         return teamRecord;
-    }
-
-    public void setTeamRecord(String teamRecord) {
-        this.teamRecord = teamRecord;
     }
 
     // getter and setter for teamRoster
