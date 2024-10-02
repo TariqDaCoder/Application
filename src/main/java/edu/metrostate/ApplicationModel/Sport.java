@@ -1,5 +1,8 @@
 package edu.metrostate.ApplicationModel;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Sport {
 
     //attributes
@@ -7,6 +10,7 @@ public class Sport {
     private String sportName;
     private String season;
     private String originCountry;
+    private List<SportsTeam> teamList;
 
     //constructor
     public Sport(int sportID, String sportName, String season, String originCountry) {
@@ -50,6 +54,26 @@ public class Sport {
 
     public String getOriginCountry() {
         return this.originCountry;
+    }
+
+    //getter and setter for team list
+    public List<SportsTeam> getSportsTeamList() {
+        return this.teamList;
+    }
+
+    public void setSportsTeamList(List<SportsTeam> teamList) {
+        this.teamList = teamList;
+    }
+
+    //methods to add and remove teams from the teams lists
+    public void addTeam(SportsTeam team) {
+        if (!teamList.contains(team)) {
+            this.teamList.add(team);
+        }
+    }
+
+    public void removeTeam(SportsTeam team) {
+        this.teamList.remove(team);
     }
 
     //Will do more later have questions on if sports news should be a subclass of sport or not.
