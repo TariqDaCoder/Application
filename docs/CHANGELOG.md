@@ -30,3 +30,4 @@
 -[Samuel Yohannes] Added Games Scores Class
 -[Melkamu Gonfa]  added and updated model, view and controller for the Game class
 - [Noah Manning] Updated view, model, and controller for the Sport class
+- [Noah Manning] Updated sports class to have a list of teams in a certain sport, added methods to manipulate and display the list as sell
