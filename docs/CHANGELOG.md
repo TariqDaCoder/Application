@@ -24,3 +24,10 @@
 - [Kavin X] Update edu.metrostate.edu.metrostate.ApplicationModel/User Class, added methods and lists
 - [Kavin X] Update edu.metrostate.ApplicationView/User Class, added methods and lists
 - [Kavin X] Update edu.metrostate.ApplicationController/User Class, added methods and lists
+- [Kavin X] Update edu.metrostate.ApplicationController/SportsTeam Class, added methods and lists
+- [Simeon Sodunke] Initially updated LiveGame model, view and controller but the merged it with Game class
+- [Simeon Sodunke] Updated Player model, view and controller
+-[Samuel Yohannes] Added Games Scores Class
+-[Melkamu Gonfa]  added and updated model, view and controller for the Game class
+- [Noah Manning] Updated view, model, and controller for the Sport class
+- [Noah Manning] Updated sports class to have a list of teams in a certain sport, added methods to manipulate and display the list as sell
