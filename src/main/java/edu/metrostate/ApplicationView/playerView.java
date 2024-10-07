@@ -5,7 +5,7 @@ import edu.metrostate.ApplicationModel.Player;
 import java.io.File;
 import java.util.Map;
 
-public class playerView {
+public class playerView implements Player{
 
     public void displayProfilePicture(Map<File, Object> profilePicture) {
         for (File file : profilePicture.keySet()) {
@@ -26,7 +26,49 @@ public class playerView {
     }
 
 
-    public void displayPlayerStats(Player player) {
-        System.out.println("Player Stats: " + player.getStats());
+
+    @Override
+    public int getPlayerID() {
+        return 0;
+    }
+
+    @Override
+    public String getFirstName() {
+        return "";
+    }
+
+    @Override
+    public String getLastName() {
+        return "";
+    }
+
+    @Override
+    public String getProfilePicture() {
+        return "";
+    }
+
+    @Override
+    public int getHeight() {
+        return 0;
+    }
+
+    @Override
+    public String getPosition() {
+        return "";
+    }
+
+    @Override
+    public int getPlayerNum() {
+        return 0;
+    }
+
+    @Override
+    public int getAge() {
+        return 0;
+    }
+
+    @Override
+    public int getWeight() {
+        return 0;
     }
 }

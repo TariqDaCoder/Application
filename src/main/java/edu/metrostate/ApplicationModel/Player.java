@@ -1,29 +1,40 @@
 package edu.metrostate.ApplicationModel;
 
-import java.util.Map;
-import java.io.File;
+public interface Player{
+    int getPlayerID();
+    String getFirstName();
+    String getLastName();
+    String getProfilePicture();
+    int getHeight();
+    String getPosition();
+    int getPlayerNum();
+    int getAge();
+    int getWeight();
+}
 
-public class Player {
+class FootBallPlayer implements Player{
     private int playerID;
     private String firstName;
     private String lastName;
-    private Map<File, Object> profilePicture;  // Profile picture stored in a map
+    private String profilePicture;
     private int playerNum;
+    private String team;
     private String position;
     private int height;
     private int weight;
     private int age;
     private int yearsActive;
-    private Map<String, Object> stats;
+    private String stats;
 
 
-    public Player(int playerID, String firstName, String lastName, int playerNum, String position,
+    public FootBallPlayer(int playerID, String firstName, String lastName, int playerNum, String team, String position,
                   int height, int weight, int age, int yearsActive,
-                  Map<String, Object> stats, Map<File, Object> profilePicture) {
+                  String stats, String profilePicture) {
         this.playerID = playerID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.playerNum = playerNum;
+        this.team = team;
         this.position = position;
         this.height = height;
         this.weight = weight;
@@ -33,7 +44,7 @@ public class Player {
         this.profilePicture = profilePicture;
     }
 
-    public Map<File, Object> getProfilePicture() {
+    public String getProfilePicture() {
         return profilePicture;
     }
 
@@ -50,6 +61,10 @@ public class Player {
     }
 
     public int getPlayerNum() {
+        return playerNum;
+    }
+
+    public int getTeam() {
         return playerNum;
     }
 
@@ -73,7 +88,34 @@ public class Player {
         return yearsActive;
     }
 
-    public Map<String, Object> getStats() {
+    public String getStats() {
         return stats;
     }
 }
+
+class PlayerFilter {
+    public static <T extends Player> LinkedNode<T> playerFilterListBySport(Player[] playerList, Class<T> playerType) {
+        LinkedNode<T> head = null;
+        LinkedNode<T> currNode = null;
+
+        for (int i = 0; i < playerList.length; i++) {
+            Player player = playerList[i];
+            // Check if the person is an instance of the specified class type
+            if (playerType.isInstance(player)) {
+                // Cast the person to type T
+                T playerTyped = (T) player;
+                // Create a new LinkedNode for the filtered person with explicit type declaration
+                LinkedNode<T> newNode = new LinkedNode<>(playerTyped, null);
+                if (head == null) {
+                    head = newNode; // Set head if it's the first node
+                    currNode = head;
+                } else {
+                    currNode.setNext(newNode); // Link the new node
+                    currNode = newNode;
+                }
+            }
+        }
+        return head; // Return the head of the linked list
+    }
+}
+

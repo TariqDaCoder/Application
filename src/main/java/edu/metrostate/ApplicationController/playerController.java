@@ -17,15 +17,10 @@ public class playerController {
     }
 
     public void displayProfilePicture() {
-        Map<File, Object> profilePicture = model.getProfilePicture();
-        view.displayProfilePicture(profilePicture);
+
     }
 
     public void displayPlayerDetails() {
         view.displayPlayerDetails(model);
-    }
-
-    public void displayPlayerStats() {
-        view.displayPlayerStats(model);
     }
 }

@@ -13,12 +13,5 @@ public class SportsTeamController {
         this.team = team;
         this.teamView = teamView;
     }
-
-    public void displayTeamInfo() {
-        teamView.displayTeamInfo();
-    }
-
-    public void displayTeamRoster() {
-        teamView.displayTeamRoster();
-    }
 }
+

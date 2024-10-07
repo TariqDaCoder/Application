@@ -1,73 +1,50 @@
 package edu.metrostate.ApplicationModel;
-import java.util.ArrayList;
-import java.util.List;
 
-public class SportsTeam {
-    private static List<SportsTeam> teamList = new ArrayList<>();
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Predicate;
 
-    //attributes
-    private int teamID;
-    private String teamName;
-    private String teamLogo;
-    private String teamRecord; //teams win loss record
-    private List<SportsTeam> teamRoster;
+public interface SportsTeam{
+    int getTeamID();
+    String getTeamName();
+    String getTeamLogo();
+}
 
-    //constructor
-    public SportsTeam(int teamID, String teamName, String teamLogo){
-        this.teamID = teamID;
-        this.teamName = teamName;
-        this.teamLogo = teamLogo;
-    }
-    // getter and setter for teamID
-    public int getTeamID() {
-        return teamID;
+class LinkedNode<T> {
+    private LinkedNode<T> next;
+    private T data;
+
+    public LinkedNode(T data, LinkedNode<T> next) {
+        this.data = data;
+        this.next = next;
     }
 
-    // getter and setter for teamLogo
-    public String getTeamLogo() {
-        return teamLogo;
+    public void setNext(LinkedNode<T> next) {
+        this.next = next;
     }
 
-    // getter and setter for teamRecord
-    public String getTeamRecord() {
-        return teamRecord;
+    public LinkedNode<T> getNext() {
+        return next;
     }
 
-    // getter and setter for teamRoster
-    public List<SportsTeam> getTeamRoster() {
-        return teamRoster;
+    public T getData() {
+        return data;
     }
+}
 
-    public void setTeamRoster(List<SportsTeam> teamRoster) {
-        this.teamRoster = teamRoster;
-    }
+class TeamFilter {
+    public static <T extends SportsTeam> Map<Integer, T> teamFilterMapBySport(Map<Integer, T> teamMap, Predicate<T> filter) {
+        Map<Integer, T> filteredTeams = new HashMap<>();
 
-    // method to add a team to the roster
-    public void addToRoster(SportsTeam team) {
-        if (!teamRoster.contains(team)) {
-            teamRoster.add(team);
-        }
-    }
+        for (Map.Entry<Integer, T> entry : teamMap.entrySet()) {
+            T team = entry.getValue();
 
-    // method to remove a team from the roster
-    public void removeFromRoster(SportsTeam team) {
-        teamRoster.remove(team);
-    }
-
-    // static method to retrieve a team by ID from the team list
-    public static SportsTeam getTeamByID(int teamID) {
-        for (int i = 0; i < teamList.size(); i++) {
-            SportsTeam team = teamList.get(i);
-            if (team.getTeamID() == teamID) {
-                return team;
+            if (filter.test(team)) {
+                filteredTeams.put(entry.getKey(), team); // Use team ID as key
             }
         }
-        return null; // return null if no matching team is found
-    }
 
-    // static method to get all teams
-    public static List<SportsTeam> getAllTeams() {
-        return teamList;
+        return filteredTeams; // Return the map of filtered teams
     }
-
 }
+
