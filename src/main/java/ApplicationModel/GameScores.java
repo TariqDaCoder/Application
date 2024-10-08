@@ -38,14 +38,17 @@ public class GameScores {
     }
 
     public void setTeam2_ID(int id) {
+
         this.team2_id = id;
     }
 
     public int getTeam1Score() {
+
         return team1Score;
     }
 
     public void setTeam1Score(int score) {
+
         this.team1Score = score;
     }
 
