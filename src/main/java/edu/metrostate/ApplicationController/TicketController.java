@@ -28,12 +28,15 @@ public class TicketController {
     }
 
     public void updateView() {
-        view.displayTicketDetails(
-                model.getId(),
-                model.getTitle(),
-                model.getDescription(),
-                model.getStatus(),
-                model.getAssignee()
-        );
+        view.displayTicketDetails(model);
+    }
+
+    public void updateTicket(String title, String description, String status, String assignee) {
+        model.setTitle(title);
+        model.setDescription(description);
+        model.setStatus(status);
+        model.setAssignee(assignee);
+        view.displayMessage("Ticket updated successfully.");
+        updateView();
     }
 }
