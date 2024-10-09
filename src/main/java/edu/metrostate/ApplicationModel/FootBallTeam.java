@@ -1,18 +1,10 @@
 package edu.metrostate.ApplicationModel;
 
-public class FootBallTeam implements SportsTeam{
+public class FootBallTeam extends SportsTeam {
+    private String teamRecord; // team's win-loss record
 
-    //attributes
-    private int teamID;
-    private String teamName;
-    private String teamLogo;
-    private String teamRecord; //teams win loss record
-
-    //constructor
-    public FootBallTeam(int teamID, String teamName, String teamLogo){
-        this.teamID = teamID;
-        this.teamName = teamName;
-        this.teamLogo = teamLogo;
+    public FootBallTeam(int teamID, String teamName, String teamLogo) {
+        super(teamID, teamName, teamLogo); // Call the superclass constructor
     }
 
     // getter and setter for teamID
@@ -40,7 +32,6 @@ public class FootBallTeam implements SportsTeam{
         this.teamRecord = teamRecord;
     }
 
-    // Override toString method
     @Override
     public String toString() {
         return "FootBallTeam{" +

@@ -1,79 +1,69 @@
 package edu.metrostate.ApplicationModel;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Sport {
 
-    //attributes
+    // Attributes
     private int sportID;
     private String sportName;
     private String season;
     private String originCountry;
-    private List<SportsTeam> teamList;
+    private Map<String, List<SportsTeam>> teamsByCategory; // A map to store teams by category
 
-    //constructor
+    // Constructor
     public Sport(int sportID, String sportName, String season, String originCountry) {
         this.sportID = sportID;
         this.sportName = sportName;
         this.season = season;
         this.originCountry = originCountry;
+        this.teamsByCategory = new HashMap<>(); // Initialize the map
     }
 
-    //getter and setter for ID
-    public void setID(int sportID) {
-        this.sportID = sportID;
-    }
-
+    // Getters and setters for ID
     public int getSportID() {
         return this.sportID;
     }
 
-    //getter and setter for sportName
-    public void setSportName(String sportName) {
-        this.sportName = sportName;
+    public void setSportID(int sportID) {
+        this.sportID = sportID;
     }
 
+    // Getters and setters for sportName
     public String getSportName() {
         return this.sportName;
     }
 
-    //getter and setter for season
-    public  void setSeason(String season) {
-        this.season = season;
-    }
-
+    // Getters and setters for season
     public String getSeason() {
         return this.season;
     }
 
-    //getter and setter for originCountry
-    public void setOriginCountry(String originCountry) {
-        this.originCountry = originCountry;
-    }
-
+    // Getters and setters for originCountry
     public String getOriginCountry() {
         return this.originCountry;
     }
 
-    //getter and setter for team list
-    public List<SportsTeam> getSportsTeamList() {
-        return this.teamList;
-    }
-
-    public void setSportsTeamList(List<SportsTeam> teamList) {
-        this.teamList = teamList;
-    }
-
-    //methods to add and remove teams from the teams lists
-    public void addTeam(SportsTeam team) {
-        if (!teamList.contains(team)) {
-            this.teamList.add(team);
+    // Method to get all teams
+    public List<SportsTeam> getTeams() {
+        List<SportsTeam> allTeams = new ArrayList<>();
+        for (List<SportsTeam> teams : teamsByCategory.values()) {
+            allTeams.addAll(teams);
         }
+        return allTeams;
     }
 
-    public void removeTeam(SportsTeam team) {
-        this.teamList.remove(team);
+    // Method to get teams by category
+    public List<SportsTeam> getTeams(String category) {
+        return teamsByCategory.getOrDefault(category, new ArrayList<>());
     }
 
-    //Will do more later have questions on if sports news should be a subclass of sport or not.
+    // Method to add a team to a category
+    public void addTeam(String category, SportsTeam team) {
+        teamsByCategory.putIfAbsent(category, new ArrayList<>());
+        teamsByCategory.get(category).add(team);
+    }
 }

@@ -4,11 +4,42 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public interface SportsTeam{
-    int getTeamID();
-    String getTeamName();
-    String getTeamLogo();
+public class SportsTeam {
+    protected int teamID;
+    protected String teamName;
+    protected String teamLogo;
+
+    // Constructor
+    public SportsTeam(int teamID, String teamName, String teamLogo) {
+        this.teamID = teamID;
+        this.teamName = teamName;
+        this.teamLogo = teamLogo;
+    }
+
+    // Getters
+    public int getTeamID() {
+        return teamID;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public String getTeamLogo() {
+        return teamLogo;
+    }
+
+    // You can add common methods here if needed
+    @Override
+    public String toString() {
+        return "SportsTeam{" +
+                "teamID=" + teamID +
+                ", teamName='" + teamName + '\'' +
+                ", teamLogo='" + teamLogo + '\'' +
+                '}';
+    }
 }
+
 
 class LinkedNode<T> {
     private LinkedNode<T> next;
