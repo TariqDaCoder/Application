@@ -1,46 +1,60 @@
 package edu.metrostate.ApplicationModel;
 
+import edu.metrostate.ApplicationView.UserView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private static List<User> userList = new ArrayList<>(); //user list to store all users
+    private static List<User> userList = new ArrayList<>(); // User list to store all users
 
-    //attributes
+    // Attributes
     private int userID;
-    private String firstName;
-    private String lastName;
     private String email;
+    private String userName;
     private String password;
-    private List<User> friendList; //
+    private List<User> friendList;
     private String profilePicture;
 
-    //constructor
-    public User(int userID, String firstName, String lastName, String email, String password, String profilePicture){
+    // Constructor
+    public User(int userID,String email, String userName, String password, String profilePicture) {
         this.userID = userID;
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.email = email;
+        this.userName = userName;
         this.password = password;
         this.profilePicture = profilePicture;
-        userList.add(this);
+        this.friendList = new ArrayList<>(); // Initialize the friend list
+        userList.add(this); // Add this user to the list
     }
 
-    //getters
+    // Method to retrieve the user list
+    public static List<User> getUserList() {
+
+        return userList; // Return the list of users
+    }
+
+    // Mock user creation method
+    public static void createMockUsers() {
+        System.out.println("Creating mock users...");
+        new User(1, "john@example.com", "john", "123", null);
+        new User(2,  "jane@example.com", "jane", "456", null);
+        for (User user : userList) {
+            System.out.println("Created User: " + user.getUserName() + ", Password: " + user.getPassword());
+        }
+    }
+
+    // Getters
     public int getUserId() {
         return userID;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
 
     public String getEmail() {
         return email;
+    }
+
+    public String getUserName() {
+        return userName; // Added getter for userName
     }
 
     public String getPassword() {
@@ -55,9 +69,8 @@ public class User {
         return profilePicture;
     }
 
-    public static User getUserById(int userID){
-        for (int i = 0; i < userList.size(); i++) {
-            User user = userList.get(i);
+    public static User getUserById(int userID) {
+        for (User user : userList) {
             if (user.getUserId() == userID) {
                 return user;
             }
@@ -65,18 +78,11 @@ public class User {
         return null;
     }
 
-    //setters
+    // Setters
     public void setUserId(int userId) {
         this.userID = userId;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -90,7 +96,7 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
-    //method to add a friend
+    // Method to add a friend
     public void addFriend(User friend) {
         if (friend != null && friend.getUserId() != this.userID) {
             if (friendList.stream().noneMatch(f -> f.getUserId() == friend.getUserId())) {
@@ -99,9 +105,8 @@ public class User {
         }
     }
 
-    //method to remove a friend
+    // Method to remove a friend
     public void removeFriend(int friendUserId) {
         friendList.removeIf(friend -> friend.getUserId() == friendUserId);
     }
-
 }
