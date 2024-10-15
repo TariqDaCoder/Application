@@ -15,8 +15,6 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static edu.metrostate.main.Login.isLoggedIn;
-
 public class AccountInfo extends Application implements Initializable {
 
     @FXML
@@ -87,7 +85,7 @@ public class AccountInfo extends Application implements Initializable {
         button_account.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (!isLoggedIn) {
+                if (!Login.isLoggedIn() ) {
                     // User is not logged in, redirect to the login page
                     DBUtils.changeScene(event, "/edu/metrostate/fxml/Login.fxml", "Login");
                 } else {

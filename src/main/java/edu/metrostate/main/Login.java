@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class Login  implements Initializable {
 
-    public static boolean isLoggedIn = false;
+    private static boolean isLoggedIn = false;
 
     @FXML
     private Button button_home;
@@ -40,9 +40,6 @@ public class Login  implements Initializable {
     private TextField tf_password;
     @FXML
     private Button button_login;
-
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -86,11 +83,9 @@ public class Login  implements Initializable {
         button_account.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (!isLoggedIn) {
-                    // User is not logged in, redirect to the login page
+                if (!Login.isLoggedIn()) {
                     DBUtils.changeScene(event, "/edu/metrostate/fxml/Login.fxml", "Login");
                 } else {
-                    // User is logged in, redirect to the account page
                     DBUtils.changeScene(event, "/edu/metrostate/fxml/AccountInfo.fxml", "Account");
                 }
             }
@@ -109,7 +104,13 @@ public class Login  implements Initializable {
                 DBUtils.changeScene(event, "/edu/metrostate/fxml/CreateAccount.fxml", "CreateAccount");
             }
         });
+    }
 
+    public static boolean isLoggedIn() {
+        return isLoggedIn;
+    }
 
+    public static void setLoggedIn(boolean status) {
+        isLoggedIn = status;
     }
 }

@@ -41,4 +41,8 @@ public class FootBallTeam extends SportsTeam {
                 ", teamRecord='" + teamRecord + '\'' +
                 '}';
     }
+
+    public String getName() {
+        return teamName;
+    }
 }

@@ -54,7 +54,7 @@ public class DBUtils {
                     String retrievedProfilePicture = resultSet.getString("profilePicture");
 
                     if (retrievedPassword.equals(password)) {
-                        Login.isLoggedIn = true;
+                        Login.setLoggedIn(true);
                         changeScene(event, "/edu/metrostate/fxml/AccountInfo.fxml", "AccountInfoLoggedIn");
                     } else {
                         System.out.println("Password Invalid");
