@@ -15,10 +15,11 @@ import javafx.scene.control.Button;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import static edu.metrostate.main.Login.isLoggedIn;
 
 public class Home extends Application implements Initializable {
 
-    public static boolean isLoggedIn = false;
+
 
     @FXML
     private Button button_home;

@@ -14,7 +14,7 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static edu.metrostate.main.Home.isLoggedIn;
+import static edu.metrostate.main.Login.isLoggedIn;
 
 public class Stream implements Initializable {
 

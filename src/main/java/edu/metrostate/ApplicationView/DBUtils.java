@@ -1,6 +1,7 @@
 package edu.metrostate.ApplicationView;
 
 import edu.metrostate.main.Home;
+import edu.metrostate.main.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -53,6 +54,7 @@ public class DBUtils {
                     String retrievedProfilePicture = resultSet.getString("profilePicture");
 
                     if (retrievedPassword.equals(password)) {
+                        Login.isLoggedIn = true;
                         changeScene(event, "/edu/metrostate/fxml/AccountInfo.fxml", "AccountInfoLoggedIn");
                     } else {
                         System.out.println("Password Invalid");
