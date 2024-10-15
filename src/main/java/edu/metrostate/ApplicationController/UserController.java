@@ -14,13 +14,5 @@ public class UserController {
         this.userView = userView;
     }
 
-    //method for updating user profile display
-    public void displayUserProfile() {
-        userView.displayUserInfo();
-    }
 
-    //method for updating the profile picture
-    public void updateProfilePicture() {
-        userView.updateProfilePicture();
-    }
 }

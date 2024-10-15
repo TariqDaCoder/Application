@@ -1,21 +1,25 @@
 package edu.metrostate.ApplicationController;
+import edu.metrostate.ApplicationModel.FootBallTeam;
 
 import edu.metrostate.ApplicationModel.Sport;
 import edu.metrostate.ApplicationView.SportView;
 
 public class SportController {
 
-    private Sport sport;
+    private Sport model;
     private SportView sportView;
 
-    public SportController(Sport sport, SportView sportView) {
-        this.sport = sport;
+    public SportController(Sport model, SportView sportView) {
+        this.model = model;
         this.sportView = sportView;
+        initialize();
     }
 
-    public void displaySportInfo() {
-        sportView.displaySportInfo();
+    private void initialize() {
+        // Populate the view with team data
+        sportView.setTeamList(model.getTeams().stream()
+                .map(team -> team.getTeamName()) // Assuming each team has a getTeamName() method
+                .toList());
     }
 
-    public void displaySportTeams() { sportView.displaySportTeams(); }
 }

@@ -1,38 +1,59 @@
 plugins {
+    id 'java'
     id 'application'
+    id 'org.javamodularity.moduleplugin' version '1.8.12'
     id 'org.openjfx.javafxplugin' version '0.0.14'
     id 'org.beryx.jlink' version '2.26.0'
 }
 
-application {
-    group = 'edu.metrostate'
-    version = '1.0'
-    mainClass = "edu.metrostate.Main"
-    mainModule = "Application"
-}
+group 'edu.metrostate'
+version '1.0-SNAPSHOT'
 
 repositories {
-    mavenCentral()
+    mavenCentral() // Use Maven Central repository for dependencies
 }
 
-dependencies {
-    implementation 'org.xerial:sqlite-jdbc:3.43.0.0'
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+ext {
+    junitVersion = '5.10.2' // Define JUnit version as an extra property
 }
 
-test {
-    useJUnitPlatform()
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'  // Set UTF-8 encoding for Java compilation
+}
+
+application {
+    mainClass = 'edu.metrostate.main.Home' // Specify the main class for the application
 }
 
 javafx {
-    version = "22.0.2"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    version = '22.0.2' // Specify the JavaFX version
+    modules = ['javafx.controls', 'javafx.fxml'] // Include necessary JavaFX modules
+}
+
+dependencies {
+    implementation 'org.xerial:sqlite-jdbc:3.43.0.0' // SQLite JDBC dependency
+    implementation 'org.json:json:20210307' // JSON handling library
+
+    // JavaFX dependencies
+    implementation 'org.openjfx:javafx-base:22.0.2'
+    implementation 'org.openjfx:javafx-controls:22.0.2'
+    implementation 'org.openjfx:javafx-fxml:22.0.2'
+
+    // JUnit for testing
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation 'mysql:mysql-connector-java:8.0.33'
+
+}
+
+test {
+    useJUnitPlatform() // Use JUnit Platform for testing
 }
 
 jlink {
-    addOptions('--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages')
+    addOptions('--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages') // JLink options
     launcher {
-        name = 'JavaFXDemo'
+        name = 'JavaFXDemo' // Name of the generated launcher
     }
 }

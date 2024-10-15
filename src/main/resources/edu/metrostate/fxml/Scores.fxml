@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="932.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.metrostate.main.Home">
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="label_scores" layoutX="164.0" layoutY="299.0" text="This is the scores page" />
+            </children>
+        </AnchorPane>
+    </center>
+    <bottom>
+        <AnchorPane prefHeight="100.0" prefWidth="430.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="button_home" layoutX="14.0" layoutY="47.0" mnemonicParsing="false" text="Home" />
+                <Button fx:id="button_scores" layoutX="100.0" layoutY="47.0" mnemonicParsing="false" text="Scores" />
+                <Button fx:id="button_stream" layoutX="179.0" layoutY="44.0" mnemonicParsing="false" text="Stream" />
+                <Button fx:id="button_tickets" layoutX="273.0" layoutY="47.0" mnemonicParsing="false" text="Tickets" />
+                <Button fx:id="button_account" layoutX="351.0" layoutY="47.0" mnemonicParsing="false" text="Account" />
+            </children></AnchorPane>
+    </bottom>
+</BorderPane>
