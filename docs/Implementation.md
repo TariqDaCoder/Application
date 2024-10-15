@@ -1,6 +1,6 @@
-#Phase 1
+# Phase 1
 
-##User Authentication
+## User Authentication
 
 
-##Sport News Feed
+## Sport News Feed
