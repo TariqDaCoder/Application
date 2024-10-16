@@ -1,9 +1,9 @@
 package edu.metrostate.ApplicationModel;
 
-public class FootBallTeam extends SportsTeam {
+public class BasketBallTeam extends SportsTeam {
     private String teamRecord; // team's win-loss record
 
-    public FootBallTeam(int teamID, String teamName, String teamLogo) {
+    public BasketBallTeam(int teamID, String teamName, String teamLogo) {
         super(teamID, teamName, teamLogo); // Call the superclass constructor
     }
 
@@ -24,10 +24,9 @@ public class FootBallTeam extends SportsTeam {
         return teamRecord;
     }
 
-
     @Override
     public String toString() {
-        return "BasketBallTeam{" +
+        return "FootBallTeam{" +
                 "teamID=" + teamID +
                 ", teamName='" + teamName + '\'' +
                 ", teamLogo='" + teamLogo + '\'' +
