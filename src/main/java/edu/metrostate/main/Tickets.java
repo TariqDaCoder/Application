@@ -1,6 +1,6 @@
 package edu.metrostate.main;
 
-import edu.metrostate.ApplicationView.DBUtils;
+import edu.metrostate.ApplicationController.DBUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -48,7 +48,7 @@ public class Tickets implements Initializable {
         button_stream.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Stream.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamLive.fxml", "Stream");
             }
         });
 
