@@ -1,17 +1,9 @@
 package edu.metrostate.main;
 
-import edu.metrostate.ApplicationController.GameController;
 import edu.metrostate.ApplicationModel.BasketBallTeam;
 import edu.metrostate.ApplicationModel.FootBallTeam;
-import edu.metrostate.ApplicationModel.Game;
 import edu.metrostate.ApplicationModel.Sport; // Import the Sport class
-import edu.metrostate.ApplicationView.GameView;
-import edu.metrostate.jsonPackages.ScheduledGameAPIClient;
 import edu.metrostate.jsonPackages.TeamAPIClient;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class APITest {
     public static void main(String[] args) {

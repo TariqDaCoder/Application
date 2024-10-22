@@ -2,12 +2,7 @@ package edu.metrostate.main;
 
 import edu.metrostate.ApplicationController.DBUtils;
 import edu.metrostate.ApplicationController.GameController;
-import edu.metrostate.ApplicationModel.FootBallTeam;
 import edu.metrostate.ApplicationModel.Game;
-import edu.metrostate.ApplicationModel.Sport;
-import edu.metrostate.ApplicationView.GameView;
-import edu.metrostate.jsonPackages.ScheduledGameAPIClient;
-import edu.metrostate.jsonPackages.TeamAPIClient;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,12 +19,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import edu.metrostate.ApplicationModel.FootBallTeam;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Callback;
 
 public class StreamUpcoming implements Initializable {
 
@@ -61,7 +53,7 @@ public class StreamUpcoming implements Initializable {
 
         try {
             GameController gameController = new GameController();
-            List<Game> footballGames = gameController.getFootballGames();
+            List<Game> basketballGames = gameController.getBasketballGames();
 
             scheduledGameListView.setCellFactory(listView -> new ListCell<>() {
                 private final VBox vbox = new VBox(10);
@@ -122,7 +114,7 @@ public class StreamUpcoming implements Initializable {
                 }
             });
 
-            scheduledGameListView.getItems().addAll(footballGames);
+            scheduledGameListView.getItems().addAll(basketballGames);
 
         } catch (Exception e) {
             System.out.println("Error fetching games: " + e.getMessage());

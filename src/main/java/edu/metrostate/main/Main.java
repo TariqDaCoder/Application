@@ -2,27 +2,32 @@ package edu.metrostate.main;
 
 import edu.metrostate.ApplicationModel.Game;
 import edu.metrostate.ApplicationView.GameView;
-import edu.metrostate.jsonPackages.ScheduledGameAPIClient;
+import edu.metrostate.jsonPackages.GameAPIClient;
 
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         GameView gameView = new GameView();
-        List<Game> games = null;
+        List<Game> upcomingBasketBallgames = null;
+        List<Game> liveFootballgames = null;
 
         try {
-            // Create an instance of TeamAPIClient to fetch games
-            ScheduledGameAPIClient client = new ScheduledGameAPIClient();
+            // Create an instance of GameAPIClient to fetch games
+            GameAPIClient client = new GameAPIClient();
 
-            // Fetch either basketball or football games
-            games = client.fetchBasketballGames();  // Or client.fetchFootballGames() for football
+            // Fetch basketball games
+            upcomingBasketBallgames = client.fetchScheduledBasketballGames();
 
-            // Display all scheduled games
-            gameView.displayScheduledGames(games);
+            // Display all scheduled basketball games
+            gameView.displayScheduledGames(upcomingBasketBallgames);
 
-            // Example: Display the details of game number 2 (change the number as needed)
-            gameView.displayGameByNumber(games, 2);
+            // Display the details of game number 2 (change the number as needed)
+            gameView.displayGameByNumber(upcomingBasketBallgames, 2);
+
+            // Fetch and display live football games
+            liveFootballgames = client.fetchLiveFootballGames();
+            gameView.displayLiveGames(liveFootballgames);
 
         } catch (Exception e) {
             System.out.println("An error occurred while fetching the games: " + e.getMessage());
@@ -30,3 +35,4 @@ public class Main {
         }
     }
 }
+
