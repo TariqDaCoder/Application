@@ -1,6 +1,6 @@
 package edu.metrostate.main;
 
-import edu.metrostate.ApplicationView.DBUtils;
+import edu.metrostate.ApplicationController.DBUtils;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
@@ -64,7 +63,7 @@ public class Home extends Application implements Initializable {
         button_stream.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Stream.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamLive.fxml", "Stream");
             }
         });
 
