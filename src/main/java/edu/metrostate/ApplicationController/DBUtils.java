@@ -1,6 +1,5 @@
-package edu.metrostate.ApplicationView;
+package edu.metrostate.ApplicationController;
 
-import edu.metrostate.main.Home;
 import edu.metrostate.main.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -123,7 +122,7 @@ public class DBUtils {
                 successAlert.setTitle("Success");
                 successAlert.setHeaderText(null);
                 successAlert.setContentText("Your account has been created successfully!");
-                successAlert.showAndWait(); // Wait for the user to close the alert
+                successAlert.showAndWait();
 
                 changeScene(event, "/edu/metrostate/fxml/AccountInfo.fxml", "AccountInfo");
             }
@@ -131,7 +130,6 @@ public class DBUtils {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Close resources as before
             if (resultSet != null) {
                 try {
                     resultSet.close();

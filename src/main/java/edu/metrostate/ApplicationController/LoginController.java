@@ -23,21 +23,19 @@ public class LoginController {
         System.out.println("Entered Password: " + password);
 
         if (isValidCredentials(username, password)) {
-            feedbackLabel.setText("Login successful!"); // Show success message
-            // Navigate to the account page (implement it)
-            // primaryStage.setScene(new Account().createScene(primaryStage));
+            feedbackLabel.setText("Login successful!");
         } else {
-            feedbackLabel.setText("Invalid credentials."); // Show error message
+            feedbackLabel.setText("Invalid credentials.");
         }
     }
 
     // Method to validate credentials
     public boolean isValidCredentials(String username, String password) {
-        for (User user : User.getUserList()) { // Iterate through the user list
+        for (User user : User.getUserList()) {
             if (user.getUserName().equals(username) && user.getPassword().equals(password)) {
-                return true; // Valid credentials found
+                return true;
             }
         }
-        return false; // No valid credentials found
+        return false;
     }
 }
