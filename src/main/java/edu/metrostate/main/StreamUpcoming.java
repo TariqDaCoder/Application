@@ -8,6 +8,7 @@ import edu.metrostate.ApplicationModel.Sport;
 import edu.metrostate.ApplicationView.GameView;
 import edu.metrostate.jsonPackages.ScheduledGameAPIClient;
 import edu.metrostate.jsonPackages.TeamAPIClient;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,13 +19,16 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import edu.metrostate.ApplicationModel.FootBallTeam;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
 public class StreamUpcoming implements Initializable {
@@ -59,14 +63,15 @@ public class StreamUpcoming implements Initializable {
             GameController gameController = new GameController();
             List<Game> footballGames = gameController.getFootballGames();
 
-            // Set a custom cell factory to display game information
             scheduledGameListView.setCellFactory(listView -> new ListCell<>() {
-                private final HBox hbox = new HBox(10); // HBox to hold the elements
+                private final VBox vbox = new VBox(10);
                 private final ImageView awayLogo = new ImageView();
                 private final ImageView homeLogo = new ImageView();
                 private final Label shortNameLabel = new Label();
                 private final Label shortDetailLabel = new Label();
                 private final Label broadcastLabel = new Label();
+
+                private Map<String, Image> imageCache = new HashMap<>();
 
                 @Override
                 protected void updateItem(Game game, boolean empty) {
@@ -75,30 +80,48 @@ public class StreamUpcoming implements Initializable {
                         setText(null);
                         setGraphic(null);
                     } else {
-                        // Set the game details
+
                         shortNameLabel.setText(game.getShortName());
                         shortDetailLabel.setText(game.getShortDetail());
                         broadcastLabel.setText("Broadcast: " + game.getBroadcast());
 
-                        // Load and set team logos
-                        awayLogo.setImage(new Image(game.getAwayTeamLogo()));
-                        homeLogo.setImage(new Image(game.getHomeTeamLogo()));
 
-                        // Set logo dimensions
-                        awayLogo.setFitWidth(50);
+                        loadImageAsync(game.getAwayTeamLogo(), awayLogo);
+                        loadImageAsync(game.getHomeTeamLogo(), homeLogo);
+
+                        awayLogo.setFitWidth(25);
                         awayLogo.setPreserveRatio(true);
-                        homeLogo.setFitWidth(50);
+                        homeLogo.setFitWidth(25);
                         homeLogo.setPreserveRatio(true);
 
-                        // Clear the HBox and add components
-                        hbox.getChildren().clear();
-                        hbox.getChildren().addAll(homeLogo, shortNameLabel, shortDetailLabel, broadcastLabel,awayLogo );
-                        setGraphic(hbox);
+                        vbox.getChildren().setAll(homeLogo, awayLogo, shortNameLabel, shortDetailLabel, broadcastLabel);
+                        setGraphic(vbox);
+                    }
+                }
+
+                private void loadImageAsync(String url, ImageView imageView) {
+                    // Check cache first
+                    if (imageCache.containsKey(url)) {
+                        imageView.setImage(imageCache.get(url));
+                    } else {
+                        Task<Image> loadTask = new Task<>() {
+                            @Override
+                            protected Image call() throws Exception {
+                                return new Image(url);
+                            }
+                        };
+
+                        loadTask.setOnSucceeded(event -> {
+                            Image image = loadTask.getValue();
+                            imageCache.put(url, image);  // Cache the image
+                            imageView.setImage(image);
+                        });
+
+                        new Thread(loadTask).start();
                     }
                 }
             });
 
-            // Add games to the ListView
             scheduledGameListView.getItems().addAll(footballGames);
 
         } catch (Exception e) {
