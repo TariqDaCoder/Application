@@ -141,7 +141,7 @@ public class ScheduledGameAPIClient {
             }
         }
 
-        return games; // Return the list of scheduled games
+        return games;
     }
 
 
