@@ -6,16 +6,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-
-public class Login  implements Initializable {
-
-    private static boolean isLoggedIn = false;
+public class StreamBrowse implements Initializable {
 
     @FXML
     private Button button_home;
@@ -27,15 +22,14 @@ public class Login  implements Initializable {
     private Button button_tickets;
     @FXML
     private Button button_account;
-    @FXML
-    private Button button_createNewAccount;
 
     @FXML
-    private TextField tf_username;
+    private Button button_live;
     @FXML
-    private TextField tf_password;
+    private Button button_upcoming;
     @FXML
-    private Button button_login;
+    private Button button_browse;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,14 +59,7 @@ public class Login  implements Initializable {
         button_tickets.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Tickets.fxml", "Tickets");
-            }
-        });
-
-        button_account.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/AccountInfo.fxml", "Account");
+                DBUtils.changeScene(event, "/edu/metrostate/fxml/Tickets.fxml", "Stream");
             }
         });
 
@@ -87,26 +74,27 @@ public class Login  implements Initializable {
             }
         });
 
-        button_login.setOnAction(new EventHandler<ActionEvent>() {
+        button_live.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.logInUser(event, tf_username.getText(), tf_password.getText());
+                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamLive.fxml", "Stream");
             }
         });
 
-        button_createNewAccount.setOnAction(new EventHandler<ActionEvent>() {
+
+        button_upcoming.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/CreateAccount.fxml", "CreateAccount");
+                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamUpcoming.fxml", "Stream");
             }
         });
-    }
 
-    public static boolean isLoggedIn() {
-        return isLoggedIn;
-    }
+        button_browse.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamBrowse.fxml", "Stream");
+            }
+        });
 
-    public static void setLoggedIn(boolean status) {
-        isLoggedIn = status;
     }
 }
