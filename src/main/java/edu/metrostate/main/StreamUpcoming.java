@@ -3,6 +3,7 @@ package edu.metrostate.main;
 import edu.metrostate.ApplicationController.DBUtils;
 import edu.metrostate.ApplicationController.GameController;
 import edu.metrostate.ApplicationModel.Game;
+import edu.metrostate.jsonPackages.GameAPIClient;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,10 +15,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -42,6 +40,8 @@ public class StreamUpcoming implements Initializable {
     private Button button_upcoming;
     @FXML
     private Button button_browse;
+    @FXML
+    private Label label_noGamesFound;
 
 
     @FXML
@@ -52,70 +52,83 @@ public class StreamUpcoming implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-            GameController gameController = new GameController();
-            List<Game> basketballGames = gameController.getBasketballGames();
+            GameAPIClient gameClient = new GameAPIClient();
+            List<Game> scheduledBasketballGames = gameClient.fetchScheduledBasketballGames();
+            List<Game> scheduledFootballGames = gameClient.fetchScheduledFootballGames();
 
-            scheduledGameListView.setCellFactory(listView -> new ListCell<>() {
-                private final VBox vbox = new VBox(10);
-                private final ImageView awayLogo = new ImageView();
-                private final ImageView homeLogo = new ImageView();
-                private final Label shortNameLabel = new Label();
-                private final Label shortDetailLabel = new Label();
-                private final Label broadcastLabel = new Label();
+            List<Game> scheduledGames = new ArrayList<>();
+            scheduledGames.addAll(scheduledBasketballGames);
+            scheduledGames.addAll(scheduledFootballGames);
 
-                private Map<String, Image> imageCache = new HashMap<>();
-
-                @Override
-                protected void updateItem(Game game, boolean empty) {
-                    super.updateItem(game, empty);
-                    if (empty || game == null) {
-                        setText(null);
-                        setGraphic(null);
-                    } else {
-
-                        shortNameLabel.setText(game.getShortName());
-                        shortDetailLabel.setText(game.getShortDetail());
-                        broadcastLabel.setText("Broadcast: " + game.getBroadcast());
+            if (scheduledGames.isEmpty()) {
+                label_noGamesFound.setText("No Scheduled games");
+                scheduledGameListView.setVisible(false);
+            } else {
+                label_noGamesFound.setText("");
+                scheduledGameListView.setVisible(true);
 
 
-                        loadImageAsync(game.getAwayTeamLogo(), awayLogo);
-                        loadImageAsync(game.getHomeTeamLogo(), homeLogo);
+                scheduledGameListView.setCellFactory(listView -> new ListCell<>() {
+                    private final VBox vbox = new VBox(10);
+                    private final ImageView awayLogo = new ImageView();
+                    private final ImageView homeLogo = new ImageView();
+                    private final Label shortNameLabel = new Label();
+                    private final Label shortDetailLabel = new Label();
+                    private final Label broadcastLabel = new Label();
 
-                        awayLogo.setFitWidth(25);
-                        awayLogo.setPreserveRatio(true);
-                        homeLogo.setFitWidth(25);
-                        homeLogo.setPreserveRatio(true);
+                    private Map<String, Image> imageCache = new HashMap<>();
 
-                        vbox.getChildren().setAll(homeLogo, awayLogo, shortNameLabel, shortDetailLabel, broadcastLabel);
-                        setGraphic(vbox);
+                    @Override
+                    protected void updateItem(Game game, boolean empty) {
+                        super.updateItem(game, empty);
+                        if (empty || game == null) {
+                            setText(null);
+                            setGraphic(null);
+                        } else {
+
+                            shortNameLabel.setText(game.getShortName());
+                            shortDetailLabel.setText(game.getShortDetail());
+                            broadcastLabel.setText("Broadcast: " + game.getBroadcast());
+
+
+                            loadImageAsync(game.getAwayTeamLogo(), awayLogo);
+                            loadImageAsync(game.getHomeTeamLogo(), homeLogo);
+
+                            awayLogo.setFitWidth(25);
+                            awayLogo.setPreserveRatio(true);
+                            homeLogo.setFitWidth(25);
+                            homeLogo.setPreserveRatio(true);
+
+                            vbox.getChildren().setAll(homeLogo, awayLogo, shortNameLabel, shortDetailLabel, broadcastLabel);
+                            setGraphic(vbox);
+                        }
                     }
-                }
 
-                private void loadImageAsync(String url, ImageView imageView) {
-                    // Check cache first
-                    if (imageCache.containsKey(url)) {
-                        imageView.setImage(imageCache.get(url));
-                    } else {
-                        Task<Image> loadTask = new Task<>() {
-                            @Override
-                            protected Image call() throws Exception {
-                                return new Image(url);
-                            }
-                        };
+                    private void loadImageAsync(String url, ImageView imageView) {
+                        // Check cache first
+                        if (imageCache.containsKey(url)) {
+                            imageView.setImage(imageCache.get(url));
+                        } else {
+                            Task<Image> loadTask = new Task<>() {
+                                @Override
+                                protected Image call() throws Exception {
+                                    return new Image(url);
+                                }
+                            };
 
-                        loadTask.setOnSucceeded(event -> {
-                            Image image = loadTask.getValue();
-                            imageCache.put(url, image);  // Cache the image
-                            imageView.setImage(image);
-                        });
+                            loadTask.setOnSucceeded(event -> {
+                                Image image = loadTask.getValue();
+                                imageCache.put(url, image);  // Cache the image
+                                imageView.setImage(image);
+                            });
 
-                        new Thread(loadTask).start();
+                            new Thread(loadTask).start();
+                        }
                     }
-                }
-            });
+                });
 
-            scheduledGameListView.getItems().addAll(basketballGames);
-
+                scheduledGameListView.getItems().addAll(scheduledGames);
+            }
         } catch (Exception e) {
             System.out.println("Error fetching games: " + e.getMessage());
             e.printStackTrace();

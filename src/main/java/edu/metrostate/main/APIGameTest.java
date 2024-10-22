@@ -6,7 +6,7 @@ import edu.metrostate.jsonPackages.GameAPIClient;
 
 import java.util.List;
 
-public class Main {
+public class APIGameTest {
     public static void main(String[] args) {
         GameView gameView = new GameView();
         List<Game> upcomingBasketBallgames = null;

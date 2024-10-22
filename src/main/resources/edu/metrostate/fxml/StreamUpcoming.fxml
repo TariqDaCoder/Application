@@ -13,6 +13,7 @@
         <AnchorPane prefHeight="663.0" prefWidth="430.0" style="-fx-background-color: #0b0c0c;" BorderPane.alignment="CENTER">
             <children>
                 <ListView fx:id="scheduledGameListView" layoutX="62.0" layoutY="33.0" prefHeight="625.0" prefWidth="305.0" />
+            <Label fx:id="label_noGamesFound" layoutX="179.0" layoutY="217.0" prefHeight="41.0" prefWidth="72.0" />
             </children>
         </AnchorPane>
     </center>
