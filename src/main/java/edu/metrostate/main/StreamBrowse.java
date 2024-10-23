@@ -1,20 +1,16 @@
 package edu.metrostate.main;
 
-import edu.metrostate.ApplicationView.DBUtils;
+import edu.metrostate.ApplicationController.DBUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Stream implements Initializable {
+public class StreamBrowse implements Initializable {
 
     @FXML
     private Button button_home;
@@ -26,6 +22,13 @@ public class Stream implements Initializable {
     private Button button_tickets;
     @FXML
     private Button button_account;
+
+    @FXML
+    private Button button_live;
+    @FXML
+    private Button button_upcoming;
+    @FXML
+    private Button button_browse;
 
 
     @Override
@@ -49,7 +52,7 @@ public class Stream implements Initializable {
         button_stream.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Stream.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamLive.fxml", "Stream");
             }
         });
 
@@ -70,5 +73,28 @@ public class Stream implements Initializable {
                 }
             }
         });
+
+        button_live.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamLive.fxml", "Stream");
+            }
+        });
+
+
+        button_upcoming.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamUpcoming.fxml", "Stream");
+            }
+        });
+
+        button_browse.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamBrowse.fxml", "Stream");
+            }
+        });
+
     }
 }

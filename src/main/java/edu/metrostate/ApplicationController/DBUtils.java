@@ -1,6 +1,5 @@
-package edu.metrostate.ApplicationView;
+package edu.metrostate.ApplicationController;
 
-import edu.metrostate.main.Home;
 import edu.metrostate.main.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -37,8 +36,8 @@ public class DBUtils {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/application_schema?useSSL=false&serverTimezone=UTC", "root", "password");
-            preparedStatement = connection.prepareStatement("SELECT password, email, profilePicture FROM users WHERE userName = ?");
+            connection = DriverManager.getConnection("jdbc:mariadb://kxdomain.com:3306/sportsApplicationDataBase", "kavin1", "pHe2Hirai!wisntWic3");
+            preparedStatement = connection.prepareStatement("SELECT password, email, profilePicture FROM userAccount WHERE userName = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
 
@@ -101,8 +100,8 @@ public class DBUtils {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/application_schema?useSSL=false&serverTimezone=UTC", "root", "password");
-            psCheckUserExist = connection.prepareStatement("SELECT * FROM users WHERE userName = ?");
+            connection = DriverManager.getConnection("jdbc:mariadb://kxdomain.com:3306/sportsApplicationDataBase", "kavin1", "pHe2Hirai!wisntWic3");
+            psCheckUserExist = connection.prepareStatement("SELECT * FROM userAccount WHERE userName = ?");
             psCheckUserExist.setString(1, username);
             resultSet = psCheckUserExist.executeQuery();
 
@@ -112,7 +111,7 @@ public class DBUtils {
                 alert.setContentText("You cannot use this username");
                 alert.show();
             } else {
-                psInsert = connection.prepareStatement("INSERT INTO users (email, username, password) VALUES (?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO userAccount (email, username, password) VALUES (?, ?, ?)");
                 psInsert.setString(1, email);
                 psInsert.setString(2, username);
                 psInsert.setString(3, password);
@@ -123,15 +122,14 @@ public class DBUtils {
                 successAlert.setTitle("Success");
                 successAlert.setHeaderText(null);
                 successAlert.setContentText("Your account has been created successfully!");
-                successAlert.showAndWait(); // Wait for the user to close the alert
+                successAlert.showAndWait();
 
-                changeScene(event, "/edu/metrostate/fxml/AccountInfo.fxml", "AccountInfo");
+                changeScene(event, "/edu/metrostate/fxml/Login.fxml", "Login");
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Close resources as before
             if (resultSet != null) {
                 try {
                     resultSet.close();

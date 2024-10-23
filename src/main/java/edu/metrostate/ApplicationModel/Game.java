@@ -1,75 +1,100 @@
 package edu.metrostate.ApplicationModel;
 
-import java.util.Date;
-
 public class Game {
-    private int gameID;
-    private Date gameSchedule;
-    private String league;
-    private SportsTeam teamA;
-    private SportsTeam teamB;
-    private String gameScore;
-    private String gameStatus;
-    private SportsTeam homeTeam;
+    private String statusName;
+    private String name;
+    private String shortName;
+    private String detail;
+    private String shortDetail;
+    private String broadcast;
+    private String awayTeamName;
+    private String homeTeamName;
+    private String awayTeamId;
+    private String homeTeamId;
+    private String awayTeamLogo;
+    private String homeTeamLogo;
 
-    public Game(int gameID, String league, SportsTeam teamA, SportsTeam teamB, SportsTeam homeTeam, String gameStatus, String gameScore){
-        this.gameID = gameID;
-        this.league = league;
-        this.teamA = teamA;
-        this.teamB = teamB;
-        this.homeTeam = homeTeam;
-        this.gameStatus = gameStatus;
-        this.gameScore = gameScore;
-    }
-    public int getGameID(){
-        return gameID;
-    }
-    public Date getGameSchedule(){return gameSchedule;}
-    public String getLeague(){
-        return league;
-    }
-    public SportsTeam getTeamA(){
-        return teamA;
-    }
-    public SportsTeam getTeamB(){
-        return teamB;
-    }
-    public SportsTeam getHomeTeam(){
-        return homeTeam;
-    }
-    public String getGameStatus(){
-        return gameStatus;
-    }
-    public String getGameScore(){
-        return gameScore;
-    }
-    public void setGameID(int gameID){
-        this.gameID = gameID;
-    }
-    public void setLeague(String league){
-        this.league = league;
-    }
-    public void setTeamA(SportsTeam teamA){
-        this.teamA = teamA;
-    }
-    public void setTeamB(SportsTeam teamB){
-        this.teamB = teamB;
+
+
+    // Constructor
+    public Game(String statusName, String name, String shortName, String detail, String shortDetail,
+                String broadcast, String awayTeamName, String homeTeamName, String awayTeamId,
+                String homeTeamId, String awayTeamLogo, String homeTeamLogo) {
+        this.statusName = statusName;
+        this.name = name;
+        this.shortName = shortName;
+        this.detail = detail;
+        this.shortDetail = shortDetail;
+        this.broadcast = broadcast;
+        this.awayTeamName = awayTeamName;
+        this.homeTeamName = homeTeamName;
+        this.awayTeamId = awayTeamId;
+        this.homeTeamId = homeTeamId;
+        this.awayTeamLogo = awayTeamLogo;
+        this.homeTeamLogo = homeTeamLogo;
     }
 
-    //a method to fetch game stat from ESPN using API
-    public String getGameStat(int gameID){
-        // use API to fetch game statistics, to be implemented
-        return " ";
-    }
-    // a method to fetch game highlights from YouTube & ESPN
-    public void watchHighlight(int gameID){
-        // use APIs to play the game highlight
-        //to be implemented
-    }
-    //a method to stream live games from YouTube and ESPN
-    public void liveStream(int gameID){
-        //use APIs to fetch live games
+    public static class LiveGame extends Game {
+        private static String awayPoints;
+        private static String homePoints;
+
+        // Constructor for LiveGame
+        public LiveGame(String statusName, String name, String shortName, String detail, String shortDetail,
+                        String broadcast, String awayTeamName, String awayPoints, String homeTeamName, String homePoints, String awayTeamId,
+                        String homeTeamId, String awayTeamLogo, String homeTeamLogo) {
+            // Call the Game constructor with super
+            super(statusName, name, shortName, detail, shortDetail, broadcast, awayTeamName, homeTeamName,
+                    awayTeamId, homeTeamId, awayTeamLogo, homeTeamLogo);
+
+            this.homePoints = homePoints;
+            this.awayPoints = awayPoints;
+        }
+        public static String getHomePoints() {
+            return homePoints;
+        }
+
+        public static String getAwayPoints() {
+            return awayPoints;
+        }
     }
 
+    public String getStatus() {
+        return statusName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public String getShortDetail() {
+        return shortDetail;
+    }
+
+    public String getBroadcast() {
+        return broadcast;
+    }
+
+    public String getAwayTeamDisplayName() {
+        return awayTeamName;
+    }
+
+    public String getHomeTeamDisplayName() {
+        return homeTeamName;
+    }
+
+    public String getAwayTeamLogo() {
+        return awayTeamLogo;
+    }
+
+    public String getHomeTeamLogo() {
+        return homeTeamLogo;
+    }
 }
-

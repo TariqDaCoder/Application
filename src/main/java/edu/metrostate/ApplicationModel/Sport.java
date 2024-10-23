@@ -1,5 +1,7 @@
 package edu.metrostate.ApplicationModel;
 
+import edu.metrostate.ApplicationView.SportsTeamView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,19 +9,14 @@ import java.util.Map;
 
 public class Sport {
 
-    // Attributes
+    private final HashMap<String, List<SportsTeam>> teamsByCategory; // HashMap to hold teams by category
     private int sportID;
     private String sportName;
-    private String season;
-    private String originCountry;
-    private Map<String, List<SportsTeam>> teamsByCategory; // A map to store teams by category
 
     // Constructor
-    public Sport(int sportID, String sportName, String season, String originCountry) {
+    public Sport(int sportID, String sportName) {
         this.sportID = sportID;
         this.sportName = sportName;
-        this.season = season;
-        this.originCountry = originCountry;
         this.teamsByCategory = new HashMap<>(); // Initialize the map
     }
 
@@ -37,33 +34,31 @@ public class Sport {
         return this.sportName;
     }
 
-    // Getters and setters for season
-    public String getSeason() {
-        return this.season;
+    // Method to add teams to a specific category
+    public void addTeams(String category, SportsTeam[] teams) {
+        List<SportsTeam> teamList = teamsByCategory.computeIfAbsent(category, k -> new ArrayList<>());
+        for (SportsTeam team : teams) {
+            teamList.add(team);
+        }
     }
 
-    // Getters and setters for originCountry
-    public String getOriginCountry() {
-        return this.originCountry;
+    // Method to retrieve teams by category
+    public List<SportsTeam> getTeamsByCategory(String category) {
+        return teamsByCategory.getOrDefault(category, new ArrayList<>()); // Return an empty list if category doesn't exist
     }
 
     // Method to get all teams
     public List<SportsTeam> getTeams() {
         List<SportsTeam> allTeams = new ArrayList<>();
-        for (List<SportsTeam> teams : teamsByCategory.values()) {
-            allTeams.addAll(teams);
+        for (List<SportsTeam> teamList : teamsByCategory.values()) {
+            allTeams.addAll(teamList);
         }
         return allTeams;
     }
 
-    // Method to get teams by category
-    public List<SportsTeam> getTeams(String category) {
-        return teamsByCategory.getOrDefault(category, new ArrayList<>());
-    }
-
-    // Method to add a team to a category
-    public void addTeam(String category, SportsTeam team) {
-        teamsByCategory.putIfAbsent(category, new ArrayList<>());
-        teamsByCategory.get(category).add(team);
+    // Method to display teams using SportTeamView
+    public void showTeams() {
+        SportsTeamView view = new SportsTeamView();
+        view.displayTeams(sportName, getTeams()); // Pass the sport name and the list of all teams
     }
 }

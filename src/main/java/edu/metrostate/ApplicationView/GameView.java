@@ -1,30 +1,74 @@
 package edu.metrostate.ApplicationView;
+
 import edu.metrostate.ApplicationModel.Game;
 
+import java.util.List;
+
 public class GameView {
-    private Game game;
 
-    public GameView(Game game){
-        this.game = game;
-    }
-    public void displayGameInfo(){
-        System.out.printf("%s vs %s \n",game.getTeamA(), game.getTeamB());
-        System.out.println("Game Schedule: " + game.getGameSchedule());
-        System.out.println("Score: " + game.getGameScore());
-        System.out.printf("League: %s   Home Team: %s  \n",game.getLeague(),game.getHomeTeam());
-        System.out.println("Game Status: " + game.getGameStatus());
-    }
-    //display game stat to the user
-    public void displayGameStat(int gameID){
-        game.getGameStat(gameID);
+    public void displayScheduledGames(List<Game> games) {
+        System.out.println("Scheduled Games:");
+
+        for (Game game : games) {
+            if ("STATUS_SCHEDULED".equals(game.getStatus())) {
+                System.out.println("-----------------------------");
+                System.out.println("Game Status: " + game.getStatus());
+                System.out.println("Name: " + game.getName());
+                System.out.println("Short Name: " + game.getShortName());
+                System.out.println("Detail: " + game.getDetail());
+                System.out.println("Short Detail: " + game.getShortDetail());
+                System.out.println("Broadcast: " + game.getBroadcast());
+                System.out.println("Away Team: " + game.getAwayTeamDisplayName());
+                System.out.println("Away Team Logo: " + game.getAwayTeamLogo());
+                System.out.println("Home Team: " + game.getHomeTeamDisplayName());
+                System.out.println("Home Team Logo: " + game.getHomeTeamLogo());
+                System.out.println("-----------------------------");
+            }
+        }
     }
 
-    //display game highlight to the user
-    public void displayGameHighlight(int gameID){
-        game.watchHighlight(gameID);
+    public void displayLiveGames(List<Game> games) {
+        System.out.println("Live Games:");
+
+        for (Game game : games) {
+            if ("STATUS_IN_PROGRESS".equals(game.getStatus())) {
+                System.out.println("-----------------------------");
+                System.out.println("Game Status: " + game.getStatus());
+                System.out.println("Name: " + game.getName());
+                System.out.println("Short Name: " + game.getShortName());
+                System.out.println("Detail: " + game.getDetail());
+                System.out.println("Short Detail: " + game.getShortDetail());
+                System.out.println("Broadcast: " + game.getBroadcast());
+                System.out.println("Away Team: " + game.getAwayTeamDisplayName());
+                System.out.println("Away Team Score: " + Game.LiveGame.getAwayPoints());
+                System.out.println("Away Team Logo: " + game.getAwayTeamLogo());
+                System.out.println("Home Team: " + game.getHomeTeamDisplayName());
+                System.out.println("Home Team Score: " + Game.LiveGame.getHomePoints());
+                System.out.println("Home Team Logo: " + game.getHomeTeamLogo());
+                System.out.println("-----------------------------");
+            }
+        }
     }
-    //display livestream
-    public void displayLiveGame(int gameID){
-        game.liveStream(gameID);
+
+    // Method to display a specific game by its number in the list
+    public void displayGameByNumber(List<Game> games, int gameNumber) {
+        if (gameNumber > 0 && gameNumber <= games.size()) {
+            Game game = games.get(gameNumber - 1);
+            System.out.println("-----------------------------");
+            System.out.println("Game #" + gameNumber);
+            System.out.println("Game Status: " + game.getStatus());
+            System.out.println("Name: " + game.getName());
+            System.out.println("Short Name: " + game.getShortName());
+            System.out.println("Detail: " + game.getDetail());
+            System.out.println("Short Detail: " + game.getShortDetail());
+            System.out.println("Away Team: " + game.getAwayTeamDisplayName());
+            System.out.println("Away Team Logo: " + game.getAwayTeamLogo());
+            System.out.println("Home Team: " + game.getHomeTeamDisplayName());
+            System.out.println("Home Team Logo: " + game.getHomeTeamLogo());
+            System.out.println("Broadcast: " + game.getBroadcast());
+            System.out.println("-----------------------------");
+        } else {
+            System.out.println("Invalid game number.");
+        }
     }
 }
