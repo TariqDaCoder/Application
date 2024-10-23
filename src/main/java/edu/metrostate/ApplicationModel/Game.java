@@ -11,8 +11,10 @@ public class Game {
     private String homeTeamName;
     private String awayTeamId;
     private String homeTeamId;
-    private String awayTeamLogo; // Store the away team logo URL
-    private String homeTeamLogo; // Store the home team logo URL
+    private String awayTeamLogo;
+    private String homeTeamLogo;
+
+
 
     // Constructor
     public Game(String statusName, String name, String shortName, String detail, String shortDetail,
@@ -32,7 +34,30 @@ public class Game {
         this.homeTeamLogo = homeTeamLogo;
     }
 
-    // Getters for all the fields (including broadcast)
+    public static class LiveGame extends Game {
+        private static String awayPoints;
+        private static String homePoints;
+
+        // Constructor for LiveGame
+        public LiveGame(String statusName, String name, String shortName, String detail, String shortDetail,
+                        String broadcast, String awayTeamName, String awayPoints, String homeTeamName, String homePoints, String awayTeamId,
+                        String homeTeamId, String awayTeamLogo, String homeTeamLogo) {
+            // Call the Game constructor with super
+            super(statusName, name, shortName, detail, shortDetail, broadcast, awayTeamName, homeTeamName,
+                    awayTeamId, homeTeamId, awayTeamLogo, homeTeamLogo);
+
+            this.homePoints = homePoints;
+            this.awayPoints = awayPoints;
+        }
+        public static String getHomePoints() {
+            return homePoints;
+        }
+
+        public static String getAwayPoints() {
+            return awayPoints;
+        }
+    }
+
     public String getStatus() {
         return statusName;
     }
@@ -72,8 +97,4 @@ public class Game {
     public String getHomeTeamLogo() {
         return homeTeamLogo;
     }
-
-
-
-
 }
