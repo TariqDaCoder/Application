@@ -1,9 +1,6 @@
 package edu.metrostate.ApplicationView;
 
 import edu.metrostate.ApplicationModel.Game;
-import edu.metrostate.main.StreamUpcoming;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.util.List;
 
@@ -43,8 +40,10 @@ public class GameView {
                 System.out.println("Short Detail: " + game.getShortDetail());
                 System.out.println("Broadcast: " + game.getBroadcast());
                 System.out.println("Away Team: " + game.getAwayTeamDisplayName());
+                System.out.println("Away Team Score: " + Game.LiveGame.getAwayPoints());
                 System.out.println("Away Team Logo: " + game.getAwayTeamLogo());
                 System.out.println("Home Team: " + game.getHomeTeamDisplayName());
+                System.out.println("Home Team Score: " + Game.LiveGame.getHomePoints());
                 System.out.println("Home Team Logo: " + game.getHomeTeamLogo());
                 System.out.println("-----------------------------");
             }

@@ -11,6 +11,7 @@ public class APIGameTest {
         GameView gameView = new GameView();
         List<Game> upcomingBasketBallgames = null;
         List<Game> liveFootballgames = null;
+        List<Game> liveBasketballGames = null;
 
         try {
             // Create an instance of GameAPIClient to fetch games
@@ -28,6 +29,10 @@ public class APIGameTest {
             // Fetch and display live football games
             liveFootballgames = client.fetchLiveFootballGames();
             gameView.displayLiveGames(liveFootballgames);
+
+            liveBasketballGames = client.fetchLiveBasketballGames();
+            gameView.displayLiveGames(liveBasketballGames);
+
 
         } catch (Exception e) {
             System.out.println("An error occurred while fetching the games: " + e.getMessage());

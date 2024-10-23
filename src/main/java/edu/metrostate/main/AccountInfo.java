@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AccountInfo extends Application implements Initializable {
+public class AccountInfo implements Initializable {
 
     @FXML
     private Button button_home;
@@ -27,27 +27,9 @@ public class AccountInfo extends Application implements Initializable {
     private Button button_tickets;
     @FXML
     private Button button_account;
+    @FXML
+    private Button button_logout;
 
-
-
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        try{
-            // Correctly load the Home FXML file
-            Parent root = FXMLLoader.load(getClass().getResource("/edu/metrostate/fxml/Home.fxml"));
-
-            // Create the scene
-            Scene scene = new Scene(root);
-
-            // Set the stage properties
-            primaryStage.setTitle("Home Page");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
 
     @Override
@@ -95,10 +77,15 @@ public class AccountInfo extends Application implements Initializable {
             }
         });
 
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Login.setLoggedIn(false);
+                DBUtils.changeScene(event, "/edu/metrostate/fxml/Login.fxml", "Login");
+            }
+        });
+
     }
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 }

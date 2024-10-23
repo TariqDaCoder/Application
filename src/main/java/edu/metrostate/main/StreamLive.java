@@ -62,7 +62,7 @@ public class StreamLive implements Initializable {
             liveGames.addAll(liveFootballGames);
             liveGames.addAll(liveBasketballGames);
 
-            // Check if there are any live football games
+
             if (liveGames.isEmpty()) {
                 label_noGamesFound.setText("No live games");
                 liveGameListView.setVisible(false);
@@ -72,8 +72,16 @@ public class StreamLive implements Initializable {
 
                 liveGameListView.setCellFactory(listView -> new ListCell<>() {
                     private final VBox vbox = new VBox(10);
+
                     private final ImageView awayLogo = new ImageView();
+                    private final Label awayTeamName = new Label();
+                    private final Label awayTeamPoints = new Label();
+
                     private final ImageView homeLogo = new ImageView();
+                    private final Label homeTeamName = new Label();
+                    private final Label homeTeamPoints = new Label();
+
+
                     private final Label shortNameLabel = new Label();
                     private final Label shortDetailLabel = new Label();
                     private final Label broadcastLabel = new Label();
@@ -91,6 +99,12 @@ public class StreamLive implements Initializable {
                             shortDetailLabel.setText(game.getShortDetail());
                             broadcastLabel.setText("Broadcast: " + game.getBroadcast());
 
+                            awayTeamName.setText(game.getAwayTeamDisplayName());
+                            awayTeamPoints.setText(Game.LiveGame.getAwayPoints());
+
+                            homeTeamName.setText(game.getHomeTeamDisplayName());
+                            homeTeamPoints.setText(Game.LiveGame.getHomePoints());
+
                             loadImageAsync(game.getAwayTeamLogo(), awayLogo);
                             loadImageAsync(game.getHomeTeamLogo(), homeLogo);
 
@@ -99,7 +113,7 @@ public class StreamLive implements Initializable {
                             homeLogo.setFitWidth(25);
                             homeLogo.setPreserveRatio(true);
 
-                            vbox.getChildren().setAll(homeLogo, awayLogo, shortNameLabel, shortDetailLabel, broadcastLabel);
+                            vbox.getChildren().setAll(homeLogo, homeTeamName, homeTeamPoints, awayLogo, awayTeamName, awayTeamPoints, shortNameLabel, shortDetailLabel, broadcastLabel);
                             setGraphic(vbox);
                         }
                     }
