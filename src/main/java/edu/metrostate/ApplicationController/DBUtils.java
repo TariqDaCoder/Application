@@ -36,7 +36,7 @@ public class DBUtils {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mariadb://kxdomain.com:3306/sportsApplicationDataBase", "kavin1", "pHe2Hirai!wisntWic3");
+            connection = DriverManager.getConnection("jdbc:mariadb://kxdomain.com:3306/sportsApplicationDataBase", "user_name", "user_password");
             preparedStatement = connection.prepareStatement("SELECT password, email, profilePicture FROM userAccount WHERE userName = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
@@ -100,7 +100,7 @@ public class DBUtils {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mariadb://kxdomain.com:3306/sportsApplicationDataBase", "kavin1", "pHe2Hirai!wisntWic3");
+            connection = DriverManager.getConnection("jdbc:mariadb://kxdomain.com:3306/sportsApplicationDataBase", "user_name", "user_password");
             psCheckUserExist = connection.prepareStatement("SELECT * FROM userAccount WHERE userName = ?");
             psCheckUserExist.setString(1, username);
             resultSet = psCheckUserExist.executeQuery();
