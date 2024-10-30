@@ -1,60 +1,70 @@
 package edu.metrostate.ApplicationModel;
 
-import edu.metrostate.ApplicationView.UserView;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
     private static List<User> userList = new ArrayList<>(); // User list to store all users
+    private static int userIdCounter = 1;
 
     // Attributes
     private int userID;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String userName;
     private String password;
     private List<User> friendList;
     private String profilePicture;
 
     // Constructor
-    public User(int userID,String email, String userName, String password, String profilePicture) {
+    public User(int userID, String firstName, String lastName, String email, String password, String profilePicture){
         this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.userName = userName;
         this.password = password;
         this.profilePicture = profilePicture;
-        this.friendList = new ArrayList<>(); // Initialize the friend list
-        userList.add(this); // Add this user to the list
+        this.friendList = new ArrayList<>(); // Initialize friend list
+        userList.add(this); // Add to user list
     }
 
-    // Method to retrieve the user list
-    public static List<User> getUserList() {
-
-        return userList; // Return the list of users
+    // Prepopulate the user list with sample users
+    static {
+        userList.add(new User(1, "Alice", "Smith", "alice@example.com", "password123", "profilePic1.jpg"));
+        userList.add(new User(2, "Bob", "Brown", "simeon", "1234", "profilePic2.jpg"));
+        // Add more sample users as needed
     }
 
-    // Mock user creation method
-    public static void createMockUsers() {
-        System.out.println("Creating mock users...");
-        new User(1, "john@example.com", "john", "123", null);
-        new User(2,  "jane@example.com", "jane", "456", null);
-        for (User user : userList) {
-            System.out.println("Created User: " + user.getUserName() + ", Password: " + user.getPassword());
-        }
+    public static boolean isEmailRegistered(String email) {
+        return userList.stream().anyMatch(user -> user.getEmail().equals(email));
     }
+
+    // Add user to the list
+    public static void addUser(User user) {
+        userList.add(user);
+    }
+
+    // Generate unique user ID
+    public static int generateUserId() {
+        return userIdCounter++;
+    }
+
 
     // Getters
     public int getUserId() {
         return userID;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 
     public String getEmail() {
         return email;
-    }
-
-    public String getUserName() {
-        return userName; // Added getter for userName
     }
 
     public String getPassword() {
@@ -69,7 +79,7 @@ public class User {
         return profilePicture;
     }
 
-    public static User getUserById(int userID) {
+    public static User getUserById(int userID){
         for (User user : userList) {
             if (user.getUserId() == userID) {
                 return user;
@@ -83,13 +93,20 @@ public class User {
         this.userID = userId;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
     public void setPassword(String password) {
-        this.password = password; // Ensure to hash this before storing
+        this.password = password; // Ensure to hash this before storing in production
     }
 
     public void setProfilePicture(String profilePicture) {
@@ -103,6 +120,10 @@ public class User {
                 friendList.add(friend);
             }
         }
+    }
+
+    public static List<User> getUserList() {
+        return userList;
     }
 
     // Method to remove a friend
