@@ -79,21 +79,21 @@ public class DBUtils {
     }
 
     // Method to log in a user
-    public static void logInUser(ActionEvent event, String username, String password) {
+    public static void logInUser(ActionEvent event, String email, String password) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         try {
             connection = getDatabaseConnection();
-            preparedStatement = connection.prepareStatement("SELECT password, email, profilePicture FROM userAccount WHERE userName = ?");
-            preparedStatement.setString(1, username);
+            preparedStatement = connection.prepareStatement("SELECT password, email, profilePicture FROM userAccount WHERE email = ?");
+            preparedStatement.setString(1, email);
             resultSet = preparedStatement.executeQuery();
 
             if (!resultSet.isBeforeFirst()) {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Username or Password are Incorrect");
+                alert.setContentText("Email or Password are Incorrect");
                 alert.show();
             } else {
                 while (resultSet.next()) {
@@ -122,7 +122,7 @@ public class DBUtils {
     }
 
     // Method to sign up a user
-    public static void signUpUser(ActionEvent event, String email, String username, String password) {
+    public static void signUpUser(ActionEvent event, String email, String password) {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExist = null;
@@ -130,20 +130,19 @@ public class DBUtils {
 
         try {
             connection = getDatabaseConnection();
-            psCheckUserExist = connection.prepareStatement("SELECT * FROM userAccount WHERE userName = ?");
-            psCheckUserExist.setString(1, username);
+            psCheckUserExist = connection.prepareStatement("SELECT * FROM userAccount WHERE email = ?");
+            psCheckUserExist.setString(1, email);
             resultSet = psCheckUserExist.executeQuery();
 
             if (resultSet.isBeforeFirst()) {
                 System.out.println("User already exists");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("You cannot use this username");
+                alert.setContentText("An account for this email already exists");
                 alert.show();
             } else {
-                psInsert = connection.prepareStatement("INSERT INTO userAccount (email, userName, password) VALUES (?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO userAccount (email, password) VALUES (?, ?, ?)");
                 psInsert.setString(1, email);
-                psInsert.setString(2, username);
-                psInsert.setString(3, password);
+                psInsert.setString(2, password);
                 psInsert.executeUpdate();
 
                 // Show success alert

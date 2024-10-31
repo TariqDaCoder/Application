@@ -88,8 +88,8 @@ public class CreateAccount  implements Initializable {
         button_createAccount.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(!tf_email.getText().trim().isEmpty() && !tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty()){
-                    DBUtils.signUpUser(event, tf_email.getText(),  tf_username.getText(), tf_password.getText());
+                if(!tf_email.getText().trim().isEmpty()  && !tf_password.getText().trim().isEmpty()){
+                    DBUtils.signUpUser(event, tf_email.getText(), tf_password.getText());
                 }else{
                     System.out.println("Entry fields are empty");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
