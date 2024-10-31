@@ -91,6 +91,7 @@ public class StreamLive implements Initializable {
                     @Override
                     protected void updateItem(Game game, boolean empty) {
                         super.updateItem(game, empty);
+
                         if (empty || game == null) {
                             setText(null);
                             setGraphic(null);
@@ -100,10 +101,17 @@ public class StreamLive implements Initializable {
                             broadcastLabel.setText("Broadcast: " + game.getBroadcast());
 
                             awayTeamName.setText(game.getAwayTeamDisplayName());
-                            awayTeamPoints.setText(Game.LiveGame.getAwayPoints());
-
                             homeTeamName.setText(game.getHomeTeamDisplayName());
-                            homeTeamPoints.setText(Game.LiveGame.getHomePoints());
+
+                            // Check if game is an instance of LiveGame and cast it
+                            if (game instanceof Game.LiveGame) {
+                                Game.LiveGame liveGame = (Game.LiveGame) game;  // Cast game to LiveGame
+                                awayTeamPoints.setText(liveGame.getAwayPoints());
+                                homeTeamPoints.setText(liveGame.getHomePoints());
+                            } else {
+                                awayTeamPoints.setText("N/A");
+                                homeTeamPoints.setText("N/A");
+                            }
 
                             loadImageAsync(game.getAwayTeamLogo(), awayLogo);
                             loadImageAsync(game.getHomeTeamLogo(), homeLogo);
@@ -117,6 +125,7 @@ public class StreamLive implements Initializable {
                             setGraphic(vbox);
                         }
                     }
+
 
                     private void loadImageAsync(String url, ImageView imageView) {
                         // Check cache first

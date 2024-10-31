@@ -4,6 +4,7 @@ module Application {
     requires org.json;
     requires java.desktop;
     requires java.sql;
+    requires jsch;
 
     opens edu.metrostate.main to javafx.fxml;
     exports edu.metrostate.main;

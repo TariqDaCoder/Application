@@ -39,6 +39,8 @@ public class Login  implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Establish ssh connection upon initialization
+        DBUtils.establishSshConnection();
 
         button_home.setOnAction(new EventHandler<ActionEvent>() {
             @Override

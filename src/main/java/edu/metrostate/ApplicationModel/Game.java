@@ -35,8 +35,8 @@ public class Game {
     }
 
     public static class LiveGame extends Game {
-        private static String awayPoints;
-        private static String homePoints;
+        private String awayPoints;
+        private String homePoints;
 
         // Constructor for LiveGame
         public LiveGame(String statusName, String name, String shortName, String detail, String shortDetail,
@@ -49,11 +49,11 @@ public class Game {
             this.homePoints = homePoints;
             this.awayPoints = awayPoints;
         }
-        public static String getHomePoints() {
+        public String getHomePoints() {
             return homePoints;
         }
 
-        public static String getAwayPoints() {
+        public String getAwayPoints() {
             return awayPoints;
         }
     }
