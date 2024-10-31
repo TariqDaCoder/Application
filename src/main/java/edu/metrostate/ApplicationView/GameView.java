@@ -40,10 +40,17 @@ public class GameView {
                 System.out.println("Short Detail: " + game.getShortDetail());
                 System.out.println("Broadcast: " + game.getBroadcast());
                 System.out.println("Away Team: " + game.getAwayTeamDisplayName());
-                System.out.println("Away Team Score: " + Game.LiveGame.getAwayPoints());
+
+                if (game instanceof Game.LiveGame) {
+                    Game.LiveGame liveGame = (Game.LiveGame) game;
+                    System.out.println("Away Team Score: " + liveGame.getAwayPoints());
+                    System.out.println("Home Team Score: " + liveGame.getHomePoints());
+                } else {
+                    System.out.println("Scores not available for this game.");
+                }
+
                 System.out.println("Away Team Logo: " + game.getAwayTeamLogo());
                 System.out.println("Home Team: " + game.getHomeTeamDisplayName());
-                System.out.println("Home Team Score: " + Game.LiveGame.getHomePoints());
                 System.out.println("Home Team Logo: " + game.getHomeTeamLogo());
                 System.out.println("-----------------------------");
             }

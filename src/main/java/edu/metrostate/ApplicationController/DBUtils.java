@@ -1,5 +1,7 @@
 package edu.metrostate.ApplicationController;
 
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Session;
 import edu.metrostate.main.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +17,7 @@ import java.sql.*;
 
 public class DBUtils {
 
-    public static void changeScene(ActionEvent event, String fxmlFile, String title){
+    public static void changeScene(ActionEvent event, String fxmlFile, String title) {
         Parent root = null;
 
         try {
@@ -30,19 +32,66 @@ public class DBUtils {
         stage.show();
     }
 
+    private static int lport;
+    private static String rhost;
+    private static int rport;
+
+    // Establish SSH connection
+    public static void establishSshConnection() {
+        String user = "kxayamongkhon";  // SSH username
+        String password = "heis82$T138x";   // SSH password
+        String host = "db.kxdomain.com";  // SSH host server
+        int port = 22;  // SSH port
+
+        try {
+            // Port forwarding
+            JSch jsch = new JSch();
+            Session session = jsch.getSession(user, host, port);
+            lport = 4321;   // Local port to forward
+            rhost = "localhost";    // Remote database host
+            rport = 3306;   // Remote database port
+
+            session.setPassword(password);
+            session.setConfig("StrictHostKeyChecking", "no");
+            session.connect();
+            session.setPortForwardingL(lport, rhost, rport);
+        } catch (Exception e) {
+            System.err.print(e);
+        }
+    }
+
+    // Method to create a database connection
+    public static Connection getDatabaseConnection() throws SQLException {
+        String driver = "org.mariadb.jdbc.Driver";  // MariaDB driver
+        String url = "jdbc:mariadb://localhost:" + lport + "/"; // Localhost with forwarded port
+        String db = "sportsApplicationDataBase";    // Database name
+        String dbUser = "kavin1";   // Database username
+        String dbPasswd = "pHe2Hirai!wisntWic3";    // Database password
+
+        try {
+            Class.forName(driver);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            throw new SQLException("MariaDB JDBC Driver not found.");
+        }
+
+        return DriverManager.getConnection(url + db, dbUser, dbPasswd);
+    }
+
+    // Method to log in a user
     public static void logInUser(ActionEvent event, String username, String password) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mariadb://kxdomain.com:3306/sportsApplicationDataBase", "user_name", "user_password");
+            connection = getDatabaseConnection();
             preparedStatement = connection.prepareStatement("SELECT password, email, profilePicture FROM userAccount WHERE userName = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
 
             if (!resultSet.isBeforeFirst()) {
-                System.out.println("User not found ");
+                System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Username or Password are Incorrect");
                 alert.show();
@@ -63,36 +112,16 @@ public class DBUtils {
                     }
                 }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            try { if (resultSet != null) resultSet.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { if (preparedStatement != null) preparedStatement.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { if (connection != null) connection.close(); } catch (SQLException e) { e.printStackTrace(); }
         }
     }
 
-
-
+    // Method to sign up a user
     public static void signUpUser(ActionEvent event, String email, String username, String password) {
         Connection connection = null;
         PreparedStatement psInsert = null;
@@ -100,7 +129,7 @@ public class DBUtils {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mariadb://kxdomain.com:3306/sportsApplicationDataBase", "user_name", "user_password");
+            connection = getDatabaseConnection();
             psCheckUserExist = connection.prepareStatement("SELECT * FROM userAccount WHERE userName = ?");
             psCheckUserExist.setString(1, username);
             resultSet = psCheckUserExist.executeQuery();
@@ -111,7 +140,7 @@ public class DBUtils {
                 alert.setContentText("You cannot use this username");
                 alert.show();
             } else {
-                psInsert = connection.prepareStatement("INSERT INTO userAccount (email, username, password) VALUES (?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO userAccount (email, userName, password) VALUES (?, ?, ?)");
                 psInsert.setString(1, email);
                 psInsert.setString(2, username);
                 psInsert.setString(3, password);
@@ -126,44 +155,17 @@ public class DBUtils {
 
                 changeScene(event, "/edu/metrostate/fxml/Login.fxml", "Login");
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (psCheckUserExist != null) {
-                try {
-                    psCheckUserExist.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (psInsert != null) {
-                try {
-                    psInsert.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            try { if (resultSet != null) resultSet.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { if (psCheckUserExist != null) psCheckUserExist.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { if (psInsert != null) psInsert.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { if (connection != null) connection.close(); } catch (SQLException e) { e.printStackTrace(); }
         }
     }
 
 
 
-
 }
-
 

@@ -53,7 +53,7 @@ public class GameAPIClient {
                 String name = event.getString("name");
 
                 // Get shortName and details
-                String shortName = event.optString("shortName", ""); // Default to empty if not present
+                String shortName = event.optString("shortName", "");
                 String detail = statusObject.getString("description");
                 String shortDetail = statusObject.getString("shortDetail");
 
@@ -68,13 +68,12 @@ public class GameAPIClient {
                 String awayTeamLogo = awayTeam.getJSONObject("team").optString("logo", "");
                 String homeTeamLogo = homeTeam.getJSONObject("team").optString("logo", "");
 
-                // Create the Game object
                 Game game = new Game(statusName, name, shortName, detail, shortDetail, broadcast,
-                        awayTeam.getJSONObject("team").getString("displayName"),  // awayTeamName
-                        homeTeam.getJSONObject("team").getString("displayName"),  // homeTeamName
-                        awayTeam.getJSONObject("team").getString("id"),  // awayTeamId
-                        homeTeam.getJSONObject("team").getString("id"),  // homeTeamId
-                        awayTeamLogo,  // awayTeamLogo
+                        awayTeam.getJSONObject("team").getString("displayName"),
+                        homeTeam.getJSONObject("team").getString("displayName"),
+                        awayTeam.getJSONObject("team").getString("id"),
+                        homeTeam.getJSONObject("team").getString("id"),
+                        awayTeamLogo,
                         homeTeamLogo);
                 games.add(game);
             }
@@ -84,7 +83,7 @@ public class GameAPIClient {
     }
 
     public List<Game> fetchLiveFootballGames() throws Exception {
-        String urlString = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"; // Update to football URL
+        String urlString = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";
         URL url = new URL(urlString);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
@@ -124,7 +123,7 @@ public class GameAPIClient {
                 String name = event.getString("name");
 
                 // Get shortName and details
-                String shortName = event.optString("shortName", ""); // Default to empty if not present
+                String shortName = event.optString("shortName", "");
                 String detail = statusObject.getString("description");
                 String shortDetail = statusObject.getString("shortDetail");
 
@@ -140,40 +139,17 @@ public class GameAPIClient {
                 String homeTeamLogo = homeTeam.getJSONObject("team").optString("logo", "");
 
                 // Get points for each team from "statistics"
-                String awayTeamPoints = "N/A";
-                String homeTeamPoints = "N/A";
+                String awayTeamPoints = awayTeam.optString("score", "N/A");
+                String homeTeamPoints = homeTeam.optString("score", "N/A");
 
-                JSONArray awayTeamStats = awayTeam.optJSONArray("statistics");
-                if (awayTeamStats != null) {
-                    for (int j = 0; j < awayTeamStats.length(); j++) {
-                        JSONObject stat = awayTeamStats.getJSONObject(j);
-                        if ("points".equals(stat.getString("name"))) {
-                            awayTeamPoints = stat.optString("displayValue", "N/A");
-                            break;
-                        }
-                    }
-                }
-
-                JSONArray homeTeamStats = homeTeam.optJSONArray("statistics");
-                if (homeTeamStats != null) {
-                    for (int j = 0; j < homeTeamStats.length(); j++) {
-                        JSONObject stat = homeTeamStats.getJSONObject(j);
-                        if ("points".equals(stat.getString("name"))) {
-                            homeTeamPoints = stat.optString("displayValue", "N/A");
-                            break;
-                        }
-                    }
-                }
-
-                // Create the Game object
                 Game.LiveGame game = new Game.LiveGame(statusName, name, shortName, detail, shortDetail, broadcast,
-                        awayTeam.getJSONObject("team").getString("displayName"),  // awayTeamName
-                        awayTeamPoints + " PTS",  // awayScore
-                        homeTeam.getJSONObject("team").getString("displayName"),  // homeTeamName
-                        homeTeamPoints + " PTS",  // homeScore
-                        awayTeam.getJSONObject("team").getString("id"),  // awayTeamId
-                        homeTeam.getJSONObject("team").getString("id"),  // homeTeamId
-                        awayTeamLogo,  // awayTeamLogo
+                        awayTeam.getJSONObject("team").getString("displayName"),
+                        awayTeamPoints + " PTS",
+                        homeTeam.getJSONObject("team").getString("displayName"),
+                        homeTeamPoints + " PTS",
+                        awayTeam.getJSONObject("team").getString("id"),
+                        homeTeam.getJSONObject("team").getString("id"),
+                        awayTeamLogo,
                         homeTeamLogo);
                 games.add(game);
             }
@@ -224,7 +200,7 @@ public class GameAPIClient {
                 String name = event.getString("name");
 
                 // Get shortName and details
-                String shortName = event.optString("shortName", ""); // Default to empty if not present
+                String shortName = event.optString("shortName", "");
                 String detail = statusObject.getString("description");
                 String shortDetail = statusObject.getString("shortDetail");
 
@@ -265,13 +241,12 @@ public class GameAPIClient {
                     }
                 }
 
-                // Create the Game object
                 Game game = new Game(statusName, name, shortName, detail, shortDetail, broadcast,
-                        awayTeam.getJSONObject("team").getString("displayName"),  // awayTeamName
-                        homeTeam.getJSONObject("team").getString("displayName"),  // homeTeamName
-                        awayTeam.getJSONObject("team").getString("id"),  // awayTeamId
-                        homeTeam.getJSONObject("team").getString("id"),  // homeTeamId
-                        awayTeamLogo,  // awayTeamLogo
+                        awayTeam.getJSONObject("team").getString("displayName"),
+                        homeTeam.getJSONObject("team").getString("displayName"),
+                        awayTeam.getJSONObject("team").getString("id"),
+                        homeTeam.getJSONObject("team").getString("id"),
+                        awayTeamLogo,
                         homeTeamLogo);
                 games.add(game);
             }
@@ -321,7 +296,7 @@ public class GameAPIClient {
                 String name = event.getString("name");
 
                 // Get shortName and details
-                String shortName = event.optString("shortName", ""); // Default to empty if not present
+                String shortName = event.optString("shortName", "");
                 String detail = statusObject.getString("description");
                 String shortDetail = statusObject.getString("shortDetail");
 
@@ -362,16 +337,14 @@ public class GameAPIClient {
                     }
                 }
 
-
-                // Create the Game object
                 Game.LiveGame game = new Game.LiveGame(statusName, name, shortName, detail, shortDetail, broadcast,
-                        awayTeam.getJSONObject("team").getString("displayName"),  // awayTeamName
-                        awayTeamPoints + " PTS",  // awayScore
-                        homeTeam.getJSONObject("team").getString("displayName"),  // homeTeamName
-                        homeTeamPoints + " PTS",  // homeScore
-                        awayTeam.getJSONObject("team").getString("id"),  // awayTeamId
-                        homeTeam.getJSONObject("team").getString("id"),  // homeTeamId
-                        awayTeamLogo,  // awayTeamLogo
+                        awayTeam.getJSONObject("team").getString("displayName"),
+                        awayTeamPoints + " PTS",
+                        homeTeam.getJSONObject("team").getString("displayName"),
+                        homeTeamPoints + " PTS",
+                        awayTeam.getJSONObject("team").getString("id"),
+                        homeTeam.getJSONObject("team").getString("id"),
+                        awayTeamLogo,
                         homeTeamLogo);
                 games.add(game);
             }
