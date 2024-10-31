@@ -12,7 +12,7 @@
          <children>
             <Label layoutX="101.0" layoutY="288.0" text="username" />
             <Label layoutX="102.0" layoutY="390.0" text="password" />
-            <TextField fx:id="tf_username" layoutX="95.0" layoutY="305.0" prefHeight="25.0" prefWidth="234.0" promptText="enter username" />
+            <TextField fx:id="tf_email" layoutX="95.0" layoutY="305.0" prefHeight="25.0" prefWidth="234.0" promptText="enter username" />
             <TextField fx:id="tf_password" layoutX="93.0" layoutY="407.0" prefHeight="25.0" prefWidth="238.0" promptText="enter password" />
             <Button fx:id="button_login" layoutX="189.0" layoutY="472.0" mnemonicParsing="false" text="Login" />
             <Button fx:id="button_createNewAccount" layoutX="155.0" layoutY="550.0" mnemonicParsing="false" text="Create an Account" />

@@ -9,10 +9,9 @@
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <TextField fx:id="tf_username" layoutX="102.0" layoutY="280.0" prefHeight="25.0" prefWidth="234.0" promptText="enter username" />
-                <Button fx:id="button_createAccount" layoutX="166.0" layoutY="394.0" mnemonicParsing="false" text="Create Account" />
+                <Button fx:id="button_createAccount" layoutX="166.0" layoutY="328.0" mnemonicParsing="false" text="Create Account" />
             <TextField fx:id="tf_email" layoutX="102.0" layoutY="240.0" prefHeight="25.0" prefWidth="234.0" promptText="enter email" />
-            <TextField fx:id="tf_password" layoutX="102.0" layoutY="322.0" prefHeight="25.0" prefWidth="234.0" promptText="enter password" />
+            <TextField fx:id="tf_password" layoutX="102.0" layoutY="282.0" prefHeight="25.0" prefWidth="234.0" promptText="enter password" />
             </children>
         </AnchorPane>
     </center>
