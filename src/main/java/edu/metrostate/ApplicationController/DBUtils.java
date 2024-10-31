@@ -39,7 +39,7 @@ public class DBUtils {
     // Establish SSH connection
     public static void establishSshConnection() {
         String user = "kxayamongkhon";  // SSH username
-        String password = "heis82$T138x";   // SSH password
+        String password = "";   // SSH password
         String host = "db.kxdomain.com";  // SSH host server
         int port = 22;  // SSH port
 
@@ -66,7 +66,7 @@ public class DBUtils {
         String url = "jdbc:mariadb://localhost:" + lport + "/"; // Localhost with forwarded port
         String db = "sportsApplicationDataBase";    // Database name
         String dbUser = "kavin1";   // Database username
-        String dbPasswd = "pHe2Hirai!wisntWic3";    // Database password
+        String dbPasswd = "";    // Database password
 
         try {
             Class.forName(driver);
