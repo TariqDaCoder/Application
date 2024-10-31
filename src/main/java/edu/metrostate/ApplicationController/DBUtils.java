@@ -40,7 +40,7 @@ public class DBUtils {
     public static void establishSshConnection() {
         String user = "kxayamongkhon";  // SSH username
         String password = "";   // SSH password
-        String host = "db.kxdomain.com";  // SSH host server
+        String host = "73.62.245.119";  // SSH host server db.kxdomain.com  73.62.245.119
         int port = 22;  // SSH port
 
         try {
