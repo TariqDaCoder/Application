@@ -1,6 +1,7 @@
 package edu.metrostate.ApplicationController;
 
 import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import edu.metrostate.main.Login;
 import javafx.event.ActionEvent;
@@ -32,6 +33,7 @@ public class DBUtils {
         stage.show();
     }
 
+    private static Session session;
     private static int lport;
     private static String rhost;
     private static int rport;
@@ -39,14 +41,19 @@ public class DBUtils {
     // Establish SSH connection
     public static void establishSshConnection() {
         String user = "kxayamongkhon";  // SSH username
-        String password = "";   // SSH password
+        String password = "heis82$T138x";   // SSH password
         String host = "73.62.245.119";  // SSH host server db.kxdomain.com  73.62.245.119
         int port = 22;  // SSH port
+
+        // Disconnect existing ssh session if it is active
+        if (session != null && session.isConnected()) {
+            session.disconnect();
+        }
 
         try {
             // Port forwarding
             JSch jsch = new JSch();
-            Session session = jsch.getSession(user, host, port);
+            session = jsch.getSession(user, host, port);
             lport = 4321;   // Local port to forward
             rhost = "localhost";    // Remote database host
             rport = 3306;   // Remote database port
@@ -66,7 +73,7 @@ public class DBUtils {
         String url = "jdbc:mariadb://localhost:" + lport + "/"; // Localhost with forwarded port
         String db = "sportsApplicationDataBase";    // Database name
         String dbUser = "kavin1";   // Database username
-        String dbPasswd = "";    // Database password
+        String dbPasswd = "pHe2Hirai!wisntWic3";    // Database password
 
         try {
             Class.forName(driver);
