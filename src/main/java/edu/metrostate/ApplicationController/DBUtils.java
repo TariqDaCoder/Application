@@ -15,10 +15,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
+import edu.metrostate.main.StreamLive;
+
 
 public class DBUtils {
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title) {
+
         Parent root = null;
 
         try {

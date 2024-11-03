@@ -113,8 +113,8 @@ public class StreamLive implements Initializable {
                                 homeTeamPoints.setText("N/A");
                             }
 
-                            loadImageAsync(game.getAwayTeamLogo(), awayLogo);
-                            loadImageAsync(game.getHomeTeamLogo(), homeLogo);
+                            loadImage(game.getAwayTeamLogo(), awayLogo);
+                            loadImage(game.getHomeTeamLogo(), homeLogo);
 
                             awayLogo.setFitWidth(25);
                             awayLogo.setPreserveRatio(true);
@@ -127,7 +127,7 @@ public class StreamLive implements Initializable {
                     }
 
 
-                    private void loadImageAsync(String url, ImageView imageView) {
+                    private void loadImage(String url, ImageView imageView) {
                         // Check cache first
                         if (imageCache.containsKey(url)) {
                             imageView.setImage(imageCache.get(url));

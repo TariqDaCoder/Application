@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
@@ -24,9 +25,9 @@
     <bottom>
         <AnchorPane prefHeight="91.0" prefWidth="430.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="107.0" prefWidth="430.0" style="-fx-background-color: #0b0c0c;">
+            <HBox alignment="CENTER" prefHeight="107.0" prefWidth="430.0" style="-fx-background-color: #0b0c0c;">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="86.0" prefWidth="86.0">
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="86.0" prefWidth="86.0">
                      <children>
                         <Button fx:id="button_home" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="68.0" style="-fx-background-color: transparent;">
                            <graphic>
@@ -38,9 +39,10 @@
                            </graphic>
                         </Button>
                         <Label alignment="CENTER" prefHeight="26.0" prefWidth="33.0" text="Home" textFill="WHITE" />
+                        <Pane prefHeight="51.0" prefWidth="86.0" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="86.0" prefWidth="86.0">
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="86.0" prefWidth="86.0">
                      <children>
                         <Button fx:id="button_scores" alignment="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: transparent;">
                            <graphic>
@@ -52,9 +54,10 @@
                            </graphic>
                         </Button>
                         <Label alignment="CENTER" prefHeight="12.0" prefWidth="30.0" text="Score" textFill="WHITE" />
+                        <Pane prefHeight="35.0" prefWidth="86.0" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="86.0" prefWidth="86.0">
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="86.0" prefWidth="86.0">
                      <children>
                         <Button fx:id="button_stream" alignment="CENTER" mnemonicParsing="false" prefHeight="47.0" prefWidth="100.0" style="-fx-background-color: transparent;">
                            <graphic>
@@ -65,12 +68,13 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label alignment="CENTER" prefHeight="15.0" prefWidth="28.0" text="Live" textFill="WHITE" />
+                        <Label alignment="CENTER" prefHeight="11.0" prefWidth="28.0" text="Live" textFill="WHITE" />
+                        <Pane prefHeight="33.0" prefWidth="86.0" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="86.0" prefWidth="86.0">
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="86.0" prefWidth="86.0">
                      <children>
-                        <Button fx:id="button_tickets" alignment="CENTER" mnemonicParsing="false" prefHeight="51.0" prefWidth="101.0" style="-fx-background-color: transparent;">
+                        <Button fx:id="button_tickets" alignment="CENTER" mnemonicParsing="false" prefHeight="1.0" prefWidth="86.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <ImageView fitHeight="48.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -79,10 +83,11 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label alignment="CENTER" prefHeight="13.0" prefWidth="48.0" text="Tickets" textFill="WHITE" />
+                        <Label alignment="CENTER" prefHeight="0.0" prefWidth="48.0" text="Tickets" textFill="WHITE" />
+                        <Pane prefHeight="32.0" prefWidth="86.0" />
                      </children>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="86.0" prefWidth="86.0">
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="86.0" prefWidth="86.0">
                      <children>
                         <Button fx:id="button_account" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="67.0" prefWidth="86.0" style="-fx-background-color: transparent;">
                            <graphic>
@@ -93,7 +98,8 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="54.0" text="Account" textFill="WHITE" />
+                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="54.0" text="Account" textFill="WHITE" />
+                        <Pane prefHeight="39.0" prefWidth="86.0" />
                      </children>
                   </VBox>
                </children>
