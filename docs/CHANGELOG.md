@@ -35,4 +35,8 @@
  # Milestone 4
  - [Kavin X] Created functional JavaFx page for login requirement
  - [Kavin X] Created MariaDB to host user login info
- - [Kavin X] Created functional JavaFx page for live stream games 
+ - [Kavin X] Created functional JavaFx page for live stream games
+ - [Simeon S] Created logo for the sport application
+ - [Simeon S] Updated the Implementation.md
+ - [Simeon S] Contributed to the implementation of login/signup functionality
+   
