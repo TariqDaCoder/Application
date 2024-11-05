@@ -4,5 +4,5 @@
 Allows users to sign in or create an account using their email.
 
 
-## Sports News Feed
-Deliver the latest sports-related news, updates, and headlines in a customizable news feed.
+## Match Streaming
+Fetch and present games to user, live games if there is any game currently going on, and scheduled games coming up.
