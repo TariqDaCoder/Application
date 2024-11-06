@@ -1,6 +1,7 @@
 package edu.metrostate.ApplicationController;
 
 import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import edu.metrostate.main.Login;
 import javafx.event.ActionEvent;
@@ -14,10 +15,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
+import edu.metrostate.main.StreamLive;
+
 
 public class DBUtils {
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title) {
+
         Parent root = null;
 
         try {
@@ -32,6 +36,7 @@ public class DBUtils {
         stage.show();
     }
 
+    private static Session session;
     private static int lport;
     private static String rhost;
     private static int rport;
@@ -39,14 +44,19 @@ public class DBUtils {
     // Establish SSH connection
     public static void establishSshConnection() {
         String user = "kxayamongkhon";  // SSH username
-        String password = "";   // SSH password
-        String host = "73.62.245.119";  // SSH host server db.kxdomain.com  73.62.245.119
+        String password = "heis82$T138x";   // SSH password
+        String host = "";  // SSH host server db.kxdomain.com  73.62.245.119
         int port = 22;  // SSH port
+
+        // Disconnect existing ssh session if it is active
+        if (session != null && session.isConnected()) {
+            session.disconnect();
+        }
 
         try {
             // Port forwarding
             JSch jsch = new JSch();
-            Session session = jsch.getSession(user, host, port);
+            session = jsch.getSession(user, host, port);
             lport = 4321;   // Local port to forward
             rhost = "localhost";    // Remote database host
             rport = 3306;   // Remote database port
@@ -140,7 +150,7 @@ public class DBUtils {
                 alert.setContentText("An account for this email already exists");
                 alert.show();
             } else {
-                psInsert = connection.prepareStatement("INSERT INTO userAccount (email, password) VALUES (?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO userAccount (email, password) VALUES (?, ?)");
                 psInsert.setString(1, email);
                 psInsert.setString(2, password);
                 psInsert.executeUpdate();
