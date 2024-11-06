@@ -12,6 +12,7 @@ public class GameView {
         for (Game game : games) {
             if ("STATUS_SCHEDULED".equals(game.getStatus())) {
                 System.out.println("-----------------------------");
+                System.out.println("Sport: " + game.getSport().getSportName());
                 System.out.println("Game Status: " + game.getStatus());
                 System.out.println("Name: " + game.getName());
                 System.out.println("Short Name: " + game.getShortName());
@@ -30,9 +31,11 @@ public class GameView {
     public void displayLiveGames(List<Game> games) {
         System.out.println("Live Games:");
 
+
         for (Game game : games) {
             if ("STATUS_IN_PROGRESS".equals(game.getStatus())) {
                 System.out.println("-----------------------------");
+                System.out.println("Sport: " + game.getSport().getSportName());
                 System.out.println("Game Status: " + game.getStatus());
                 System.out.println("Name: " + game.getName());
                 System.out.println("Short Name: " + game.getShortName());
@@ -62,6 +65,7 @@ public class GameView {
         if (gameNumber > 0 && gameNumber <= games.size()) {
             Game game = games.get(gameNumber - 1);
             System.out.println("-----------------------------");
+            System.out.println("Sport: " + game.getSport().getSportName());
             System.out.println("Game #" + gameNumber);
             System.out.println("Game Status: " + game.getStatus());
             System.out.println("Name: " + game.getName());

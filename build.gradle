@@ -23,10 +23,11 @@ tasks.withType(JavaCompile) {
 
 application {
     mainClass = 'edu.metrostate.main.Home'
+    mainModule = 'Application'
 }
 
 javafx {
-    version = '22.0.2'
+    version = '22.0.1'
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
@@ -35,9 +36,9 @@ dependencies {
     implementation 'org.json:json:20210307'
 
     // JavaFX dependencies
-    implementation 'org.openjfx:javafx-base:22.0.2'
-    implementation 'org.openjfx:javafx-controls:22.0.2'
-    implementation 'org.openjfx:javafx-fxml:22.0.2'
+    implementation 'org.openjfx:javafx-base:22.0.1'
+    implementation 'org.openjfx:javafx-controls:22.0.1'
+    implementation 'org.openjfx:javafx-fxml:22.0.1'
 
     // JUnit for testing
     testImplementation platform('org.junit:junit-bom:5.10.0')

@@ -44,7 +44,7 @@ public class DBUtils {
     // Establish SSH connection
     public static void establishSshConnection() {
         String user = "kxayamongkhon";  // SSH username
-        String password = "";   // SSH password
+        String password = "heis82$T138x";   // SSH password
         String host = "73.62.245.119";  // SSH host server db.kxdomain.com  73.62.245.119
         int port = 22;  // SSH port
 
@@ -76,7 +76,7 @@ public class DBUtils {
         String url = "jdbc:mariadb://localhost:" + lport + "/"; // Localhost with forwarded port
         String db = "sportsApplicationDataBase";    // Database name
         String dbUser = "kavin1";   // Database username
-        String dbPasswd = "";    // Database password
+        String dbPasswd = "pHe2Hirai!wisntWic3";    // Database password
 
         try {
             Class.forName(driver);
@@ -150,7 +150,7 @@ public class DBUtils {
                 alert.setContentText("An account for this email already exists");
                 alert.show();
             } else {
-                psInsert = connection.prepareStatement("INSERT INTO userAccount (email, password) VALUES (?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO userAccount (email, password) VALUES (?, ?)");
                 psInsert.setString(1, email);
                 psInsert.setString(2, password);
                 psInsert.executeUpdate();

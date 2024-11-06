@@ -1,6 +1,7 @@
 package edu.metrostate.jsonPackages;
 
 import edu.metrostate.ApplicationModel.Game;
+import edu.metrostate.ApplicationModel.Sport;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -30,6 +31,14 @@ public class GameAPIClient {
         JSONArray eventsArray = jsonResponse.getJSONArray("events");
 
         List<Game> games = new ArrayList<>();
+
+        Sport sportType = null;
+        for (Sport sport : Sport.getSportsList()) {
+            if ("Football".equals(sport.getSportName())) {
+                sportType = sport;
+                break;
+            }
+        }
 
         for (int i = 0; i < eventsArray.length(); i++) {
             JSONObject event = eventsArray.getJSONObject(i);
@@ -68,7 +77,7 @@ public class GameAPIClient {
                 String awayTeamLogo = awayTeam.getJSONObject("team").optString("logo", "");
                 String homeTeamLogo = homeTeam.getJSONObject("team").optString("logo", "");
 
-                Game game = new Game(statusName, name, shortName, detail, shortDetail, broadcast,
+                Game game = new Game(sportType, statusName, name, shortName, detail, shortDetail, broadcast,
                         awayTeam.getJSONObject("team").getString("displayName"),
                         homeTeam.getJSONObject("team").getString("displayName"),
                         awayTeam.getJSONObject("team").getString("id"),
@@ -100,6 +109,14 @@ public class GameAPIClient {
         JSONArray eventsArray = jsonResponse.getJSONArray("events");
 
         List<Game> games = new ArrayList<>();
+
+        Sport sportType = null;
+        for (Sport sport : Sport.getSportsList()) {
+            if ("Football".equals(sport.getSportName())) {
+                sportType = sport;
+                break;
+            }
+        }
 
         for (int i = 0; i < eventsArray.length(); i++) {
             JSONObject event = eventsArray.getJSONObject(i);
@@ -142,7 +159,7 @@ public class GameAPIClient {
                 String awayTeamPoints = awayTeam.optString("score", "N/A");
                 String homeTeamPoints = homeTeam.optString("score", "N/A");
 
-                Game.LiveGame game = new Game.LiveGame(statusName, name, shortName, detail, shortDetail, broadcast,
+                Game.LiveGame game = new Game.LiveGame(sportType, statusName, name, shortName, detail, shortDetail, broadcast,
                         awayTeam.getJSONObject("team").getString("displayName"),
                         awayTeamPoints + " PTS",
                         homeTeam.getJSONObject("team").getString("displayName"),
@@ -177,6 +194,14 @@ public class GameAPIClient {
         JSONArray eventsArray = jsonResponse.getJSONArray("events");
 
         List<Game> games = new ArrayList<>();
+
+        Sport sportType = null;
+        for (Sport sport : Sport.getSportsList()) {
+            if ("Basketball".equals(sport.getSportName())) {
+                sportType = sport;
+                break;
+            }
+        }
 
         for (int i = 0; i < eventsArray.length(); i++) {
             JSONObject event = eventsArray.getJSONObject(i);
@@ -241,7 +266,7 @@ public class GameAPIClient {
                     }
                 }
 
-                Game game = new Game(statusName, name, shortName, detail, shortDetail, broadcast,
+                Game game = new Game(sportType, statusName, name, shortName, detail, shortDetail, broadcast,
                         awayTeam.getJSONObject("team").getString("displayName"),
                         homeTeam.getJSONObject("team").getString("displayName"),
                         awayTeam.getJSONObject("team").getString("id"),
@@ -273,6 +298,14 @@ public class GameAPIClient {
         JSONArray eventsArray = jsonResponse.getJSONArray("events");
 
         List<Game> games = new ArrayList<>();
+
+        Sport sportType = null;
+        for (Sport sport : Sport.getSportsList()) {
+            if ("Basketball".equals(sport.getSportName())) {
+                sportType = sport;
+                break;
+            }
+        }
 
         for (int i = 0; i < eventsArray.length(); i++) {
             JSONObject event = eventsArray.getJSONObject(i);
@@ -337,7 +370,7 @@ public class GameAPIClient {
                     }
                 }
 
-                Game.LiveGame game = new Game.LiveGame(statusName, name, shortName, detail, shortDetail, broadcast,
+                Game.LiveGame game = new Game.LiveGame(sportType, statusName, name, shortName, detail, shortDetail, broadcast,
                         awayTeam.getJSONObject("team").getString("displayName"),
                         awayTeamPoints + " PTS",
                         homeTeam.getJSONObject("team").getString("displayName"),

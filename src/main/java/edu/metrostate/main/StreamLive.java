@@ -19,8 +19,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
+import java.net.URI;
 import java.net.URL;
 import java.util.*;
+import java.awt.Desktop;
+
 
 public class StreamLive implements Initializable {
 
@@ -98,7 +101,14 @@ public class StreamLive implements Initializable {
                         } else {
                             shortNameLabel.setText(game.getShortName());
                             shortDetailLabel.setText(game.getShortDetail());
+
+                            String broadcastLink = GameController.getGameType(game);
+
                             broadcastLabel.setText("Broadcast: " + game.getBroadcast());
+
+                            broadcastLabel.setOnMouseClicked(event -> openLink(broadcastLink));
+                            broadcastLabel.setStyle("-fx-text-fill: blue; -fx-underline: true;");
+
 
                             awayTeamName.setText(game.getAwayTeamDisplayName());
                             homeTeamName.setText(game.getHomeTeamDisplayName());
@@ -157,6 +167,8 @@ public class StreamLive implements Initializable {
             System.out.println("Error fetching games: " + e.getMessage());
             e.printStackTrace();
         }
+
+
 
 
 
@@ -221,5 +233,14 @@ public class StreamLive implements Initializable {
                 DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamBrowse.fxml", "Stream");
             }
         });
+    }
+
+
+    private static void openLink(String url) {
+        try {
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
