@@ -31,7 +31,7 @@ public class Login  implements Initializable {
     private Button button_createNewAccount;
 
     @FXML
-    private TextField tf_username;
+    private TextField tf_email;
     @FXML
     private TextField tf_password;
     @FXML
@@ -39,6 +39,8 @@ public class Login  implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Establish ssh connection upon initialization
+        DBUtils.establishSshConnection();
 
         button_home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -90,7 +92,7 @@ public class Login  implements Initializable {
         button_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.logInUser(event, tf_username.getText(), tf_password.getText());
+                DBUtils.logInUser(event, tf_email.getText(), tf_password.getText());
             }
         });
 

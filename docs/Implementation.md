@@ -1,8 +1,10 @@
 # Phase 1
 
 ## User Authentication
-Allows users to sign in via Google, Facebook, Apple, or create an account using their email.
+Allows users to sign in or create an account using their email.
+We currently have a login page that allows a user to emter a registered username and password to login, and also the user has the option to sign up if it is a new member.
 
 
-## Sports News Feed
-Deliver the latest sports-related news, updates, and headlines in a customizable news feed.
+## Match Streaming
+Fetch and present games to user, live games if there is any game currently going on, and scheduled games coming up.
+We currently have a page that shows live, upcoming and past games.

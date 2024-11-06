@@ -9,9 +9,18 @@ import java.util.Map;
 
 public class Sport {
 
+    private static final List<Sport> sportsList;  // Static list to hold sport instances
+
     private final HashMap<String, List<SportsTeam>> teamsByCategory; // HashMap to hold teams by category
     private int sportID;
     private String sportName;
+
+    // Static block to initialize the sportsList with Football and Basketball
+    static {
+        sportsList = new ArrayList<>();
+        sportsList.add(new Sport(1, "Football"));
+        sportsList.add(new Sport(2, "Basketball"));
+    }
 
     // Constructor
     public Sport(int sportID, String sportName) {
@@ -32,6 +41,11 @@ public class Sport {
     // Getters and setters for sportName
     public String getSportName() {
         return this.sportName;
+    }
+
+    // Static method to retrieve the list of sports
+    public static List<Sport> getSportsList() {
+        return sportsList;
     }
 
     // Method to add teams to a specific category
@@ -56,7 +70,7 @@ public class Sport {
         return allTeams;
     }
 
-    // Method to display teams using SportTeamView
+    // Method to display teams using SportsTeamView
     public void showTeams() {
         SportsTeamView view = new SportsTeamView();
         view.displayTeams(sportName, getTeams()); // Pass the sport name and the list of all teams
