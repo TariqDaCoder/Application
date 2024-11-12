@@ -15,8 +15,6 @@ import java.util.Map;
 
 public class GameView {
 
-    private Map<String, Image> imageCache = new HashMap<>();
-
     public void displayScheduledGames(List<Game> games) {
         System.out.println("Scheduled Games:");
 

@@ -90,8 +90,6 @@ public class Scores implements Initializable {
                             shortNameLabel.setText(game.getShortName());
                             shortDetailLabel.setText(game.getShortDetail());
 
-
-
                             awayTeamName.setText(game.getAwayTeamDisplayName());
                             homeTeamName.setText(game.getHomeTeamDisplayName());
 
