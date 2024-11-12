@@ -1,10 +1,21 @@
 package edu.metrostate.ApplicationView;
 
 import edu.metrostate.ApplicationModel.Game;
+import edu.metrostate.main.Scores;
+import javafx.concurrent.Task;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GameView {
+
+    private Map<String, Image> imageCache = new HashMap<>();
 
     public void displayScheduledGames(List<Game> games) {
         System.out.println("Scheduled Games:");
@@ -82,4 +93,8 @@ public class GameView {
             System.out.println("Invalid game number.");
         }
     }
+
+
+
 }
+
