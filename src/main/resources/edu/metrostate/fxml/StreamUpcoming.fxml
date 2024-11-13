@@ -15,11 +15,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="932.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.metrostate.main.StreamUpcoming">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.metrostate.main.StreamUpcoming">
     <center>
         <AnchorPane prefHeight="663.0" prefWidth="430.0" style="-fx-background-color: #0b0c0c;" BorderPane.alignment="CENTER">
             <children>
-                <ListView fx:id="scheduledGameListView" layoutX="-1.0" prefHeight="676.0" prefWidth="430.0" />
+                <ListView fx:id="scheduledGameListView" layoutX="53.0" layoutY="38.0" prefHeight="400.0" prefWidth="323.0" />
             <Label fx:id="label_noGamesFound" layoutX="179.0" layoutY="217.0" prefHeight="41.0" prefWidth="72.0" />
             </children>
         </AnchorPane>
