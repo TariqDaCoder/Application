@@ -32,7 +32,7 @@ public class DBUtils {
         }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
-        stage.setScene(new Scene(root, 430, 932));
+        stage.setScene(new Scene(root, 430, 750));
         stage.show();
     }
 

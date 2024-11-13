@@ -55,7 +55,7 @@ public class Tickets implements Initializable {
         button_tickets.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Tickets.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/fxml/Tickets.fxml", "Ticket");
             }
         });
 
