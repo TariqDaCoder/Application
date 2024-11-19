@@ -5,13 +5,13 @@ import edu.metrostate.ApplicationView.SportsTeamView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Sport {
 
-    private static final List<Sport> sportsList;  // Static list to hold sport instances
+    private static final List<Sport> sportsList; // Static list to hold sport instances
 
     private final HashMap<String, List<SportsTeam>> teamsByCategory; // HashMap to hold teams by category
+    private final List<Game> games; // List to track games for this sport
     private int sportID;
     private String sportName;
 
@@ -27,6 +27,7 @@ public class Sport {
         this.sportID = sportID;
         this.sportName = sportName;
         this.teamsByCategory = new HashMap<>(); // Initialize the map
+        this.games = new ArrayList<>(); // Initialize the list of games
     }
 
     // Getters and setters for ID
@@ -74,5 +75,32 @@ public class Sport {
     public void showTeams() {
         SportsTeamView view = new SportsTeamView();
         view.displayTeams(sportName, getTeams()); // Pass the sport name and the list of all teams
+    }
+
+    // Method to add a game to this sport
+    public void addGame(Game game) {
+        games.add(game);
+    }
+
+    // Method to retrieve the list of games
+    public List<Game> getGames() {
+        return games;
+    }
+
+    // Static method to find a sport by name
+    public static Sport findByName(String name) {
+        return sportsList.stream()
+                .filter(sport -> sport.sportName.equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
+    }
+
+    @Override
+    public String toString() {
+        return "Sport{" +
+                "sportID=" + sportID +
+                ", sportName='" + sportName + '\'' +
+                ", games=" + games +
+                '}';
     }
 }
