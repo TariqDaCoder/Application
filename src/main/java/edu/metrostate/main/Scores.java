@@ -1,7 +1,7 @@
 package edu.metrostate.main;
 
 import edu.metrostate.ApplicationController.DBUtils;
-import edu.metrostate.ApplicationController.GameLogger;
+import edu.metrostate.ApplicationController.GameController;
 import edu.metrostate.ApplicationModel.Game;
 import edu.metrostate.jsonPackages.GameAPIClient;
 import javafx.concurrent.Task;
@@ -46,23 +46,17 @@ public class Scores implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-
-
             GameAPIClient gameClient = new GameAPIClient();
-            List<Game> finalFootballGames = gameClient.fetchFootballGamesScores();
-            List<Game> finalBasketballGames = gameClient.fetchBasketballGamesScores();
+            List<Game> liveFootballGames = gameClient.fetchFootballGamesScores();
+            List<Game> liveBasketballGames = gameClient.fetchBasketballGamesScores();
 
-            List<Game> finalGames = new ArrayList<>();
-            finalGames.addAll(finalFootballGames);
-            finalGames.addAll(finalBasketballGames);
+            List<Game> liveGames = new ArrayList<>();
+            liveGames.addAll(liveFootballGames);
+            liveGames.addAll(liveBasketballGames);
 
-            Game.logAllGamesToJson();
-            for (Game game : finalGames) {
-                GameLogger.addGameToHistory(game);
-            }
 
-            if (finalGames.isEmpty()) {
-                label_noGamesFound.setText("No final games");
+            if (liveGames.isEmpty()) {
+                label_noGamesFound.setText("No live games");
                 scoreListView.setVisible(false);
             } else {
                 label_noGamesFound.setText("");
@@ -83,8 +77,6 @@ public class Scores implements Initializable {
                     private final Label shortNameLabel = new Label();
                     private final Label shortDetailLabel = new Label();
 
-                    private final Label date = new Label();
-
                     private Map<String, Image> imageCache = new HashMap<>();
 
                     @Override
@@ -101,12 +93,11 @@ public class Scores implements Initializable {
                             awayTeamName.setText(game.getAwayTeamDisplayName());
                             homeTeamName.setText(game.getHomeTeamDisplayName());
 
-                            // Check if game is an instance of GameFinal and cast it
-                            if (game instanceof Game.GameFinal) {
-                                Game.GameFinal gameFinal = (Game.GameFinal) game;  // Cast game to Gamefinal
-                                awayTeamPoints.setText(gameFinal.getAwayPoints());
-                                homeTeamPoints.setText(gameFinal.getHomePoints());
-                                date.setText(gameFinal.getDate());
+                            // Check if game is an instance of LiveGame and cast it
+                            if (game instanceof Game.LiveGame) {
+                                Game.LiveGame liveGame = (Game.LiveGame) game;  // Cast game to LiveGame
+                                awayTeamPoints.setText(liveGame.getAwayPoints());
+                                homeTeamPoints.setText(liveGame.getHomePoints());
                             } else {
                                 awayTeamPoints.setText("N/A");
                                 homeTeamPoints.setText("N/A");
@@ -120,8 +111,7 @@ public class Scores implements Initializable {
                             homeLogo.setFitWidth(25);
                             homeLogo.setPreserveRatio(true);
 
-
-                            vbox.getChildren().setAll(date, homeLogo, homeTeamName, homeTeamPoints, awayLogo, awayTeamName, awayTeamPoints, shortNameLabel);
+                            vbox.getChildren().setAll(homeLogo, homeTeamName, homeTeamPoints, awayLogo, awayTeamName, awayTeamPoints, shortNameLabel);
                             setGraphic(vbox);
                         }
                     }
@@ -150,7 +140,7 @@ public class Scores implements Initializable {
                     }
                 });
 
-                scoreListView.getItems().addAll(finalGames);
+                scoreListView.getItems().addAll(liveGames);
             }
 
         } catch (Exception e) {

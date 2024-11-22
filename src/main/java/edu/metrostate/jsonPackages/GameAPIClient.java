@@ -159,9 +159,7 @@ public class GameAPIClient {
                 String awayTeamPoints = awayTeam.optString("score", "N/A");
                 String homeTeamPoints = homeTeam.optString("score", "N/A");
 
-                String date = event.optString("date", "");
-
-                Game.GameFinal game = new Game.GameFinal(sportType, statusName, name, shortName, detail, shortDetail, broadcast,
+                Game.LiveGame game = new Game.LiveGame(sportType, statusName, name, shortName, detail, shortDetail, broadcast,
                         awayTeam.getJSONObject("team").getString("displayName"),
                         awayTeamPoints + " PTS",
                         homeTeam.getJSONObject("team").getString("displayName"),
@@ -169,7 +167,7 @@ public class GameAPIClient {
                         awayTeam.getJSONObject("team").getString("id"),
                         homeTeam.getJSONObject("team").getString("id"),
                         awayTeamLogo,
-                        homeTeamLogo, date);
+                        homeTeamLogo);
                 games.add(game);
             }
         }
@@ -257,7 +255,6 @@ public class GameAPIClient {
                 games.add(game);
             }
         }
-
 
         return games;
     }
@@ -563,10 +560,7 @@ public class GameAPIClient {
                     }
                 }
 
-                // Get date
-                String date = event.optString("date", "");
-
-                Game.GameFinal game = new Game.GameFinal(sportType, statusName, name, shortName, detail, shortDetail, broadcast,
+                Game.LiveGame game = new Game.LiveGame(sportType, statusName, name, shortName, detail, shortDetail, broadcast,
                         awayTeam.getJSONObject("team").getString("displayName"),
                         awayTeamPoints + " PTS",
                         homeTeam.getJSONObject("team").getString("displayName"),
@@ -574,14 +568,14 @@ public class GameAPIClient {
                         awayTeam.getJSONObject("team").getString("id"),
                         homeTeam.getJSONObject("team").getString("id"),
                         awayTeamLogo,
-                        homeTeamLogo, date);
+                        homeTeamLogo);
                 games.add(game);
             }
         }
 
-
-
         return games;
     }
+
+
 
 }
