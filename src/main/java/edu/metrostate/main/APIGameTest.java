@@ -30,8 +30,10 @@ public class APIGameTest {
             liveFootballgames = client.fetchLiveFootballGames();
             gameView.displayLiveGames(liveFootballgames);
 
-            liveBasketballGames = client.fetchLiveBasketballGames();
+            liveBasketballGames = client.fetchBasketballGamesScores();
             gameView.displayLiveGames(liveBasketballGames);
+
+
 
 
         } catch (Exception e) {
