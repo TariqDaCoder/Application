@@ -15,7 +15,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+
 <BorderPane maxHeight="750.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.metrostate.main.StreamLive">
+
     <center>
         <AnchorPane prefHeight="660.0" prefWidth="430.0" style="-fx-background-color: #0b0c0c;" BorderPane.alignment="CENTER">
          <children>
