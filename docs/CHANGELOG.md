@@ -39,9 +39,4 @@
  - [Simeon S] Created logo for the sport application
  - [Simeon S] Updated the Implementation.md
  - [Simeon S] Contributed to the implementation of login/signup functionality
-
-# Milestone 5
-- [Simeon Sodunke] Created FXML file for ticket class used to define the user interface (UI) structure in the application
-- [Simeon Sodunke] Implemented hyperlink to enable the buttons on the ticket page to redirect the user to ticket master main website where tickets can be purchased.
-  
    
