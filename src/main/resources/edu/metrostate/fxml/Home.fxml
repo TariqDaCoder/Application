@@ -102,34 +102,30 @@
    <top>
       <AnchorPane prefHeight="542.0" prefWidth="461.0" style="-fx-background-color: AQUAMARINE;" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="label_homepage" layoutX="10.0" layoutY="611.0" prefHeight="28.0" prefWidth="415.0" style="-fx-background-color: PURPLE;" text="Welcome, check your favorite sports here!" textFill="#c8e429">
-               <font>
-                  <Font size="20.0" />
-               </font></Label>
-            <ImageView fitHeight="211.0" fitWidth="211.0" layoutX="5.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="211.0" fitWidth="211.0" layoutX="6.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/homePage%20GIFs/basketball.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="210.0" fitWidth="210.0" layoutX="223.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="210.0" fitWidth="210.0" layoutX="221.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/homePage%20GIFs/soccer.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="215.0" fitWidth="211.0" layoutX="4.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="215.0" fitWidth="211.0" layoutX="6.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/homePage%20GIFs/football2.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="211.0" fitWidth="210.0" layoutX="223.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="211.0" fitWidth="210.0" layoutX="221.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/homePage%20GIFs/football.gif" />
                </image>
             </ImageView>
-            <Hyperlink layoutX="15.0" layoutY="104.0" onAction="#openNBALink" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: DODGERBLUE;" text="CLICK HERE" textFill="#eb0909" />
-            <Hyperlink layoutX="122.0" layoutY="104.0" onAction="#openNBCLink" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: BLACK;" text="CLICK HERE" textFill="#c6f00c" />
-            <Hyperlink layoutX="229.0" layoutY="104.0" onAction="#openESPNLink" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: RED;" text="CLICK HERE" textFill="#0929eb" />
-            <Hyperlink layoutX="345.0" layoutY="104.0" onAction="#openYahooLink" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: DARKBLUE;" text="CLICK HERE" textFill="#efeb0b" />
+            <Hyperlink layoutX="15.0" layoutY="110.0" onAction="#openNBALink" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: DODGERBLUE;" text="CLICK HERE" textFill="#eb0909" />
+            <Hyperlink layoutX="122.0" layoutY="110.0" onAction="#openNBCLink" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: BLACK;" text="CLICK HERE" textFill="#c6f00c" />
+            <Hyperlink layoutX="229.0" layoutY="110.0" onAction="#openESPNLink" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: RED;" text="CLICK HERE" textFill="#0929eb" />
+            <Hyperlink layoutX="337.0" layoutY="110.0" onAction="#openYahooLink" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: DARKBLUE;" text="CLICK HERE" textFill="#efeb0b" />
             <ImageView fitHeight="103.0" fitWidth="102.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/homePage%20GIFs/nba.jpeg" />
@@ -150,6 +146,11 @@
                   <Image url="@../images/homePage%20GIFs/YAHOO.png" />
                </image>
             </ImageView>
+            <Label fx:id="label_homepage" layoutX="13.0" layoutY="175.0" prefHeight="28.0" prefWidth="415.0" style="-fx-background-color: PURPLE;" text="Welcome, check your favorite sports here!" textFill="#c8e429">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </top>
