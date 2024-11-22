@@ -22,7 +22,7 @@
                <VBox alignment="CENTER" prefWidth="430.0" spacing="10.0">
                   <ImageView fitHeight="200.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/logos/Football.png" />
+                        <Image url="@../images/logos/Football.png"   />
                      </image>
                   </ImageView>
                   <Button fx:id="button_football" maxWidth="300.0" onAction="#openFootballTicketMaster" onMouseClicked="#openFootballTicketMaster" prefHeight="50.0" style="-fx-font-size: 16px; -fx-background-color: #FF0000; -fx-text-fill: white;" text="Football Ticket" />
