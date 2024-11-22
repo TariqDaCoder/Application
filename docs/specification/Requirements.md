@@ -223,8 +223,7 @@ Profile Centered Interaction
 
 ## Use case goal
 
-- End-user able to enter application, view all the sports games that
-are upcoming and be able to click button that will bring them to Ticketmaster to
+- End-user able to enter application, view all the sports and be able to click button that will bring them to Ticketmaster to
 order tickets for the game they select
 
 ## Primary Actor

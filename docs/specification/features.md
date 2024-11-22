@@ -5,4 +5,4 @@
 3. **Sports News Feed**: Deliver the latest sports-related news, updates, and headlines in a customizable news feed.
 4. **User Authentication System**: Allow users to sign in or create an account using their email.
 5. **Social Features**: Support friend management, including adding and interacting with friends within the platform.
-6. **Ticket Purchasing**: Offer users the ability to browse and buy tickets for upcoming sports events directly from the app.
+6. **Ticket Purchasing**: Offer users the ability to browse and buy tickets for upcoming sports events.
