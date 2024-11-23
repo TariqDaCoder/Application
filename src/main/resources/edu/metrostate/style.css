@@ -1,0 +1,32 @@
+.button {
+    -fx-background-radius: 10;
+    -fx-background-color: linear-gradient(to bottom, #FF6347, #FF4500);
+    -fx-text-fill: white;
+}
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #FF4500, #FF6347);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.active-button {
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+}
+
+.image-wrapper {
+    -fx-background-radius: 20; /* Adjust the radius as needed */
+    -fx-background-color: white; /* Optional background behind the image */
+    -fx-padding: 5; /* Optional padding */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 5, 0.5, 0, 0); /* Optional shadow */
+}
+
+.header-rounded {
+    -fx-background-color: #FF0000; /* Header background color */
+    -fx-background-radius: 20; /* Rounded corners */
+    -fx-padding: 10; /* Add some padding inside the header */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-size: 24px; /* Font size for the text */
+    -fx-alignment: center; /* Center-align the text */
+}

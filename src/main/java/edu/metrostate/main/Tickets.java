@@ -8,7 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,6 +29,21 @@ public class Tickets implements Initializable {
     private Button button_tickets;
     @FXML
     private Button button_account;
+
+    @FXML
+    private Hyperlink hyperlink;
+
+    public void openBasketballTicketMaster(ActionEvent event)throws URISyntaxException, IOException {
+        Desktop.getDesktop().browse(new URI("https://www.ticketmaster.com/discover/sports?classificationId=KnvZfZ7vAde"));
+    }
+
+    public void openFootballTicketMaster(ActionEvent event)throws URISyntaxException, IOException{
+        Desktop.getDesktop().browse(new URI("https://www.ticketmaster.com/discover/sports?classificationId=KnvZfZ7vAdE"));
+    }
+
+    public void openSoccerTicketMaster(ActionEvent event)throws URISyntaxException, IOException{
+        Desktop.getDesktop().browse(new URI("https://www.ticketmaster.com/discover/sports?classificationId=KnvZfZ7vA7E"));
+    }
 
 
 
