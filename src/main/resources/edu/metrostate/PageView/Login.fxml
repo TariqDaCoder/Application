@@ -14,15 +14,14 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.metrostate.PageController.Login">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="753.0" prefWidth="430.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="tf_email" layoutX="35.0" layoutY="281.0" prefHeight="45.0" prefWidth="360.0" promptText="example@email.com" />
             <TextField fx:id="tf_password" layoutX="35.0" layoutY="351.0" prefHeight="45.0" prefWidth="360.0" promptText="password" />
             <Button fx:id="button_login" layoutX="140.0" layoutY="441.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="144.0" text="Login" />
-            <Button fx:id="button_createNewAccount" layoutX="244.0" layoutY="789.0" mnemonicParsing="false" text="Create an Account" />
-            <Label alignment="CENTER" layoutX="67.0" layoutY="793.0" text="Don't have an account?" />
-            <Label alignment="CENTER" layoutX="154.0" layoutY="483.0" prefWidth="115.0" text="Forgot password?" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="112.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="button_createNewAccount" layoutX="244.0" layoutY="600.0" mnemonicParsing="false" text="Create an Account" />
+            <Label alignment="CENTER" layoutX="67.0" layoutY="600.0" text="Don't have an account?" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="112.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="115.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/logos/spprt.png" />

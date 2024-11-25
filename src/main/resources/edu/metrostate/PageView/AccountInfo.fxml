@@ -16,8 +16,8 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="button_logout" layoutX="188.0" layoutY="583.0" mnemonicParsing="false" text="Logout" />
-            <Label fx:id="label_email" layoutX="201.0" layoutY="153.0" text="email" />
-            <Label fx:id="label_password" layoutX="190.0" layoutY="213.0" text="password" />
+            <Label fx:id="label_email" layoutX="61.0" layoutY="148.0" text="email" />
+            <Label fx:id="label_password" layoutX="61.0" layoutY="215.0" text="password" />
          </children>
       </AnchorPane>
    </center>
