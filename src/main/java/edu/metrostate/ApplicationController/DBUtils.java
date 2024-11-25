@@ -1,9 +1,9 @@
 package edu.metrostate.ApplicationController;
 
 import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
-import edu.metrostate.main.Login;
+import edu.metrostate.PageController.AccountInfo;
+import edu.metrostate.PageController.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,8 +14,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
-
-import edu.metrostate.main.StreamLive;
 
 
 public class DBUtils {
@@ -45,7 +43,7 @@ public class DBUtils {
     public static void establishSshConnection() {
         String user = "kxayamongkhon";  // SSH username
         String password = "heis82$T138x";   // SSH password
-        String host = "";  // SSH host server db.kxdomain.com  73.62.245.119
+        String host = "76.17.205.230";  // SSH host server db.kxdomain.com  73.62.245.119
         int port = 22;  // SSH port
 
         // Disconnect existing ssh session if it is active
@@ -76,7 +74,7 @@ public class DBUtils {
         String url = "jdbc:mariadb://localhost:" + lport + "/"; // Localhost with forwarded port
         String db = "sportsApplicationDataBase";    // Database name
         String dbUser = "kavin1";   // Database username
-        String dbPasswd = "";    // Database password
+        String dbPasswd = "pHe2Hirai!wisntWic3";    // Database password
 
         try {
             Class.forName(driver);
@@ -96,7 +94,9 @@ public class DBUtils {
 
         try {
             connection = getDatabaseConnection();
-            preparedStatement = connection.prepareStatement("SELECT password, email, profilePicture FROM userAccount WHERE email = ?");
+            preparedStatement = connection.prepareStatement(
+                    "SELECT password, email, profilePicture FROM userAccount WHERE email = ?"
+            );
             preparedStatement.setString(1, email);
             resultSet = preparedStatement.executeQuery();
 
@@ -109,11 +109,19 @@ public class DBUtils {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
                     String retrievedEmail = resultSet.getString("email");
-                    String retrievedProfilePicture = resultSet.getString("profilePicture");
 
                     if (retrievedPassword.equals(password)) {
                         Login.setLoggedIn(true);
-                        changeScene(event, "/edu/metrostate/fxml/AccountInfo.fxml", "AccountInfoLoggedIn");
+                        FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("/edu/metrostate/PageView/AccountInfo.fxml"));
+                        Parent root = loader.load();
+
+                        AccountInfo controller = loader.getController();
+                        controller.setAccountInfo(retrievedEmail, retrievedPassword);
+
+                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        stage.setScene(new Scene(root));
+                        stage.setTitle("Account Info");
+                        stage.show();
                     } else {
                         System.out.println("Password Invalid");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -122,7 +130,7 @@ public class DBUtils {
                     }
                 }
             }
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         } finally {
             try { if (resultSet != null) resultSet.close(); } catch (SQLException e) { e.printStackTrace(); }
@@ -130,6 +138,7 @@ public class DBUtils {
             try { if (connection != null) connection.close(); } catch (SQLException e) { e.printStackTrace(); }
         }
     }
+
 
     // Method to sign up a user
     public static void signUpUser(ActionEvent event, String email, String password) {
@@ -155,14 +164,13 @@ public class DBUtils {
                 psInsert.setString(2, password);
                 psInsert.executeUpdate();
 
-                // Show success alert
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                 successAlert.setTitle("Success");
                 successAlert.setHeaderText(null);
                 successAlert.setContentText("Your account has been created successfully!");
                 successAlert.showAndWait();
 
-                changeScene(event, "/edu/metrostate/fxml/Login.fxml", "Login");
+                changeScene(event, "/edu/metrostate/PageView/Login.fxml", "Login");
             }
         } catch (SQLException e) {
             e.printStackTrace();

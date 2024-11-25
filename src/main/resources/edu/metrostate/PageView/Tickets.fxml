@@ -11,17 +11,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.metrostate.main.AccountInfo">
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="label_account" layoutX="164.0" layoutY="299.0" text="This is the account page" />
-            <Button fx:id="button_logout" layoutX="202.0" layoutY="368.0" mnemonicParsing="false" text="Logout" />
-         </children>
-      </AnchorPane>
-   </center>
-   <bottom>
-      <AnchorPane prefHeight="100.0" prefWidth="430.0" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.metrostate.PageController.Tickets">
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="label_tickets" layoutX="164.0" layoutY="299.0" text="This is the tickets page" />
+            </children>
+        </AnchorPane>
+    </center>
+    <bottom>
+        <AnchorPane prefHeight="100.0" prefWidth="430.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="107.0" prefWidth="430.0" style="-fx-background-color: #0b0c0c;">
                <children>
@@ -104,5 +103,5 @@
             </HBox>
             <Line endX="284.3333435058594" endY="95.3333511352539" startX="149.66664123535156" startY="95.3333511352539" stroke="#fdfdfd" strokeLineCap="ROUND" strokeWidth="4.0" />
          </children></AnchorPane>
-   </bottom>
+    </bottom>
 </BorderPane>

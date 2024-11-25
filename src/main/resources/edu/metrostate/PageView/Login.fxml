@@ -12,18 +12,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.metrostate.main.CreateAccount">
-    <center>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-                <Button fx:id="button_createAccount" layoutX="166.0" layoutY="328.0" mnemonicParsing="false" text="Create Account" />
-            <TextField fx:id="tf_email" layoutX="102.0" layoutY="240.0" prefHeight="25.0" prefWidth="234.0" promptText="enter email" />
-            <TextField fx:id="tf_password" layoutX="102.0" layoutY="282.0" prefHeight="25.0" prefWidth="234.0" promptText="enter password" />
-            </children>
-        </AnchorPane>
-    </center>
-    <bottom>
-        <AnchorPane prefHeight="91.0" prefWidth="430.0" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="750.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.metrostate.PageController.Login">
+   <center>
+      <AnchorPane prefHeight="750.0" prefWidth="430.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="tf_email" layoutX="35.0" layoutY="281.0" prefHeight="45.0" prefWidth="360.0" promptText="example@email.com" />
+            <TextField fx:id="tf_password" layoutX="35.0" layoutY="351.0" prefHeight="45.0" prefWidth="360.0" promptText="password" />
+            <Button fx:id="button_login" layoutX="140.0" layoutY="441.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="144.0" text="Login" />
+            <Button fx:id="button_createNewAccount" layoutX="244.0" layoutY="610.0" mnemonicParsing="false" text="Create an Account" />
+            <Label alignment="CENTER" layoutX="67.0" layoutY="615.0" text="Don't have an account?" />
+            <Label alignment="CENTER" layoutX="154.0" layoutY="483.0" prefWidth="115.0" text="Forgot password?" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="112.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="115.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logos/spprt.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="0.0" prefWidth="430.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="107.0" prefWidth="430.0" style="-fx-background-color: #0b0c0c;">
                <children>
@@ -106,5 +115,5 @@
             </HBox>
             <Line endX="284.3333435058594" endY="95.3333511352539" startX="149.66664123535156" startY="95.3333511352539" stroke="#fdfdfd" strokeLineCap="ROUND" strokeWidth="4.0" />
          </children></AnchorPane>
-    </bottom>
+   </bottom>
 </BorderPane>

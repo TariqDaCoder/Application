@@ -1,31 +1,26 @@
-package edu.metrostate.main;
+package edu.metrostate.PageController;
 
 import edu.metrostate.ApplicationController.DBUtils;
-import edu.metrostate.ApplicationController.GameController;
 import edu.metrostate.ApplicationModel.Game;
-import edu.metrostate.ApplicationView.GameView;
-import edu.metrostate.jsonPackages.GameAPIClient;
+import edu.metrostate.ApplicationController.GameAPIClient;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+
+import java.net.URL;
+import java.util.*;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
-import java.net.URI;
-import java.net.URL;
-import java.util.*;
-import java.awt.Desktop;
-
-
-public class StreamLive implements Initializable {
+public class StreamUpcoming implements Initializable {
 
     @FXML
     private Button button_home;
@@ -44,13 +39,12 @@ public class StreamLive implements Initializable {
     private Button button_upcoming;
     @FXML
     private Button button_browse;
-
     @FXML
     private Label label_noGamesFound;
 
 
     @FXML
-    public ListView<Game> liveGameListView;
+    public ListView<Game> scheduledGameListView;
 
 
     @Override
@@ -58,33 +52,25 @@ public class StreamLive implements Initializable {
 
         try {
             GameAPIClient gameClient = new GameAPIClient();
-            List<Game> liveFootballGames = gameClient.fetchLiveFootballGames();
-            List<Game> liveBasketballGames = gameClient.fetchLiveBasketballGames();
+            List<Game> scheduledBasketballGames = gameClient.fetchScheduledBasketballGames();
+            List<Game> scheduledFootballGames = gameClient.fetchScheduledFootballGames();
 
-            List<Game> liveGames = new ArrayList<>();
-            liveGames.addAll(liveFootballGames);
-            liveGames.addAll(liveBasketballGames);
+            List<Game> scheduledGames = new ArrayList<>();
+            scheduledGames.addAll(scheduledBasketballGames);
+            scheduledGames.addAll(scheduledFootballGames);
 
-
-            if (liveGames.isEmpty()) {
-                label_noGamesFound.setText("No live games");
-                liveGameListView.setVisible(false);
+            if (scheduledGames.isEmpty()) {
+                label_noGamesFound.setText("No Scheduled games");
+                scheduledGameListView.setVisible(false);
             } else {
                 label_noGamesFound.setText("");
-                liveGameListView.setVisible(true);
+                scheduledGameListView.setVisible(true);
 
-                liveGameListView.setCellFactory(listView -> new ListCell<>() {
+
+                scheduledGameListView.setCellFactory(listView -> new ListCell<>() {
                     private final VBox vbox = new VBox(10);
-
                     private final ImageView awayLogo = new ImageView();
-                    private final Label awayTeamName = new Label();
-                    private final Label awayTeamPoints = new Label();
-
                     private final ImageView homeLogo = new ImageView();
-                    private final Label homeTeamName = new Label();
-                    private final Label homeTeamPoints = new Label();
-
-
                     private final Label shortNameLabel = new Label();
                     private final Label shortDetailLabel = new Label();
                     private final Label broadcastLabel = new Label();
@@ -94,50 +80,30 @@ public class StreamLive implements Initializable {
                     @Override
                     protected void updateItem(Game game, boolean empty) {
                         super.updateItem(game, empty);
-
                         if (empty || game == null) {
                             setText(null);
                             setGraphic(null);
                         } else {
+
                             shortNameLabel.setText(game.getShortName());
                             shortDetailLabel.setText(game.getShortDetail());
-
-                            String broadcastLink = GameController.getGameType(game);
-
                             broadcastLabel.setText("Broadcast: " + game.getBroadcast());
 
-                            broadcastLabel.setOnMouseClicked(event -> openLink(broadcastLink));
-                            broadcastLabel.setStyle("-fx-text-fill: blue; -fx-underline: true;");
 
-
-                            awayTeamName.setText(game.getAwayTeamDisplayName());
-                            homeTeamName.setText(game.getHomeTeamDisplayName());
-
-                            // Check if game is an instance of LiveGame and cast it
-                            if (game instanceof Game.LiveGame) {
-                                Game.LiveGame liveGame = (Game.LiveGame) game;  // Cast game to LiveGame
-                                awayTeamPoints.setText(liveGame.getAwayPoints());
-                                homeTeamPoints.setText(liveGame.getHomePoints());
-                            } else {
-                                awayTeamPoints.setText("N/A");
-                                homeTeamPoints.setText("N/A");
-                            }
-
-                            loadImage(game.getAwayTeamLogo(), awayLogo);
-                            loadImage(game.getHomeTeamLogo(), homeLogo);
+                            loadImageAsync(game.getAwayTeamLogo(), awayLogo);
+                            loadImageAsync(game.getHomeTeamLogo(), homeLogo);
 
                             awayLogo.setFitWidth(25);
                             awayLogo.setPreserveRatio(true);
                             homeLogo.setFitWidth(25);
                             homeLogo.setPreserveRatio(true);
 
-                            vbox.getChildren().setAll(homeLogo, homeTeamName, homeTeamPoints, awayLogo, awayTeamName, awayTeamPoints, shortNameLabel, shortDetailLabel, broadcastLabel);
+                            vbox.getChildren().setAll(homeLogo, awayLogo, shortNameLabel, shortDetailLabel, broadcastLabel);
                             setGraphic(vbox);
                         }
                     }
 
-
-                    private void loadImage(String url, ImageView imageView) {
+                    private void loadImageAsync(String url, ImageView imageView) {
                         // Check cache first
                         if (imageCache.containsKey(url)) {
                             imageView.setImage(imageCache.get(url));
@@ -160,23 +126,17 @@ public class StreamLive implements Initializable {
                     }
                 });
 
-                liveGameListView.getItems().addAll(liveGames);
+                scheduledGameListView.getItems().addAll(scheduledGames);
             }
-
         } catch (Exception e) {
             System.out.println("Error fetching games: " + e.getMessage());
             e.printStackTrace();
         }
 
-
-
-
-
-
         button_home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Home.fxml", "Home");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/Home.fxml", "Home");
             }
         });
 
@@ -184,21 +144,21 @@ public class StreamLive implements Initializable {
         button_scores.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Scores.fxml", "Scores");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/Scores.fxml", "Scores");
             }
         });
 
         button_stream.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamLive.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/StreamLive.fxml", "Stream");
             }
         });
 
         button_tickets.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Tickets.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/Tickets.fxml", "Stream");
             }
         });
 
@@ -206,9 +166,9 @@ public class StreamLive implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if (!Login.isLoggedIn()) {
-                    DBUtils.changeScene(event, "/edu/metrostate/fxml/Login.fxml", "Login");
+                    DBUtils.changeScene(event, "/edu/metrostate/PageView/Login.fxml", "Login");
                 } else {
-                    DBUtils.changeScene(event, "/edu/metrostate/fxml/AccountInfo.fxml", "Account");
+                    DBUtils.changeScene(event, "/edu/metrostate/PageView/AccountInfo.fxml", "Account");
                 }
             }
         });
@@ -216,31 +176,24 @@ public class StreamLive implements Initializable {
         button_live.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamLive.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/StreamLive.fxml", "Stream");
             }
         });
+
 
         button_upcoming.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamUpcoming.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/StreamUpcoming.fxml", "Stream");
             }
         });
 
         button_browse.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamBrowse.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/StreamBrowse.fxml", "Stream");
             }
         });
-    }
 
-
-    private static void openLink(String url) {
-        try {
-            Desktop.getDesktop().browse(new URI(url));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

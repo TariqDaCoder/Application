@@ -8,13 +8,12 @@ import javafx.scene.control.TextField;
 
 public class LoginController {
     @FXML
-    private TextField usernameField; // Injected from FXML
+    private TextField usernameField;
     @FXML
-    private PasswordField passwordField; // Injected from FXML
+    private PasswordField passwordField;
     @FXML
-    private Label feedbackLabel; // Injected from FXML
+    private Label feedbackLabel;
 
-    // Method to handle login button action
     @FXML
     public void handleLogin() {
         String username = usernameField.getText();
@@ -29,7 +28,7 @@ public class LoginController {
         }
     }
 
-    // Method to validate credentials
+
     public boolean isValidCredentials(String username, String password) {
         for (User user : User.getUserList()) {
             if (user.getUserName().equals(username) && user.getPassword().equals(password)) {

@@ -1,10 +1,10 @@
 package edu.metrostate.ApplicationModel;
 
 public class BasketBallTeam extends SportsTeam {
-    private String teamRecord; // team's win-loss record
+    private String teamRecord;
 
     public BasketBallTeam(int teamID, String teamName, String teamLogo) {
-        super(teamID, teamName, teamLogo); // Call the superclass constructor
+        super(teamID, teamName, teamLogo);
     }
 
     // getter and setter for teamID

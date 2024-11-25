@@ -1,4 +1,4 @@
-package edu.metrostate.jsonPackages;
+package edu.metrostate.ApplicationController;
 
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -24,7 +24,6 @@ public class TeamAPIClient {
             data = reader.read();
         }
 
-        // Parse JSON response
         JSONObject jsonResponse = new JSONObject(jsonString.toString());
         JSONArray leaguesArray = jsonResponse.getJSONArray("sports").getJSONObject(0).getJSONArray("leagues");
         JSONArray teamsArray = leaguesArray.getJSONObject(0).getJSONArray("teams");
@@ -36,14 +35,11 @@ public class TeamAPIClient {
             String teamName = teamObject.getString("displayName");
             int teamID = teamObject.getInt("id");
 
-            // Get the logos array
             JSONArray logosArray = teamObject.getJSONArray("logos");
-            String teamLogo = logosArray.getJSONObject(0).getString("href"); // Get the href for the logo
+            String teamLogo = logosArray.getJSONObject(0).getString("href");
 
-            // Create the FootBallTeam object
             teams[i] = new FootBallTeam(teamID, teamName, teamLogo);
 
-            // Outputting the details of the team
             System.out.println("Team ID: " + teamID);
             System.out.println("Team Name: " + teamName);
             System.out.println("Team Logo: " + teamLogo);
@@ -68,7 +64,6 @@ public class TeamAPIClient {
             data = reader.read();
         }
 
-        // Parse JSON response
         JSONObject jsonResponse = new JSONObject(jsonString.toString());
         JSONArray leaguesArray = jsonResponse.getJSONArray("sports").getJSONObject(0).getJSONArray("leagues");
         JSONArray teamsArray = leaguesArray.getJSONObject(0).getJSONArray("teams");
@@ -80,14 +75,11 @@ public class TeamAPIClient {
             String teamName = teamObject.getString("displayName");
             int teamID = teamObject.getInt("id");
 
-            // Get the logos array
             JSONArray logosArray = teamObject.getJSONArray("logos");
-            String teamLogo = logosArray.getJSONObject(0).getString("href"); // Get the href for the logo
+            String teamLogo = logosArray.getJSONObject(0).getString("href");
 
-            // Create the BasketBallTeam object
             teams[i] = new BasketBallTeam(teamID, teamName, teamLogo);
 
-            // Outputting the details of the team
             System.out.println("Team ID: " + teamID);
             System.out.println("Team Name: " + teamName);
             System.out.println("Team Logo: " + teamLogo);

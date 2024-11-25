@@ -1,4 +1,4 @@
-package edu.metrostate.jsonPackages;
+package edu.metrostate.ApplicationController;
 
 import edu.metrostate.ApplicationModel.Game;
 import edu.metrostate.ApplicationModel.Sport;
@@ -77,13 +77,18 @@ public class GameAPIClient {
                 String awayTeamLogo = awayTeam.getJSONObject("team").optString("logo", "");
                 String homeTeamLogo = homeTeam.getJSONObject("team").optString("logo", "");
 
+                String date = event.optString("date", "");
+
+                String awayTeamPoints = awayTeam.optString("score", "N/A");
+                String homeTeamPoints = homeTeam.optString("score", "N/A");
+
                 Game game = new Game(sportType, statusName, name, shortName, detail, shortDetail, broadcast,
-                        awayTeam.getJSONObject("team").getString("displayName"),
-                        homeTeam.getJSONObject("team").getString("displayName"),
+                        awayTeam.getJSONObject("team").getString("displayName"), awayTeamPoints,
+                        homeTeam.getJSONObject("team").getString("displayName"),homeTeamPoints,
                         awayTeam.getJSONObject("team").getString("id"),
                         homeTeam.getJSONObject("team").getString("id"),
                         awayTeamLogo,
-                        homeTeamLogo);
+                        homeTeamLogo, date);
                 games.add(game);
             }
         }
@@ -245,6 +250,8 @@ public class GameAPIClient {
                 String awayTeamPoints = awayTeam.optString("score", "N/A");
                 String homeTeamPoints = homeTeam.optString("score", "N/A");
 
+                String date = event.optString("date", "");
+
                 Game.LiveGame game = new Game.LiveGame(sportType, statusName, name, shortName, detail, shortDetail, broadcast,
                         awayTeam.getJSONObject("team").getString("displayName"),
                         awayTeamPoints + " PTS",
@@ -253,7 +260,7 @@ public class GameAPIClient {
                         awayTeam.getJSONObject("team").getString("id"),
                         homeTeam.getJSONObject("team").getString("id"),
                         awayTeamLogo,
-                        homeTeamLogo);
+                        homeTeamLogo, date);
                 games.add(game);
             }
         }
@@ -353,13 +360,17 @@ public class GameAPIClient {
                     }
                 }
 
+                String date = event.optString("date", "");
+
+
+
                 Game game = new Game(sportType, statusName, name, shortName, detail, shortDetail, broadcast,
-                        awayTeam.getJSONObject("team").getString("displayName"),
-                        homeTeam.getJSONObject("team").getString("displayName"),
+                        awayTeam.getJSONObject("team").getString("displayName"), awayTeamPoints,
+                        homeTeam.getJSONObject("team").getString("displayName"), homeTeamPoints,
                         awayTeam.getJSONObject("team").getString("id"),
                         homeTeam.getJSONObject("team").getString("id"),
                         awayTeamLogo,
-                        homeTeamLogo);
+                        homeTeamLogo, date);
                 games.add(game);
             }
         }
@@ -457,6 +468,8 @@ public class GameAPIClient {
                     }
                 }
 
+                String date = event.optString("date", "");
+
                 Game.LiveGame game = new Game.LiveGame(sportType, statusName, name, shortName, detail, shortDetail, broadcast,
                         awayTeam.getJSONObject("team").getString("displayName"),
                         awayTeamPoints + " PTS",
@@ -465,7 +478,7 @@ public class GameAPIClient {
                         awayTeam.getJSONObject("team").getString("id"),
                         homeTeam.getJSONObject("team").getString("id"),
                         awayTeamLogo,
-                        homeTeamLogo);
+                        homeTeamLogo, date);
                 games.add(game);
             }
         }

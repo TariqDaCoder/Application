@@ -1,27 +1,24 @@
-package edu.metrostate.main;
+package edu.metrostate.PageController;
 
 import edu.metrostate.ApplicationController.DBUtils;
-import edu.metrostate.ApplicationController.GameController;
+import edu.metrostate.ApplicationController.GameAPIClient;
 import edu.metrostate.ApplicationModel.Game;
-import edu.metrostate.jsonPackages.GameAPIClient;
+import edu.metrostate.ApplicationModel.Sport;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.util.StringConverter;
 
 import java.net.URL;
 import java.util.*;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-
-public class StreamUpcoming implements Initializable {
+public class StreamBrowse implements Initializable {
 
     @FXML
     private Button button_home;
@@ -40,35 +37,85 @@ public class StreamUpcoming implements Initializable {
     private Button button_upcoming;
     @FXML
     private Button button_browse;
+
     @FXML
     private Label label_noGamesFound;
 
 
     @FXML
-    public ListView<Game> scheduledGameListView;
+    private TextField textField_searchByTeam;
+    @FXML
+    private ChoiceBox<Sport> choiceBox_searchBySport;
+    @FXML
+    private Button button_searchGames;
+
+
+    private String searchByTeam;
+    private Sport searchBySport;
+
+
+
+    @FXML
+    public ListView<Game> scoreListView;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-            GameAPIClient gameClient = new GameAPIClient();
-            List<Game> scheduledBasketballGames = gameClient.fetchScheduledBasketballGames();
-            List<Game> scheduledFootballGames = gameClient.fetchScheduledFootballGames();
+            List<Game> Games = getGames();
 
-            List<Game> scheduledGames = new ArrayList<>();
-            scheduledGames.addAll(scheduledBasketballGames);
-            scheduledGames.addAll(scheduledFootballGames);
-
-            if (scheduledGames.isEmpty()) {
+            if (Games.isEmpty()) {
                 label_noGamesFound.setText("No Scheduled games");
-                scheduledGameListView.setVisible(false);
+                scoreListView.setVisible(false);
             } else {
                 label_noGamesFound.setText("");
-                scheduledGameListView.setVisible(true);
+                scoreListView.setVisible(true);
 
+                choiceBox_searchBySport.getItems().addAll(Sport.getSportsList());
+                choiceBox_searchBySport.setConverter(new StringConverter<Sport>() {
+                    @Override
+                    public String toString(Sport sport) {
+                        return sport != null ? sport.getSportName() : "";
+                    }
 
-                scheduledGameListView.setCellFactory(listView -> new ListCell<>() {
+                    @Override
+                    public Sport fromString(String string) {
+                        return Sport.getSportsList().stream()
+                                .filter(sport -> sport.getSportName().equals(string))
+                                .findFirst()
+                                .orElse(null);
+                    }
+                });
+
+                // Add action for the search button
+                button_searchGames.setOnAction(event -> {
+                    try {
+                        Sport selectedSport = choiceBox_searchBySport.getValue();
+                        String searchByTeam = textField_searchByTeam.getText().trim().toLowerCase();
+
+                        List<Game> filteredGames = Games.stream().filter(game -> {
+                                    boolean sportMatches = (selectedSport == null || selectedSport.getSportName().equalsIgnoreCase(game.getSport().getSportName()));
+                                    boolean teamMatches = (searchByTeam.isEmpty() || game.getHomeTeamDisplayName().toLowerCase().contains(searchByTeam) || game.getAwayTeamDisplayName().toLowerCase().contains(searchByTeam));
+                                    return sportMatches && teamMatches;}).toList();
+
+                        scoreListView.getItems().clear();
+                        scoreListView.getItems().addAll(filteredGames);
+
+                        if (filteredGames.isEmpty()) {
+                            label_noGamesFound.setText("No games match the search criteria.");
+                            scoreListView.setVisible(false);
+                        } else {
+                            label_noGamesFound.setText("");
+                            scoreListView.setVisible(true);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Error while filtering games: " + e.getMessage());
+                        label_noGamesFound.setText("An error occurred during search.");
+                    }
+                });
+
+                scoreListView.setCellFactory(listView -> new ListCell<>() {
                     private final VBox vbox = new VBox(10);
                     private final ImageView awayLogo = new ImageView();
                     private final ImageView homeLogo = new ImageView();
@@ -85,11 +132,9 @@ public class StreamUpcoming implements Initializable {
                             setText(null);
                             setGraphic(null);
                         } else {
-
                             shortNameLabel.setText(game.getShortName());
                             shortDetailLabel.setText(game.getShortDetail());
                             broadcastLabel.setText("Broadcast: " + game.getBroadcast());
-
 
                             loadImageAsync(game.getAwayTeamLogo(), awayLogo);
                             loadImageAsync(game.getHomeTeamLogo(), homeLogo);
@@ -105,7 +150,6 @@ public class StreamUpcoming implements Initializable {
                     }
 
                     private void loadImageAsync(String url, ImageView imageView) {
-                        // Check cache first
                         if (imageCache.containsKey(url)) {
                             imageView.setImage(imageCache.get(url));
                         } else {
@@ -127,17 +171,21 @@ public class StreamUpcoming implements Initializable {
                     }
                 });
 
-                scheduledGameListView.getItems().addAll(scheduledGames);
+                scoreListView.getItems().addAll(Games);
             }
+
         } catch (Exception e) {
             System.out.println("Error fetching games: " + e.getMessage());
             e.printStackTrace();
+            label_noGamesFound.setText("An error occurred while fetching games.");
         }
+
+
 
         button_home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Home.fxml", "Home");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/Home.fxml", "Home");
             }
         });
 
@@ -145,21 +193,21 @@ public class StreamUpcoming implements Initializable {
         button_scores.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Scores.fxml", "Scores");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/Scores.fxml", "Scores");
             }
         });
 
         button_stream.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamLive.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/StreamLive.fxml", "Stream");
             }
         });
 
         button_tickets.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Tickets.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/Tickets.fxml", "Stream");
             }
         });
 
@@ -167,9 +215,9 @@ public class StreamUpcoming implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if (!Login.isLoggedIn()) {
-                    DBUtils.changeScene(event, "/edu/metrostate/fxml/Login.fxml", "Login");
+                    DBUtils.changeScene(event, "/edu/metrostate/PageView/Login.fxml", "Login");
                 } else {
-                    DBUtils.changeScene(event, "/edu/metrostate/fxml/AccountInfo.fxml", "Account");
+                    DBUtils.changeScene(event, "/edu/metrostate/PageView/AccountInfo.fxml", "Account");
                 }
             }
         });
@@ -177,7 +225,7 @@ public class StreamUpcoming implements Initializable {
         button_live.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamLive.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/StreamLive.fxml", "Stream");
             }
         });
 
@@ -185,16 +233,33 @@ public class StreamUpcoming implements Initializable {
         button_upcoming.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamUpcoming.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/StreamUpcoming.fxml", "Stream");
             }
         });
 
         button_browse.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamBrowse.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/StreamBrowse.fxml", "Stream");
             }
         });
 
+    }
+
+    private static List<Game> getGames() throws Exception {
+        GameAPIClient gameClient = new GameAPIClient();
+
+        List<Game> scheduledFootballGames = gameClient.fetchScheduledFootballGames();
+        List<Game> scheduledBasketballGames = gameClient.fetchScheduledBasketballGames();
+        List<Game> liveBasketballGames = gameClient.fetchLiveBasketballGames();
+        List<Game> liveFootballGamesGames = gameClient.fetchLiveFootballGames();
+
+
+        List<Game> Games = new ArrayList<>();
+        Games.addAll(scheduledFootballGames);
+        Games.addAll(scheduledBasketballGames);
+        Games.addAll(liveBasketballGames);
+        Games.addAll(liveFootballGamesGames);
+        return Games;
     }
 }

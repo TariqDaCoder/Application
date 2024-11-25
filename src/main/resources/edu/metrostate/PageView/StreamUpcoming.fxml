@@ -1,38 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="750.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.metrostate.main.Login">
-   <center>
-      <AnchorPane prefHeight="750.0" prefWidth="430.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="tf_email" layoutX="35.0" layoutY="281.0" prefHeight="45.0" prefWidth="360.0" promptText="example@email.com" />
-            <TextField fx:id="tf_password" layoutX="35.0" layoutY="351.0" prefHeight="45.0" prefWidth="360.0" promptText="password" />
-            <Button fx:id="button_login" layoutX="140.0" layoutY="441.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="144.0" text="Login" />
-            <Button fx:id="button_createNewAccount" layoutX="244.0" layoutY="610.0" mnemonicParsing="false" text="Create an Account" />
-            <Label alignment="CENTER" layoutX="67.0" layoutY="615.0" text="Don't have an account?" />
-            <Label alignment="CENTER" layoutX="154.0" layoutY="483.0" prefWidth="115.0" text="Forgot password?" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="112.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="115.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/logos/spprt.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </center>
-   <bottom>
-      <AnchorPane prefHeight="0.0" prefWidth="430.0" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.metrostate.PageController.StreamUpcoming">
+    <center>
+        <AnchorPane prefHeight="663.0" prefWidth="430.0" style="-fx-background-color: #0b0c0c;" BorderPane.alignment="CENTER">
+            <children>
+                <ListView fx:id="scheduledGameListView" layoutX="53.0" layoutY="38.0" prefHeight="400.0" prefWidth="323.0" />
+            <Label fx:id="label_noGamesFound" layoutX="179.0" layoutY="217.0" prefHeight="41.0" prefWidth="72.0" />
+            </children>
+        </AnchorPane>
+    </center>
+    <bottom>
+        <AnchorPane prefHeight="0.0" prefWidth="430.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="107.0" prefWidth="430.0" style="-fx-background-color: #0b0c0c;">
                <children>
@@ -114,6 +107,55 @@
                </children>
             </HBox>
             <Line endX="284.3333435058594" endY="95.3333511352539" startX="149.66664123535156" startY="95.3333511352539" stroke="#fdfdfd" strokeLineCap="ROUND" strokeWidth="4.0" />
-         </children></AnchorPane>
-   </bottom>
+         </children>
+        </AnchorPane>
+    </bottom>
+    <top>
+        <AnchorPane prefHeight="145.0" prefWidth="432.0" style="-fx-background-color: #0b0c0c;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox layoutY="109.0" prefHeight="40.0" prefWidth="430.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="button_live" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="93.0" style="-fx-background-color: transparent; -fx-font-weight: BOLD;" text="Live" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="NONE" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <Region prefHeight="40.0" prefWidth="95.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="button_upcoming" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: transparent; -fx-font-weight: bold;" text="Upcoming" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Line endX="615.5391235351562" endY="-8.279695510864258" startX="530.0391235351562" startY="-8.279695510864258" stroke="#ffde59" strokeLineCap="ROUND" strokeWidth="3.0" />
+                     </children>
+                  </VBox>
+                  <Region prefHeight="37.0" prefWidth="91.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="button_browse" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="91.0" style="-fx-background-color: transparent; -fx-font-weight: bold;" text="Browse" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <ImageView fitHeight="53.0" fitWidth="109.0" layoutX="161.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logos/spprt.png" />
+               </image>
+            </ImageView>
+         </children>
+        </AnchorPane>
+    </top>
 </BorderPane>

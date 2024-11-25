@@ -22,7 +22,7 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainClass = 'edu.metrostate.main.Home'
+    mainClass = 'edu.metrostate.PageController.Home'
     mainModule = 'Application'
 }
 

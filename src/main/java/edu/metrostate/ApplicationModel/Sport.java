@@ -1,36 +1,32 @@
 package edu.metrostate.ApplicationModel;
 
-import edu.metrostate.ApplicationView.SportsTeamView;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Sport {
 
-    private static final List<Sport> sportsList; // Static list to hold sport instances
+    private static final List<Sport> sportsList;
 
-    private final HashMap<String, List<SportsTeam>> teamsByCategory; // HashMap to hold teams by category
-    private final List<Game> games; // List to track games for this sport
+    private final HashMap<String, List<SportsTeam>> teamsByCategory;
+    private final List<Game> games;
     private int sportID;
     private String sportName;
 
-    // Static block to initialize the sportsList with Football and Basketball
+
     static {
         sportsList = new ArrayList<>();
         sportsList.add(new Sport(1, "Football"));
         sportsList.add(new Sport(2, "Basketball"));
     }
 
-    // Constructor
     public Sport(int sportID, String sportName) {
         this.sportID = sportID;
         this.sportName = sportName;
-        this.teamsByCategory = new HashMap<>(); // Initialize the map
-        this.games = new ArrayList<>(); // Initialize the list of games
+        this.teamsByCategory = new HashMap<>();
+        this.games = new ArrayList<>();
     }
 
-    // Getters and setters for ID
     public int getSportID() {
         return this.sportID;
     }
@@ -39,17 +35,13 @@ public class Sport {
         this.sportID = sportID;
     }
 
-    // Getters and setters for sportName
     public String getSportName() {
         return this.sportName;
     }
-
-    // Static method to retrieve the list of sports
     public static List<Sport> getSportsList() {
         return sportsList;
     }
 
-    // Method to add teams to a specific category
     public void addTeams(String category, SportsTeam[] teams) {
         List<SportsTeam> teamList = teamsByCategory.computeIfAbsent(category, k -> new ArrayList<>());
         for (SportsTeam team : teams) {
@@ -57,12 +49,10 @@ public class Sport {
         }
     }
 
-    // Method to retrieve teams by category
     public List<SportsTeam> getTeamsByCategory(String category) {
-        return teamsByCategory.getOrDefault(category, new ArrayList<>()); // Return an empty list if category doesn't exist
+        return teamsByCategory.getOrDefault(category, new ArrayList<>());
     }
 
-    // Method to get all teams
     public List<SportsTeam> getTeams() {
         List<SportsTeam> allTeams = new ArrayList<>();
         for (List<SportsTeam> teamList : teamsByCategory.values()) {
@@ -71,23 +61,14 @@ public class Sport {
         return allTeams;
     }
 
-    // Method to display teams using SportsTeamView
-    public void showTeams() {
-        SportsTeamView view = new SportsTeamView();
-        view.displayTeams(sportName, getTeams()); // Pass the sport name and the list of all teams
-    }
-
-    // Method to add a game to this sport
     public void addGame(Game game) {
         games.add(game);
     }
 
-    // Method to retrieve the list of games
     public List<Game> getGames() {
         return games;
     }
 
-    // Static method to find a sport by name
     public static Sport findByName(String name) {
         return sportsList.stream()
                 .filter(sport -> sport.sportName.equalsIgnoreCase(name))

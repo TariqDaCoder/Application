@@ -1,4 +1,4 @@
-package edu.metrostate.main;
+package edu.metrostate.PageController;
 
 import edu.metrostate.ApplicationController.DBUtils;
 import javafx.application.Application;
@@ -9,13 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AccountInfo implements Initializable {
+public class Home extends Application implements Initializable {
 
     @FXML
     private Button button_home;
@@ -27,9 +27,20 @@ public class AccountInfo implements Initializable {
     private Button button_tickets;
     @FXML
     private Button button_account;
-    @FXML
-    private Button button_logout;
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        try{
+        Parent root = FXMLLoader.load(getClass().getResource("/edu/metrostate/PageView/Home.fxml"));
+        Scene scene = new Scene(root);
+
+        primaryStage.setTitle("Home Page");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    } catch (Exception e){
+        e.printStackTrace();
+    }
+    }
 
 
     @Override
@@ -38,53 +49,46 @@ public class AccountInfo implements Initializable {
         button_home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Home.fxml", "Home");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/Home.fxml", "Home");
             }
         });
-
 
         button_scores.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Scores.fxml", "Scores");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/Scores.fxml", "Scores");
             }
         });
 
         button_stream.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamLive.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/StreamLive.fxml", "Stream");
             }
         });
 
         button_tickets.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Tickets.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/Tickets.fxml", "Stream");
             }
         });
 
         button_account.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (!Login.isLoggedIn() ) {
-                    // User is not logged in, redirect to the login page
-                    DBUtils.changeScene(event, "/edu/metrostate/fxml/Login.fxml", "Login");
+                if (!Login.isLoggedIn()) {
+                    DBUtils.changeScene(event, "/edu/metrostate/PageView/Login.fxml", "Login");
                 } else {
-                    // User is logged in, redirect to the account page
-                    DBUtils.changeScene(event, "/edu/metrostate/fxml/AccountInfo.fxml", "Account");
+                    DBUtils.changeScene(event, "/edu/metrostate/PageView/AccountInfo.fxml", "Account");
                 }
             }
         });
 
-        button_logout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Login.setLoggedIn(false);
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Login.fxml", "Login");
-            }
-        });
+    }
 
+    public static void main(String[] args) {
+        launch(args);
     }
 
 

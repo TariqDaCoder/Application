@@ -1,7 +1,6 @@
 package edu.metrostate.ApplicationController;
 
 import edu.metrostate.ApplicationModel.Game;
-import edu.metrostate.jsonPackages.GameAPIClient;
 
 import java.util.List;
 

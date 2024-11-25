@@ -1,4 +1,4 @@
-package edu.metrostate.main;
+package edu.metrostate.PageController;
 
 import edu.metrostate.ApplicationController.DBUtils;
 import javafx.event.ActionEvent;
@@ -45,7 +45,7 @@ public class Login  implements Initializable {
         button_home.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Home.fxml", "Home");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/Home.fxml", "Home");
             }
         });
 
@@ -53,28 +53,28 @@ public class Login  implements Initializable {
         button_scores.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Scores.fxml", "Scores");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/Scores.fxml", "Scores");
             }
         });
 
         button_stream.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/StreamLive.fxml", "Stream");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/StreamLive.fxml", "Stream");
             }
         });
 
         button_tickets.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/Tickets.fxml", "Tickets");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/Tickets.fxml", "Tickets");
             }
         });
 
         button_account.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/AccountInfo.fxml", "Account");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/AccountInfo.fxml", "Account");
             }
         });
 
@@ -82,9 +82,9 @@ public class Login  implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if (!Login.isLoggedIn()) {
-                    DBUtils.changeScene(event, "/edu/metrostate/fxml/Login.fxml", "Login");
+                    DBUtils.changeScene(event, "/edu/metrostate/PageView/Login.fxml", "Login");
                 } else {
-                    DBUtils.changeScene(event, "/edu/metrostate/fxml/AccountInfo.fxml", "Account");
+                    DBUtils.changeScene(event, "/edu/metrostate/PageView/AccountInfo.fxml", "Account");
                 }
             }
         });
@@ -99,7 +99,7 @@ public class Login  implements Initializable {
         button_createNewAccount.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/edu/metrostate/fxml/CreateAccount.fxml", "CreateAccount");
+                DBUtils.changeScene(event, "/edu/metrostate/PageView/CreateAccount.fxml", "CreateAccount");
             }
         });
     }
