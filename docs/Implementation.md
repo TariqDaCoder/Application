@@ -17,7 +17,7 @@ This feature allows the user to choose an option of what sport ticket they wish 
 ## Upcoming game/schedule
 Navigating to the upcoming game tab under the live page, allows user to see a list of upcoming games of their teams and sport
 
-#Phase 3
+# Phase 3
 
 ## Home/Newsfeed page
 This page consisting of highlight videos and also a clickable tab, which directs user to the latest sport news.
