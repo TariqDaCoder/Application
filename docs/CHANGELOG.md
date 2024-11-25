@@ -39,4 +39,10 @@
  - [Simeon S] Created logo for the sport application
  - [Simeon S] Updated the Implementation.md
  - [Simeon S] Contributed to the implementation of login/signup functionality
+
+ # Milestone 5
+ - [Simeon Sodunke] Created the FXML and GUI for the ticket page
+ - [Simeon Sodunke] implemented hyperlinks into the ticket class to redirect user to purchase tickets
+ - [Melkamu Gonfa]  Modified and implemented the FXML and GUI for the home page
+ - [Melkamu Gonfa] implemented functionalities of home page
    
