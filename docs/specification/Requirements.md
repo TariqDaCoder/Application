@@ -168,7 +168,7 @@ End-User
 2. Security and Privacy(Encrypt data, enable blocking/reporting, and manage profile visibility.)
 
 ## Basic flow
-1. Open Social Features Page: User accesses the "Friends" tab from the edu.metrostate.main navigation.
+1. Open Social Features Page: User accesses the "Friends" tab from the edu.metrostate.PageController navigation.
 2. Friend List Display: User sees a list of current friends with profile pictures, online status, and quick action buttons (message, challenge).
 3. Search/Add Friends: User searches for new friends via a search bar and sends a friend request.
 4. Manage Friend Requests: Pending friend requests are listed with options to accept or reject.
