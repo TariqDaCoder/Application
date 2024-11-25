@@ -2,7 +2,7 @@
 
 ## Description
 
-Sports entertainment news application, designed to deliver real-time sports-related content like live scores, news updates, video highlights, and personalized content based on the user's favorite teams and sports. The edu.metrostate.main objective of a sports app is to keep users informed and engaged with their favorite sports, teams, and athletes.
+Sports entertainment news application, designed to deliver real-time sports-related content like live scores, news updates, video highlights, purchasing event tickets, and an optional user authentication system. The edu.metrostate.main objective of a sports app is to keep users informed and engaged with their favorite sports, teams, and athletes.
 
 ## Group Members
 
