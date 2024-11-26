@@ -11,12 +11,19 @@ sport and players.
 
 ![Wireframe 1](./Home.png)
 
+## Scores
+
+This is a page to check the past games scores and also browse teams by name along with date to check the 
+scores of all past games by a team. It allows you to scroll through with ease and check your favorite teams.
+
+![Wireframe 4](./Scores.png)
+
 ## Login Page
 
 This login page allows users to sign in using their email and password or via Facebook or Google accounts.
 It includes options to remember login details, recover a forgotten password, and create a new account.
 
-![Wireframe 2](./login.png)
+![Wireframe 2](./Login.png)
 
 ## Ticket purchase page
 
