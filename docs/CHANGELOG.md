@@ -45,4 +45,13 @@
  - [Simeon Sodunke] implemented hyperlinks into the ticket class to redirect user to purchase tickets
  - [Melkamu Gonfa]  Modified and implemented the FXML and GUI for the home page
  - [Melkamu Gonfa] implemented functionalities of home page
+ - [Kavin X] Fixed GUI window resolution for lower resolution compatability
+
+ # Milestone 6
+  - [Kavin X] Implemented scores tracking feature: Final game scores for the week are assesable, as well as past games
+  - [Kavin X] Live an scheduled games are able to be filtered out by sport and team name/ team state in the browse tab
+  - [Kavin X] Completed games are now stored in the applications games.json file for storage
+  - [Kavin X] Account info now shows user's information for email and password
+  - [Kavin X] Restructured project for MVC  
+
    
