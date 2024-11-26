@@ -52,6 +52,9 @@
   - [Kavin X] Live an scheduled games are able to be filtered out by sport and team name/ team state in the browse tab
   - [Kavin X] Completed games are now stored in the applications games.json file for storage
   - [Kavin X] Account info now shows user's information for email and password
-  - [Kavin X] Restructured project for MVC  
+  - [Kavin X] Restructured project for MVC
+  - [Simeon S] Wrote up the project's final report
+  - [Simeon S] Updated implementation.md file
+  - [Simeon S] Reconstructed the User interface for the ticket page
 
    
