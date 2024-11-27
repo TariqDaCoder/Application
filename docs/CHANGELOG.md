@@ -56,5 +56,5 @@
   - [Simeon S] Wrote up the project's final report
   - [Simeon S] Updated implementation.md file
   - [Simeon S] Reconstructed the User interface for the ticket page
-
+  - [Melkamu G] Created a UML class diagram per the final project structure
    
